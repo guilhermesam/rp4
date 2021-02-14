@@ -35,10 +35,14 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cryptiles": "^4.1.2",
     "express": "^4.17.1",
+    "hoek": "^4.2.1",
     "mysql": "^2.18.1",
+    "npm": "^6.14.6",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.31",
-    "uuidv4": "^6.2.6"
+    "uuidv4": "^6.2.6",
+    "yargs-parser": "^13.1.2"
   }
 }
