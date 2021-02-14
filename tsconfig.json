@@ -10,12 +10,15 @@
     "typeRoots": [
       "./node_modules/@types",
       "./src/@types"
-    ],                       
+    ],                 
     "esModuleInterop": true,                  
     "resolveJsonModule": true,
     "experimentalDecorators": true,        
     "emitDecoratorMetadata": true,         
     "skipLibCheck": true,                     
-    "forceConsistentCasingInFileNames": true  
-  }
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": [
+    "src/**/*"
+  ]
 }
