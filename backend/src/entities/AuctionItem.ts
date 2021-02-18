@@ -15,7 +15,7 @@ export default class AuctionItem {
     description: string
 
     @Column({ type: 'double' })
-    minimumValue: number
+    minimumBid: number
 
     @Column({ length: 255 })
     imagePath: string
