@@ -1,4 +1,5 @@
-export default interface ICreateItemRequestDTO {
+export default interface ICreateItemDTO {
+    id?: string,
     title: string,
     description: string,
     minimumBid: number,

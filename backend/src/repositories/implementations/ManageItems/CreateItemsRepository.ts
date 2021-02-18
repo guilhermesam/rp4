@@ -1,8 +1,8 @@
 import { AuctionItem } from '../../../entities/'
 import { getConnection } from 'typeorm'
-import CreateItemDTO from '../../../useCases/ManageItems/CreateItem/CreateItemDTO'
+import CreateItemDTO from '../../../useCases/ManageItems/CreateItems/ICreateItemsDTO'
 
-export class CreateItemsRepository {
+export default class CreateItemsRepository {
   async execute (data: CreateItemDTO) {
     await getConnection()
       .createQueryBuilder()
@@ -10,7 +10,7 @@ export class CreateItemsRepository {
       .into(AuctionItem)
       .values([
         {
-          id: 'abc',
+          id: data.id,
           title: data.title,
           description: data.description,
           minimumBid: data.minimumBid,

@@ -1,6 +1,6 @@
 // import AuctionItem from '../../../entities/'
-import { CreateItemsRepository } from '../../../repositories/implementations/ManageItems/CreateItemsRepository'
-import ICreateItemRequestDTO from './CreateItemDTO'
+import { CreateItemsRepository } from '../../../repositories/implementations/ManageItems/'
+import ICreateItemDTO from './ICreateItemsDTO'
 
 export default class CreateItemUserCase {
   private createItemsRepository: CreateItemsRepository
@@ -9,7 +9,7 @@ export default class CreateItemUserCase {
     this.createItemsRepository = createItemsRepository
   }
 
-  execute (data: ICreateItemRequestDTO) {
+  execute (data: ICreateItemDTO) {
     this.createItemsRepository.execute(data)
   }
 }

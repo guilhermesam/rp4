@@ -1,19 +1,21 @@
 import { Request, Response } from 'express'
-import CreateItemUserCase from './CreateItemsUseCase'
+import CreateItemUseCase from './CreateItemsUseCase'
 
 export default class CreateItemController {
-  private createItemUseCase: CreateItemUserCase
+  private createItemUseCase: CreateItemUseCase
   constructor (
-    createItemUseCase: CreateItemUserCase
+    createItemUseCase: CreateItemUseCase
   ) {
     this.createItemUseCase = createItemUseCase
   }
 
   async handle (request: Request, response: Response) {
     const { title, description, minimumBid, imagePath, finishedOff } = request.body
+    const id = request.body.id
 
     try {
       await this.createItemUseCase.execute({
+        id,
         title,
         description,
         minimumBid,
