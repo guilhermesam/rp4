@@ -9,7 +9,8 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
-    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js"
+    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
+    "test": "jest --no-cache"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.13",
@@ -19,6 +20,7 @@
     "@babel/preset-typescript": "^7.12.13",
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.11",
+    "@types/jest": "^26.0.20",
     "@types/uuidv4": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
@@ -28,6 +30,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.7",
     "npx": "^10.2.2",
     "ts-node-dev": "^1.1.1",
@@ -41,6 +44,7 @@
     "mysql": "^2.18.1",
     "npm": "^6.14.6",
     "reflect-metadata": "^0.1.13",
+    "ts-jest": "^26.5.1",
     "typeorm": "^0.2.31",
     "uuidv4": "^6.2.6",
     "yargs-parser": "^13.1.2"
