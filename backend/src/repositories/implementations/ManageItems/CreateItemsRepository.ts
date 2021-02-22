@@ -1,8 +1,9 @@
 import { AuctionItem } from '../../../entities/'
 import { getConnection } from 'typeorm'
 import CreateItemDTO from '../../../useCases/ManageItems/CreateItems/ICreateItemsDTO'
+import ManageItemsRepository from './ManageItemsRepository'
 
-export default class CreateItemsRepository {
+export default class CreateItemsRepository extends ManageItemsRepository {
   async execute (data: CreateItemDTO) {
     await getConnection()
       .createQueryBuilder()
@@ -19,14 +20,5 @@ export default class CreateItemsRepository {
         }
       ])
       .execute()
-  }
-
-  async findByID (id: string) {
-    const item = await getConnection()
-      .getRepository(AuctionItem)
-      .createQueryBuilder('auction_item')
-      .where('auction_item.id = :id', { id: id })
-      .getOne()
-    return item
   }
 }
