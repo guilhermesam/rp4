@@ -2,6 +2,7 @@ import { Router } from 'express'
 import { createItemsController } from './useCases/ManageItems/CreateItems'
 import { deleteItemsController } from './useCases/ManageItems/DeleteItems'
 import { searchItemsController } from './useCases/ManageItems/SearchItems'
+import { updateItemsController } from './useCases/ManageItems/UpdateItems'
 
 const router = Router()
 
@@ -19,6 +20,10 @@ router.delete('/items/delete', (req, res) => {
 
 router.get('/items/', (req, res) => {
   return searchItemsController.handle(req, res)
+})
+
+router.put('/items/update', (req, res) => {
+  updateItemsController.handle(req, res)
 })
 
 export { router }
