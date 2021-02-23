@@ -1,8 +1,7 @@
-// import AuctionItem from '../../../entities/'
 import { CreateItemsRepository } from '../../../repositories/implementations/ManageItems/'
 import ICreateItemDTO from './ICreateItemsDTO'
 
-export default class CreateItemUserCase {
+export default class CreateItemUseCase {
   private createItemsRepository: CreateItemsRepository
 
   constructor (createItemsRepository: CreateItemsRepository) {
