@@ -1,0 +1,34 @@
+.mostView {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 640px;
+  background-color: #1c1919;
+}
+.uk-container {
+  display: table;
+  /* 1 */
+  /*box-sizing: content-box;*/
+  width: 100%;
+  height: 540px;
+  max-width: 1920px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #1c1919;
+}
+
+.uk-container .card {
+  display: table;
+  width: 900px;
+  height: 450px;
+  max-width: 900px;
+  max-height: 450px;
+  margin-left: 33px;
+  margin-right: 0px;
+  margin-top: 115px;
+  padding-top: 115px;
+  padding-left: 33px;
+  padding-right: 0px;
+}
