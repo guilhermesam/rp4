@@ -1,0 +1,21 @@
+.uk-cover-container {
+  background-color: white;
+  padding-bottom: 10px;
+  padding-top: 55px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.uk-button-text {
+  /* 1 */
+  padding-top: 30px;
+  line-height: 2;
+  background: none;
+  font-size: large;
+  /* 2 */
+  color: #333;
+  position: relative;
+  left: 44.3%;
+}
