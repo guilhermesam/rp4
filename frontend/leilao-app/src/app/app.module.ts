@@ -9,6 +9,8 @@ import { FooterComponent } from './homePage/footer/footer.component';
 import { SliderComponent } from './homePage/slider/slider.component';
 import { MostViewedComponent } from './homePage/most-viewed/most-viewed.component';
 import { AuctionsHomePageComponent } from './homePage/auctions-home-page/auctions-home-page.component';
+import { AuctionCardComponent } from './homePage/auction-card/auction-card.component';
+import { AuctionCardMostViwedComponent } from './homePage/auction-card-most-viwed/auction-card-most-viwed.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AuctionsHomePageComponent } from './homePage/auctions-home-page/auction
     FooterComponent,
     SliderComponent,
     MostViewedComponent,
-    AuctionsHomePageComponent
+    AuctionsHomePageComponent,
+    AuctionCardComponent,
+    AuctionCardMostViwedComponent
   ],
   imports: [
     BrowserModule,
