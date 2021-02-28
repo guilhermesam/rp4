@@ -1,0 +1,21 @@
+.uk-cover-container {
+  background-color: #1c1919;
+  padding-bottom: 10px;
+  padding-top: 75px;
+  margin-bottom: 0px;
+}
+
+.uk-container {
+  width: 700px;
+  height: 450px;
+  margin-left: 33px;
+  margin-right: 0px;
+  margin-top: 115px;
+}
+
+.uk-padding {
+  padding-left: 40px;
+  padding-right: 22px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "57d01e6c-795b-4c9f-a4eb-42dc8497458f"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -24,13 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "../node_modules/uikit/dist/css/uikit.css",
+              "node_modules/uikit/dist/css/uikit.css",
               "src/styles.css"
             ],
             "scripts": [
-              "../node_modules/popper.js/dist/umd/popper.min.js",
-              "../node_modules/jquery/dist/jquery.min.js",
-              "../node_modules/uikit/dist/js/uikit.min.js"
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/uikit/dist/js/uikit.min.js"
             ]
           },
           "configurations": {
