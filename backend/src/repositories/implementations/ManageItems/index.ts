@@ -1,5 +1,11 @@
-import { CreateItemsRepository } from './CreateItemsRepository'
+import CreateItemsRepository from './CreateItemsRepository'
+import DeleteItemsRepository from './DeleteItemsRepository'
+import SearchItemsRepository from './SearchItemsRepository'
+import UpdateItemsRepository from './UpdateItemsRepository'
 
 export {
-  CreateItemsRepository
+  CreateItemsRepository,
+  DeleteItemsRepository,
+  SearchItemsRepository,
+  UpdateItemsRepository
 }

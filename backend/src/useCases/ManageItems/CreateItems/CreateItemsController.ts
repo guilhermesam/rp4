@@ -9,12 +9,12 @@ export default class CreateItemController {
     this.createItemUseCase = createItemUseCase
   }
 
-  async handle (request: Request, response: Response) {
+  handle (request: Request, response: Response) {
     const { title, description, minimumBid, imagePath, finishedOff } = request.body
     const id = request.body.id
 
     try {
-      await this.createItemUseCase.execute({
+      this.createItemUseCase.execute({
         id,
         title,
         description,
