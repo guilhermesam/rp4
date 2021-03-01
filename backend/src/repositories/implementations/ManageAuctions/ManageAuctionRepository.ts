@@ -1,14 +1,13 @@
-import { AuctionItem } from '../../../entities'
+import { Auction } from '../../../entities'
 import { getConnection } from 'typeorm'
 
-export default class ManageItemsRepository {
+export default class ManageAuctionRepository {
   async findByID (id: string) {
     const auction = await getConnection()
-      .getRepository(AuctionItem)
-      .createQueryBuilder('AuctionItems')
+      .getRepository(Auction)
+      .createQueryBuilder('Auctions')
       .where('AuctionItems.id = :id', { id: id })
       .getOne()
-
     return auction
   }
 }
