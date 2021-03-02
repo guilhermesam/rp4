@@ -1,8 +1,13 @@
-import { searchAuctionsUseCase,searchAuctionsController } from '../../../../backend/src/useCases/ManageAuctions/SearchAuction'
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
 
-
-export class Auctions {
+@Injectable()
+export class AuctionsService {
    
-    
+    constructor(private http : HttpClient) { }
 
+    public getAuctions(): Promise<any[]>{
+        // efetuar requisição http
+        this.http.get()
+    }
 }

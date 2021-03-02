@@ -2,11 +2,12 @@ import { Router } from 'express'
 import {
   createItemsController,
   deleteItemsController,
-  searchItemsController
+  searchItemsController,
+  updateItemsController
 } from './useCases/ManageItems/'
-import { updateItemsController } from './useCases/ManageItems/UpdateItems'
 
 import { createAuctionsController } from './useCases/ManageAuctions/'
+import { searchAuctionsController } from './useCases/ManageAuctions/SearchAuction'
 
 const router = Router()
 
@@ -16,28 +17,36 @@ router.get('/', (req, res) => {
 })
 
 router.post('/items/create', (req, res) => {
-  return createItemsController.handle(req, res)
+  return createItemsController.createHandle(req, res)
 })
 
 router.delete('/items/delete', (req, res) => {
-  return deleteItemsController.handle(req, res)
+  return deleteItemsController.deleteHandle(req, res)
 })
 
-router.get('/items/', (req, res) => {
+router.get('/items/search/all', (req, res) => {
   return searchItemsController.searchAllHandle(req, res)
 })
 
-router.get('/items/searchByTitle', (req, res) => {
+router.get('/items/search/searchByTitle', (req, res) => {
   return searchItemsController.searchByTitleHandle(req, res)
 })
 
+router.get('/items/search/available', (req, res) => {
+  return searchItemsController.searchAvailableHandle(req, res)
+})
+
 router.put('/items/update', (req, res) => {
-  return updateItemsController.handle(req, res)
+  return updateItemsController.updateHandle(req, res)
 })
 
 // Rotas de "manter leilão"
 router.post('/auctions/create', (req, res) => {
-  return createAuctionsController.handle(req, res)
+  return createAuctionsController.createHandle(req, res)
+})
+
+router.get('/items/search/available', (req, res) => {
+  return searchAuctionsController.searchAuctionHandle(req, res)
 })
 
 export { router }
