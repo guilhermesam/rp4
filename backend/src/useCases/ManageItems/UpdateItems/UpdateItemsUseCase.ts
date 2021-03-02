@@ -2,13 +2,9 @@ import { UpdateItemsRepository } from '../../../repositories/implementations/Man
 import IUpdateItemsDTO from './IUpdateItemsDTO'
 
 export default class UpdateItemsUseCase {
-  private updateItemsRepository: UpdateItemsRepository
+  update (data: IUpdateItemsDTO) {
+    const updateItemsRepository = new UpdateItemsRepository()
 
-  constructor (updateItemsRepository: UpdateItemsRepository) {
-    this.updateItemsRepository = updateItemsRepository
-  }
-
-  execute (data: IUpdateItemsDTO) {
-    this.updateItemsRepository.execute(data)
+    updateItemsRepository.updateItem(data)
   }
 }
