@@ -5,7 +5,11 @@
   "projects": {
     "leilao-app": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -24,13 +28,13 @@
               "src/assets"
             ],
             "styles": [
-              "../node_modules/uikit/dist/css/uikit.css",
+              "node_modules/uikit/dist/css/uikit.css",
               "src/styles.css"
             ],
             "scripts": [
-              "../node_modules/popper.js/dist/umd/popper.min.js",
-              "../node_modules/jquery/dist/jquery.min.js",
-              "../node_modules/uikit/dist/js/uikit.min.js"
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/uikit/dist/js/uikit.js"
             ]
           },
           "configurations": {
