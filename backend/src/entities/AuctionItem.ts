@@ -1,9 +1,10 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
 
 import {
   Auction,
   AuctionBid,
-  Category
+  Category,
+  ItemProvider
 } from '../entities'
 
 @Entity('AuctionItems')
@@ -29,9 +30,24 @@ export default class AuctionItem {
     @OneToMany(() => AuctionBid, auctionBid => auctionBid.auctionItem)
     auctionBids: AuctionBid[]
 
-    @ManyToOne(() => Auction, auction => auction.id)
+    @ManyToOne(() => Auction, auction => auction.id, { nullable: true })
+    @JoinColumn({ name: 'auctionId' })
     auction: Auction
 
+    @Column({ nullable: true })
+    auctionId: string
+
     @ManyToOne(() => Category, category => category.id)
+    @JoinColumn({ name: 'categoryId' })
     category: Category
+
+    @Column()
+    categoryId: string
+
+    @ManyToOne(() => ItemProvider, itemProvider => itemProvider.id)
+    @JoinColumn({ name: 'itemProviderId' })
+    itemProvider: ItemProvider
+
+    @Column()
+    itemProviderId: string
 }
