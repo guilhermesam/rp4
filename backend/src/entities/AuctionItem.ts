@@ -1,7 +1,10 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
 
-import Auction from './Auction'
-import AuctionBid from './AuctionBid'
+import {
+  Auction,
+  AuctionBid,
+  Category
+} from '../entities'
 
 @Entity('AuctionItems')
 export default class AuctionItem {
@@ -23,9 +26,12 @@ export default class AuctionItem {
     @Column({ type: 'tinyint' })
     finishedOff: number
 
-    @OneToMany(() => AuctionBid, auctionBid => auctionBid.id)
+    @OneToMany(() => AuctionBid, auctionBid => auctionBid.auctionItem)
     auctionBids: AuctionBid[]
 
     @ManyToOne(() => Auction, auction => auction.id)
-    auctionID: string
+    auction: Auction
+
+    @ManyToOne(() => Category, category => category.id)
+    category: Category
 }
