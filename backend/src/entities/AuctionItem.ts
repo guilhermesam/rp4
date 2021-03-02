@@ -1,7 +1,11 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
 
-import Auction from './Auction'
-import AuctionBid from './AuctionBid'
+import {
+  Auction,
+  AuctionBid,
+  Category,
+  ItemProvider
+} from '../entities'
 
 @Entity('AuctionItems')
 export default class AuctionItem {
@@ -23,9 +27,27 @@ export default class AuctionItem {
     @Column({ type: 'tinyint' })
     finishedOff: number
 
-    @OneToMany(() => AuctionBid, auctionBid => auctionBid.id)
+    @OneToMany(() => AuctionBid, auctionBid => auctionBid.auctionItem)
     auctionBids: AuctionBid[]
 
-    @ManyToOne(() => Auction, auction => auction.id)
-    auctionID: string
+    @ManyToOne(() => Auction, auction => auction.id, { nullable: true })
+    @JoinColumn({ name: 'auctionId' })
+    auction: Auction
+
+    @Column({ nullable: true })
+    auctionId: string
+
+    @ManyToOne(() => Category, category => category.id)
+    @JoinColumn({ name: 'categoryId' })
+    category: Category
+
+    @Column()
+    categoryId: string
+
+    @ManyToOne(() => ItemProvider, itemProvider => itemProvider.id)
+    @JoinColumn({ name: 'itemProviderId' })
+    itemProvider: ItemProvider
+
+    @Column()
+    itemProviderId: string
 }

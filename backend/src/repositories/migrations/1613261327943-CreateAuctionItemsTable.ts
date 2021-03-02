@@ -41,7 +41,8 @@ export class CreateAuctionItemsTable1613261327943 implements MigrationInterface 
           name: 'finishedOff',
           type: 'tinyint',
           isNullable: false,
-          isUnique: false
+          isUnique: false,
+          default: 0
         }
       ]
     }

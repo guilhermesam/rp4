@@ -1,7 +1,9 @@
 import { Entity, Column, ManyToOne, PrimaryColumn } from 'typeorm'
-import AuctionItem from './AuctionItem'
 
-import Participant from './Participant'
+import {
+  AuctionItem,
+  Participant
+} from '../entities'
 
 @Entity('AuctionBids')
 export default class AuctionBid {
@@ -15,8 +17,8 @@ export default class AuctionBid {
   hourBid: number
 
   @ManyToOne(() => Participant, participant => participant.id)
-  participantID: Participant
+  participant: Participant
 
   @ManyToOne(() => AuctionItem, auctionItem => auctionItem.id)
-  auctionItemID: AuctionItem
+  auctionItem: AuctionItem
 }

@@ -1,15 +1,9 @@
-// import AuctionItem from '../../../entities/'
 import { CreateItemsRepository } from '../../../repositories/implementations/ManageItems/'
-import ICreateItemDTO from './ICreateItemsDTO'
+import ICreateItemsDTO from './ICreateItemsDTO'
 
-export default class CreateItemUserCase {
-  private createItemsRepository: CreateItemsRepository
-
-  constructor (createItemsRepository: CreateItemsRepository) {
-    this.createItemsRepository = createItemsRepository
-  }
-
-  execute (data: ICreateItemDTO) {
-    this.createItemsRepository.execute(data)
+export default class CreateItemUseCase {
+  create (data: ICreateItemsDTO) {
+    const createItemsRepository = new CreateItemsRepository()
+    createItemsRepository.create(data)
   }
 }
