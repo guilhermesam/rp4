@@ -1,10 +1,9 @@
 import { AuctionItem } from '../../../entities/'
 import { getConnection } from 'typeorm'
-import CreateItemDTO from '../../../useCases/ManageItems/CreateItems/ICreateItemsDTO'
-import ManageItemsRepository from './ManageItemsRepository'
+import ICreateItemsDTO from '../../../useCases/ManageItems/CreateItems/ICreateItemsDTO'
 
-export default class CreateItemsRepository extends ManageItemsRepository {
-  async execute (data: CreateItemDTO) {
+export default class CreateItemsRepository {
+  async create (data: ICreateItemsDTO) {
     await getConnection()
       .createQueryBuilder()
       .insert()

@@ -1,10 +1,9 @@
 import { AuctionItem } from '../../../entities/'
 import { getConnection } from 'typeorm'
 import IDeleteItemsDTO from '../../../useCases/ManageItems/DeleteItems/IDeleteItemsDTO'
-import ManageItemsRepository from './ManageItemsRepository'
 
-export default class DeleteItemsRepository extends ManageItemsRepository {
-  async execute (data: IDeleteItemsDTO) {
+export default class DeleteItemsRepository {
+  async delete (data: IDeleteItemsDTO) {
     await getConnection()
       .createQueryBuilder()
       .delete()

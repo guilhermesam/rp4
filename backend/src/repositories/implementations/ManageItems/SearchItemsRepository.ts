@@ -1,24 +1,29 @@
-import { getConnection } from 'typeorm'
+import { getRepository } from 'typeorm'
 
-import ManageItemsRepository from './ManageItemsRepository'
-import ISearchItemsDTO from '../../../useCases/ManageItems/SearchItems/ISearchItemsDTO'
 import { AuctionItem } from '../../../entities/'
 
-export default class SearchItemsRepository extends ManageItemsRepository {
-  async execute (data?: ISearchItemsDTO) {
-    if (!data.title) {
-      return await getConnection()
-        .createQueryBuilder()
-        .select('AuctionItem')
-        .from(AuctionItem, 'AuctionItem')
-        .getMany()
-    } else {
-      return await getConnection()
-        .createQueryBuilder()
-        .select('AuctionItem')
-        .from(AuctionItem, 'AuctionItem')
-        .where('AuctionItem.title = :title', { title: data.title })
-        .getMany()
-    }
+export default class SearchItemsRepository {
+  async searchAll (): Promise<AuctionItem[]> {
+    const items = await getRepository(AuctionItem).find()
+    return items
+  }
+
+  async searchByTitle (title: string): Promise<AuctionItem> {
+    const item = await getRepository(AuctionItem)
+      .findOne({ title: title })
+    return item
+  }
+
+  async searchAvailableItems (): Promise<AuctionItem[]> {
+    return await getRepository(AuctionItem)
+      .createQueryBuilder('auctionItem')
+      .where('auctionItem.finishedOff = 0')
+      .getMany()
+  }
+
+  async searchById (id: string) {
+    const item = await getRepository(AuctionItem)
+      .findOne({ id: id })
+    return item
   }
 }

@@ -1,18 +1,13 @@
 import { Request, Response } from 'express'
 import UpdateItemsUseCase from './UpdateItemsUseCase'
 
-export default class UpdateItemsController {
-  private updateItemsUseCase : UpdateItemsUseCase
-
-  constructor (updateItemsUseCase : UpdateItemsUseCase) {
-    this.updateItemsUseCase = updateItemsUseCase
-  }
-
-  handle (request: Request, response: Response) {
+class UpdateItemsController {
+  updateHandle (request: Request, response: Response) {
     try {
+      const updateItemsUseCase = new UpdateItemsUseCase()
       const { id, title, description, minimumBid, imagePath, finishedOff } = request.body
 
-      this.updateItemsUseCase.execute({
+      updateItemsUseCase.update({
         id,
         title,
         description,
@@ -28,3 +23,5 @@ export default class UpdateItemsController {
     }
   }
 }
+
+export default new UpdateItemsController()

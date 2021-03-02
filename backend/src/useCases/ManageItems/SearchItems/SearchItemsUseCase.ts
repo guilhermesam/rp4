@@ -1,20 +1,19 @@
+import { AuctionItem } from '../../../entities'
 import { SearchItemsRepository } from '../../../repositories/implementations/ManageItems'
-import ISearchItemsDTO from './ISearchItemsDTO'
 
 export default class SearchItemsUseCase {
-    private searchItemsRepository: SearchItemsRepository
+  searchByTitle (title: string): Promise<AuctionItem> {
+    const searchItemsRepository = new SearchItemsRepository()
+    return searchItemsRepository.searchByTitle(title)
+  }
 
-    constructor (searchItemsRepository: SearchItemsRepository) {
-      this.searchItemsRepository = searchItemsRepository
-    }
+  searchAll (): Promise<AuctionItem[]> {
+    const searchItemsRepository = new SearchItemsRepository()
+    return searchItemsRepository.searchAll()
+  }
 
-    async execute (data?: ISearchItemsDTO) {
-      if (!data) {
-        const items = await this.searchItemsRepository.execute()
-        return items
-      } else {
-        const items = await this.searchItemsRepository.execute(data)
-        return items
-      }
-    }
+  searchAvailable (): Promise<AuctionItem[]> {
+    const searchItemsRepository = new SearchItemsRepository()
+    return searchItemsRepository.searchAvailableItems()
+  }
 }

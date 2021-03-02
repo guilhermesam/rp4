@@ -1,10 +1,9 @@
 import { getConnection } from 'typeorm'
 import { AuctionItem } from '../../../entities'
 import IUpdateItemsDTO from '../../../useCases/ManageItems/UpdateItems/IUpdateItemsDTO'
-import ManageItemsRepository from './ManageItemsRepository'
 
-export default class UpdateItemsRepository extends ManageItemsRepository {
-  async execute (data: IUpdateItemsDTO) {
+export default class UpdateItemsRepository {
+  async updateItem (data: IUpdateItemsDTO) {
     await getConnection()
       .createQueryBuilder()
       .update(AuctionItem)
@@ -19,5 +18,38 @@ export default class UpdateItemsRepository extends ManageItemsRepository {
       .execute()
 
     console.log(data)
+  }
+
+  async updateForeignKey (auctionId: string, auctionItemId: string) {
+    await getConnection()
+      .createQueryBuilder()
+      .update(AuctionItem)
+      .set({
+        auctionId: auctionId
+      })
+      .where('AuctionItems.id = :id', { id: auctionItemId })
+      .execute()
+  }
+
+  async setAvailableStatus (auctionItemId: string) {
+    await getConnection()
+      .createQueryBuilder()
+      .update(AuctionItem)
+      .set({
+        finishedOff: 0
+      })
+      .where('AuctionItems.id = :id', { id: auctionItemId })
+      .execute()
+  }
+
+  async setUnavailableStatus (auctionItemId: string) {
+    await getConnection()
+      .createQueryBuilder()
+      .update(AuctionItem)
+      .set({
+        finishedOff: 1
+      })
+      .where('id = :id', { id: auctionItemId })
+      .execute()
   }
 }
