@@ -3,14 +3,15 @@ import { UpdateItemsRepository } from '../../../repositories/implementations/Man
 import ICreateAuctionsDTO from './ICreateAuctionsDTO'
 
 export default class CreateAuctionsUseCase {
-  execute (data: ICreateAuctionsDTO) {
+  create (data: ICreateAuctionsDTO) {
     const createAuctionsRepository = new CreateAuctionsRepository()
     const updateItemsRepository = new UpdateItemsRepository()
 
-    createAuctionsRepository.execute(data)
+    createAuctionsRepository.create(data)
 
-    data.items.forEach(itemID => {
-      updateItemsRepository.updateForeignKey(data.id, itemID)
+    data.items.forEach(async (itemId) => {
+      await updateItemsRepository.updateForeignKey(data.id, itemId)
+      await updateItemsRepository.setUnavailableStatus(itemId)
     })
   }
 }

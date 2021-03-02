@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import CreateAuctionsUseCase from './CreateAuctionsUseCase'
 
 class CreateAuctionsController {
-  handle (request: Request, response: Response) {
+  createHandle (request: Request, response: Response) {
     try {
       const createAuctionsUseCase = new CreateAuctionsUseCase()
 
@@ -10,11 +10,11 @@ class CreateAuctionsController {
       const id: string = request.body.id
       const items: string[] = request.body.items
 
-      createAuctionsUseCase.execute({ start, id, items })
+      createAuctionsUseCase.create({ start, id, items })
 
-      return response.sendStatus(204)
+      return response.status(201).send()
     } catch (error) {
-      return response.sendStatus(400).json({
+      return response.status(400).json({
         message: error.message || 'Unexpected error'
       })
     }
