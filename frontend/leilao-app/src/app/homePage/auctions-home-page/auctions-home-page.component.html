@@ -1,14 +1,15 @@
 <div class="uk-cover-container">
     <hr class="uk-divider-icon">
-<div class="uk-child-width-1-4@m" uk-grid>
-    <app-auction-card></app-auction-card>
-    <app-auction-card></app-auction-card>
-    <app-auction-card></app-auction-card>
-    <app-auction-card></app-auction-card>
-    <app-auction-card></app-auction-card>
-    <app-auction-card></app-auction-card>
-    <app-auction-card></app-auction-card>
-    <app-auction-card></app-auction-card>
+<div class="uk-child-width-1-4@m" uk-grid *ngFor="let item of items">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+            <img src="item.imagePath.url" alt="">
+        </div>
+        <div class="uk-card-body">
+            <h3 class="uk-card-title">{{ item.title }}</h3>
+            <p>{{ item.descriptio }}</p>
+        </div>
+     </div>
 </div>
 <button class="uk-button uk-button-text">VER TODOS OS LEILÕES</button>
 <hr class="uk-divider-icon">

@@ -1,22 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { AuctionsService } from '../../auction.services'
+
 @Component({
   selector: 'app-auction-card',
   templateUrl: './auction-card.component.html',
-  styleUrls: ['./auction-card.component.css'],
-  providers: [ AuctionsService ]
+  styleUrls: ['./auction-card.component.css']
   
 })
 export class AuctionCardComponent implements OnInit {
 
-  constructor(private auctionsService : AuctionsService) { }
+  constructor() { }
 
   ngOnInit(): void {
-   // let auctions : AuctionsService = new AuctionsService()
-  
-   this.auctionsService.getAuctions()
-        
   }
 
 }
