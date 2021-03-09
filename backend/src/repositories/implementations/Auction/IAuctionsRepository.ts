@@ -4,4 +4,5 @@ import IReadonlyBaseRepository from '../IReadonlyBaseRepository'
 export default interface IAuctionsRepository extends IReadonlyBaseRepository<Auction> {
     close(id: string): Promise<void>
     searchById(id: string): Promise<Auction>
+    setAuctionEndDate(id: string, endDate: string): Promise<void>
 }

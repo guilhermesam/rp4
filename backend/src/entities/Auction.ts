@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm'
-import { AuctionItem, AuctionSale } from '../entities'
+import { AuctionItem } from '../entities'
 
 @Entity('Auctions')
 export default class Auction {
@@ -12,7 +12,7 @@ export default class Auction {
     @Column({ type: 'datetime', nullable: true })
     end: string
 
-    @Column({ type: 'tinyint', nullable: false })
+    @Column({ type: 'tinyint', nullable: false, default: 0 })
     closed: number
 
     @OneToMany(() => AuctionItem, auctionItem => auctionItem.auction)

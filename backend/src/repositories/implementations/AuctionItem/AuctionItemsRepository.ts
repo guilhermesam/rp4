@@ -6,16 +6,7 @@ import IAuctionItemsRepository from './IAuctionItemsRepository'
 export default class AuctionItemsRepository implements IAuctionItemsRepository {
   // Create Operations
   async create (data: AuctionItem): Promise<void> {
-    const auctionItem = getRepository(AuctionItem).create({
-      id: data.id,
-      title: data.title,
-      description: data.description,
-      minimumBid: data.minimumBid,
-      imagePath: data.imagePath,
-      finishedOff: data.finishedOff
-    })
-
-    await getRepository(AuctionItem).save(auctionItem)
+    await getRepository(AuctionItem).save(data)
   }
 
   // Search Operations
@@ -32,8 +23,7 @@ export default class AuctionItemsRepository implements IAuctionItemsRepository {
   }
 
   async searchItemsInAuction (auctionId: string): Promise<AuctionItem[]> {
-    return await getRepository(AuctionItem)
-      .find({ where: { auctionId: auctionId } })
+    return await getRepository(AuctionItem).find({ where: { auctionId: auctionId } })
   }
 
   // Update Operations
@@ -71,7 +61,7 @@ export default class AuctionItemsRepository implements IAuctionItemsRepository {
         finishedOff: 0,
         auctionId: null
       })
-      .where('AuctionItems.id = :id', { id: auctionItemId })
+      .where('id = :id', { id: auctionItemId })
       .execute()
   }
 

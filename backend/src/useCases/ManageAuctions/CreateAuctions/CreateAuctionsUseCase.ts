@@ -27,8 +27,8 @@ class CreateAuctionsUseCase {
       if ((await this.auctionItemsRepository.searchById(itemId)).finishedOff === 1) {
         throw new Error('Item already alocated to auction')
       }
-      await this.auctionItemsRepository.assignToAuction(data.id, itemId)
       await this.auctionItemsRepository.setUnavailableStatus(itemId)
+      await this.auctionItemsRepository.assignToAuction(data.id, itemId)
     })
   }
 }

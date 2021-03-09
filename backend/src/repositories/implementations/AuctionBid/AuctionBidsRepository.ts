@@ -4,15 +4,7 @@ import IAuctionBidsRepository from './IAuctionBidsRepository'
 
 export default class AuctionBidsRepository implements IAuctionBidsRepository {
   async create (data: AuctionBid): Promise<void> {
-    const auctionBid = getRepository(AuctionBid).create({
-      id: data.id,
-      date: data.date,
-      value: data.value,
-      participantId: data.participantId,
-      auctionItemId: data.auctionItemId
-    })
-
-    await getRepository(AuctionBid).save(auctionBid)
+    await getRepository(AuctionBid).save(data)
   }
 
   async searchAll (): Promise<AuctionBid[]> {

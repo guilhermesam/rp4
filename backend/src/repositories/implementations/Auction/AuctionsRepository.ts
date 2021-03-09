@@ -3,31 +3,37 @@ import { Auction } from '../../../entities'
 import IAuctionsRepository from './IAuctionsRepository'
 
 export default class AuctionsRepository implements IAuctionsRepository {
-  async create (data: Auction): Promise<void> {
-    const auction = getRepository(Auction).create({
-      id: data.id,
-      start: data.start
-    })
-
-    await getRepository(Auction).save(auction)
+  async setAuctionEndDate (id: string, endDate: string): Promise<void> {
+    await getRepository(Auction)
+      .createQueryBuilder()
+      .update(Auction)
+      .set({
+        end: endDate
+      })
+      .where('id = :id', { id: id })
+      .execute()
   }
 
-  async close (id: string) {
+  async create (data: Auction): Promise<void> {
+    await getRepository(Auction).save(data)
+  }
+
+  async close (id: string): Promise<void> {
     await getRepository(Auction)
       .createQueryBuilder()
       .update(Auction)
       .set({
         closed: 1
       })
-      .where('Auction.id = :id', { id: id })
+      .where('id = :id', { id: id })
       .execute()
   }
 
-  async searchById (id: string) {
+  async searchById (id: string): Promise<Auction> {
     return await getRepository(Auction).findOne({ id: id })
   }
 
-  async searchAll () {
+  async searchAll (): Promise<Auction[]> {
     return await getRepository(Auction).find()
   }
 }
