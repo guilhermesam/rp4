@@ -1,20 +1,9 @@
 import { SearchAuctionRepository } from '../../../repositories/implementations/ManageAuctions'
-import ISearchAuctionDTO from './ISearchAuctionDTO'
+import { Auction } from '../../../entities'
 
-export default class SearchItemsUseCase {
-    private searchAuctionRepository: SearchAuctionRepository
-
-    constructor (searchAuctionRepository: SearchAuctionRepository) {
-      this.searchAuctionRepository = searchAuctionRepository
-    }
-
-    async execute (data?: ISearchAuctionDTO) {
-      if (!data) {
-        const items = await this.searchAuctionRepository.execute()
-        return items
-      } else {
-        const items = await this.searchAuctionRepository.execute(data)
-        return items
-      }
-    }
+export default class SearchAuctionUseCase {
+  searchAuction (id : string): Promise<Auction> {
+    const searchItemsRepository = new SearchAuctionRepository()
+    return searchItemsRepository.searchById(id)
+  }
 }

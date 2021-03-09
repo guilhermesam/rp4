@@ -41,6 +41,19 @@ class SearchItemsController {
       })
     }
   }
+
+  async searchAuctionsItemsHandle (request: Request, response: Response) {
+    try {
+      const searchItemsUseCase = new SearchItemsUseCase()
+      const auctionsItems = await searchItemsUseCase.searchAuctionItems()
+
+      return response.status(200).json(auctionsItems)
+    } catch (error) {
+      return response.status(400).json({
+        message: error.message || 'Unexpected error!'
+      })
+    }
+  }
 }
 
 export default new SearchItemsController()

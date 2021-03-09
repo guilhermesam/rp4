@@ -1,23 +1,10 @@
-import { getConnection } from 'typeorm'
-
-import ISearchAuctionDTO from '../../../useCases/ManageAuctions/SearchAuction/ISearchAuctionDTO'
+import { getRepository } from 'typeorm'
 import { Auction } from '../../../entities'
 
 export default class SearchAuctionRepository {
-  async execute (data?: ISearchAuctionDTO) {
-    if (!data.id) {
-      return await getConnection()
-        .createQueryBuilder()
-        .select('Auction')
-        .from(Auction, 'Auction')
-        .getMany()
-    } else {
-      return await getConnection()
-        .createQueryBuilder()
-        .select('Auction')
-        .from(Auction, 'Auction')
-        .where('Auction.id = :id', { id: data.id })
-        .getMany()
-    }
+  async searchById (id: string) {
+    const auction = await getRepository(Auction)
+      .findOne({ id: id })
+    return auction
   }
 }

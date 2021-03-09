@@ -1,15 +1,17 @@
 <div class="uk-cover-container">
     <hr class="uk-divider-icon">
 <div class="uk-child-width-1-4@m" uk-grid *ngFor="let item of items">
+<div class="uk-padding">
     <div class="uk-card uk-card-default">
         <div class="uk-card-media-top">
-            <img src="item.imagePath.url" alt="">
+            <img src={{item.imagePath}} alt="">
         </div>
         <div class="uk-card-body">
             <h3 class="uk-card-title">{{ item.title }}</h3>
-            <p>{{ item.descriptio }}</p>
+            <p>{{ item.description }}</p>
         </div>
      </div>
+    </div>
 </div>
 <button class="uk-button uk-button-text">VER TODOS OS LEILÕES</button>
 <hr class="uk-divider-icon">

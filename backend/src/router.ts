@@ -8,8 +8,6 @@ import {
 
 import { createAuctionsController } from './useCases/ManageAuctions/'
 
-import { searchAuctionController } from './useCases/ManageAuctions'
-
 const router = Router()
 
 // Rotas de "manter item do leilão"
@@ -33,6 +31,10 @@ router.get('/items/search/searchByTitle', (req, res) => {
   return searchItemsController.searchByTitleHandle(req, res)
 })
 
+router.get('/items/search/auctionsItems', (req, res) => {
+  return searchItemsController.searchAuctionsItemsHandle(req, res)
+})
+
 router.get('/items/search/available', (req, res) => {
   return searchItemsController.searchAvailableHandle(req, res)
 })
@@ -44,9 +46,6 @@ router.put('/items/update', (req, res) => {
 // Rotas de "manter leilão"
 router.post('/auctions/searchAuction', (req, res) => {
   return createAuctionsController.createHandle(req, res)
-})
-router.post('/auctions/searchAuction', (req, res) => {
-  return searchAuctionController.searchAuctionHandle(req, res)
 })
 
 export { router }

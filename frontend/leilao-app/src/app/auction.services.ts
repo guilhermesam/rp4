@@ -10,7 +10,7 @@ export class AuctionsService {
     public getAuctions(): Promise<Items[]>{
         return this.http.get('http://localhost:3333/items/search/all')
             .toPromise()
-            .then((resposta: any) => resposta.json())
+            .then((resposta: Items[]) => resposta)  
             
     }
 }

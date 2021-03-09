@@ -37,11 +37,8 @@
             "scripts": [
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/jquery/dist/jquery.min.js",
-<<<<<<< HEAD
               "node_modules/uikit/dist/js/uikit.js"
-=======
-              "node_modules/uikit/dist/js/uikit.min.js"
->>>>>>> 1996a38c2c7fafcc69c0e6947441fe0d1c0b0569
+              
             ]
           },
           "configurations": {

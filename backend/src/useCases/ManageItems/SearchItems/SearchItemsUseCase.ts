@@ -16,4 +16,9 @@ export default class SearchItemsUseCase {
     const searchItemsRepository = new SearchItemsRepository()
     return searchItemsRepository.searchAvailableItems()
   }
+
+  searchAuctionItems (): Promise<AuctionItem[]> {
+    const searchItemsRepository = new SearchItemsRepository()
+    return searchItemsRepository.searchAuctionItems()
+  }
 }

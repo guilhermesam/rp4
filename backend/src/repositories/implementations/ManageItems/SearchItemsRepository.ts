@@ -14,6 +14,13 @@ export default class SearchItemsRepository {
     return item
   }
 
+  async searchAuctionItems (): Promise<any[]> {
+    const auctionsItems = await getRepository(AuctionItem).createQueryBuilder('ct')
+      .innerJoinAndSelect('ct.category', 'name')
+      .getMany()
+    return auctionsItems
+  }
+
   async searchAvailableItems (): Promise<AuctionItem[]> {
     return await getRepository(AuctionItem)
       .createQueryBuilder('auctionItem')

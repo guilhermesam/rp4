@@ -2,26 +2,16 @@ import { Request, Response } from 'express'
 import SearchAuctionUseCase from './SearchAuctionUseCase'
 
 export default class SearchAuctionsController {
-    private searchAuctionUseCase: SearchAuctionUseCase
+  async searchAuctionsHandle (request: Request, response: Response) {
+    try {
+      const searchAuctionUseCase = new SearchAuctionUseCase()
+      const auctions = await searchAuctionUseCase.searchAuction
 
-    constructor (searchAuctionUseCase: SearchAuctionUseCase) {
-      this.searchAuctionUseCase = searchAuctionUseCase
+      return response.status(200).json(auctions)
+    } catch (error) {
+      return response.status(400).json({
+        message: error.message || 'Unexpected error!'
+      })
     }
-
-    async handle (request: Request, response: Response) {
-      const data = request.body
-      try {
-        if (!data) {
-          const items = await this.searchAuctionUseCase.execute()
-          return response.json(items).status(200)
-        } else {
-          const items = await this.searchAuctionUseCase.execute(data)
-          return response.json(items).status(200)
-        }
-      } catch (error) {
-        return response.status(400).json({
-          message: error.message || 'Unexpected error!'
-        })
-      }
-    }
+  }
 }
