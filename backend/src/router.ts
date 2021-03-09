@@ -6,7 +6,9 @@ import {
   updateItemsController
 } from './useCases/ManageItems/'
 
-import { createAuctionsController } from './useCases/ManageAuctions/'
+import { finishAuctionsController, createAuctionsController } from './useCases/ManageAuctions/'
+
+import { SearchAllItems, SearchAvailableItems } from './useCases/ManageItems/SearchItems/SearchStrategies'
 
 const router = Router()
 
@@ -16,32 +18,38 @@ router.get('/', (req, res) => {
 })
 
 router.post('/items/create', (req, res) => {
-  return createItemsController.createHandle(req, res)
+  return createItemsController.handle(req, res)
 })
 
 router.delete('/items/delete', (req, res) => {
-  return deleteItemsController.deleteHandle(req, res)
+  return deleteItemsController.handle(req, res)
 })
 
 router.get('/items/search/all', (req, res) => {
-  return searchItemsController.searchAllHandle(req, res)
-})
-
-router.get('/items/search/searchByTitle', (req, res) => {
-  return searchItemsController.searchByTitleHandle(req, res)
+  searchItemsController.setStrategy(new SearchAllItems())
+  return searchItemsController.handle(req, res)
 })
 
 router.get('/items/search/available', (req, res) => {
-  return searchItemsController.searchAvailableHandle(req, res)
+  searchItemsController.setStrategy(new SearchAvailableItems())
+  return searchItemsController.handle(req, res)
 })
 
 router.put('/items/update', (req, res) => {
-  return updateItemsController.updateHandle(req, res)
+  return updateItemsController.handle(req, res)
 })
 
 // Rotas de "manter leilão"
 router.post('/auctions/create', (req, res) => {
-  return createAuctionsController.createHandle(req, res)
+  return createAuctionsController.handle(req, res)
+})
+
+router.post('/auctions/close', (req, res) => {
+  return finishAuctionsController.handle(req, res)
+})
+
+router.post('/auctions/makeBid', (req, res) => {
+  return 1
 })
 
 export { router }

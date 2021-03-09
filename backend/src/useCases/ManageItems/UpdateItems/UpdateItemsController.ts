@@ -2,12 +2,12 @@ import { Request, Response } from 'express'
 import UpdateItemsUseCase from './UpdateItemsUseCase'
 
 class UpdateItemsController {
-  updateHandle (request: Request, response: Response) {
+  handle (request: Request, response: Response) {
     try {
       const updateItemsUseCase = new UpdateItemsUseCase()
       const { id, title, description, minimumBid, imagePath, finishedOff } = request.body
 
-      updateItemsUseCase.update({
+      updateItemsUseCase.execute({
         id,
         title,
         description,

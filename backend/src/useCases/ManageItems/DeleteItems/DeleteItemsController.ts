@@ -2,14 +2,12 @@ import { Request, Response } from 'express'
 import DeleteItemsUseCase from './DeleteItemsUseCase'
 
 class DeleteItemController {
-  async deleteHandle (request: Request, response: Response) {
-    const id = request.body.id
+  async handle (request: Request, response: Response) {
+    const id: string = request.body.id
     const deleteItemsUseCase = new DeleteItemsUseCase()
 
     try {
-      await deleteItemsUseCase.delete({
-        id
-      })
+      await deleteItemsUseCase.execute(id)
       return response.status(200).send()
     } catch (error) {
       return response.status(400).json({

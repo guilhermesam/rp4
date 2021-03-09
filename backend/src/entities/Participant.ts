@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm'
-import { AuctionBid } from '../entities'
+import { AuctionBid, AuctionSale } from '../entities'
 
 @Entity('Participants')
 export default class Participant {
@@ -26,4 +26,7 @@ export default class Participant {
 
     @OneToMany(() => AuctionBid, auctionBid => auctionBid.participant)
     auctionBids: AuctionBid[]
+
+    @OneToMany(() => AuctionSale, auctionSale => auctionSale.participant)
+    auctionSales: AuctionSale[]
 }

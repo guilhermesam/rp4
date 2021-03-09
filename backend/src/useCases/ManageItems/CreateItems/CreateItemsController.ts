@@ -1,14 +1,13 @@
 import { Request, Response } from 'express'
-import CreateItemUseCase from './CreateItemsUseCase'
+import createItemUseCase from './CreateItemsUseCase'
 
 class CreateItemsController {
-  createHandle (request: Request, response: Response) {
+  handle (request: Request, response: Response) {
     const { title, description, minimumBid, imagePath, finishedOff } = request.body
     const id = request.body.id
-    const createItemUseCase = new CreateItemUseCase()
 
     try {
-      createItemUseCase.create({
+      createItemUseCase.execute({
         id,
         title,
         description,

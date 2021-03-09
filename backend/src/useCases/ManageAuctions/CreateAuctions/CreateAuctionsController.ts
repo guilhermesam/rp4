@@ -1,16 +1,14 @@
 import { Request, Response } from 'express'
-import CreateAuctionsUseCase from './CreateAuctionsUseCase'
+import createAuctionsUseCase from './CreateAuctionsUseCase'
 
 class CreateAuctionsController {
-  createHandle (request: Request, response: Response) {
+  handle (request: Request, response: Response): Response {
     try {
-      const createAuctionsUseCase = new CreateAuctionsUseCase()
-
       const start: string = request.body.start
       const id: string = request.body.id
       const items: string[] = request.body.items
 
-      createAuctionsUseCase.create({ start, id, items })
+      createAuctionsUseCase.execute({ start, id, items })
 
       return response.status(201).send()
     } catch (error) {

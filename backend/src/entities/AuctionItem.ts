@@ -24,8 +24,11 @@ export default class AuctionItem {
     @Column({ length: 255 })
     imagePath: string
 
-    @Column({ type: 'tinyint' })
+    @Column({ type: 'tinyint', default: 0 })
     finishedOff: number
+
+    @Column({ type: 'tinyint', default: 0 })
+    sold: number
 
     @OneToMany(() => AuctionBid, auctionBid => auctionBid.auctionItem)
     auctionBids: AuctionBid[]
@@ -41,13 +44,13 @@ export default class AuctionItem {
     @JoinColumn({ name: 'categoryId' })
     category: Category
 
-    @Column()
+    @Column({ nullable: true })
     categoryId: string
 
     @ManyToOne(() => ItemProvider, itemProvider => itemProvider.id)
     @JoinColumn({ name: 'itemProviderId' })
     itemProvider: ItemProvider
 
-    @Column()
+    @Column({ nullable: true })
     itemProviderId: string
 }

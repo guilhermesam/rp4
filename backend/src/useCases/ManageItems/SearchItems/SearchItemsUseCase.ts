@@ -1,19 +1,14 @@
 import { AuctionItem } from '../../../entities'
-import { SearchItemsRepository } from '../../../repositories/implementations/ManageItems'
+import AuctionItemsRepository from '../../../repositories/implementations/AuctionItem/AuctionItemsRepository'
 
 export default class SearchItemsUseCase {
-  searchByTitle (title: string): Promise<AuctionItem> {
-    const searchItemsRepository = new SearchItemsRepository()
-    return searchItemsRepository.searchByTitle(title)
-  }
-
   searchAll (): Promise<AuctionItem[]> {
-    const searchItemsRepository = new SearchItemsRepository()
-    return searchItemsRepository.searchAll()
+    const auctionItemsRepository = new AuctionItemsRepository()
+    return auctionItemsRepository.searchAll()
   }
 
   searchAvailable (): Promise<AuctionItem[]> {
-    const searchItemsRepository = new SearchItemsRepository()
-    return searchItemsRepository.searchAvailableItems()
+    const auctionItemsRepository = new AuctionItemsRepository()
+    return auctionItemsRepository.searchAvailableItems()
   }
 }
