@@ -1,13 +1,16 @@
 import { Request, Response } from 'express'
-import FinishAuctionsUseCase from './FinishAuctionsUseCase'
+import finishAuctionsUseCase from './FinishAuctionsUseCase'
 
 class FinishAuctionsController {
   handle (request: Request, response: Response) {
     try {
-      const finishAuctionsUseCase = new FinishAuctionsUseCase()
       const id = request.body.id
+      const date = request.body.date
 
-      finishAuctionsUseCase.execute(id)
+      finishAuctionsUseCase.execute({
+        id: id,
+        date: date
+      })
 
       return response.status(200).send()
     } catch (error) {
