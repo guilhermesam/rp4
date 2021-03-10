@@ -44,7 +44,7 @@ router.post('/auctions/create', (req, res) => {
   return createAuctionsController.handle(req, res)
 })
 
-router.post('/auctions/close', (req, res) => {
+router.post('/auctions/finish', (req, res) => {
   return finishAuctionsController.handle(req, res)
 })
 

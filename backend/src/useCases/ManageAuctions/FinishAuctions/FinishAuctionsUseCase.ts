@@ -1,7 +1,3 @@
-import { AuctionItem } from '../../../entities'
-
-import IAuctionSalesDTO from '../../../repositories/implementations/AuctionSale/IAuctionSalesDTO'
-
 import AuctionItemsRepository from '../../../repositories/implementations/AuctionItem/AuctionItemsRepository'
 import AuctionsRepository from '../../../repositories/implementations/Auction/AuctionsRepository'
 import AuctionBidsRepository from '../../../repositories/implementations/AuctionBid/AuctionBidsRepository'
@@ -12,6 +8,7 @@ import IAuctionsRepository from '../../../repositories/implementations/Auction/I
 import IAuctionBidsRepository from '../../../repositories/implementations/AuctionBid/IAuctionBidsRepository'
 import IAuctionSalesRepository from '../../../repositories/implementations/AuctionSale/IAuctionSalesRepository'
 import AuctionSalesMapper from '../../../repositories/implementations/AuctionSale/AuctionSalesMapper'
+import IFinishAuctionsDTO from './IFinishAuctionDTO'
 
 class FinishAuctionsUseCase {
   private auctionItemsRepository: IAuctionItemsRepository
@@ -31,37 +28,30 @@ class FinishAuctionsUseCase {
     this.auctionSalesRepository = auctionSalesRepository
   }
 
-  async execute (data: IAuctionSalesDTO) {
+  async execute (data: IFinishAuctionsDTO): Promise<void> {
     const items = await this.auctionItemsRepository.searchItemsInAuction(data.id)
 
-    this.setAvailableStatus(items)
-    this.registerItemSales(data.id, data.date, items)
-
-    this.auctionsRepository.close(data.id)
-  }
-
-  private registerItemSales (id: string, date: string, items: AuctionItem[]) {
     items.forEach(async element => {
       const bid = await this.auctionBidsRepository.getHighestBid(element.id)
 
-      const data = AuctionSalesMapper.toPersistence({
-        id: id,
-        date: date,
+      const itemData = AuctionSalesMapper.toPersistence({
+        id: data.id,
+        date: data.date,
         value: bid.value,
         auctionItemId: bid.auctionItemId,
         participantId: bid.participantId
       })
 
-      this.auctionSalesRepository.create(data)
+      this.auctionSalesRepository.create(itemData)
     })
-  }
 
-  private setAvailableStatus (items: AuctionItem[]) {
-    ;(items).forEach(element => {
+    ;(items).forEach(async element => {
       if (element.sold !== 1) {
-        this.auctionItemsRepository.setAvailableStatus(element.id)
+        await this.auctionItemsRepository.setAvailableStatus(element.id)
       }
     })
+
+    this.auctionsRepository.close(data.id)
   }
 }
 
