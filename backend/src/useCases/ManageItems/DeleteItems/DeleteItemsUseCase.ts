@@ -1,10 +1,9 @@
-import IDeleteItemsDTO from './IDeleteItemsDTO'
-import { DeleteItemsRepository } from '../../../repositories/implementations/ManageItems'
+import AuctionItemsRepository from '../../../repositories/implementations/AuctionItem/AuctionItemsRepository'
 
 export default class DeleteItemsUseCase {
-  async delete (data: IDeleteItemsDTO) {
-    const deleteItemsRepository = new DeleteItemsRepository()
+  async execute (id: string) {
+    const auctionItemsRepository = new AuctionItemsRepository()
 
-    deleteItemsRepository.delete(data)
+    auctionItemsRepository.delete(id)
   }
 }

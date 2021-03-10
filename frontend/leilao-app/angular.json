@@ -8,11 +8,7 @@
   "projects": {
     "leilao-app": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "skipTests": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -37,8 +33,7 @@
             "scripts": [
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/uikit/dist/js/uikit.js"
-              
+              "node_modules/uikit/dist/js/uikit.min.js"
             ]
           },
           "configurations": {

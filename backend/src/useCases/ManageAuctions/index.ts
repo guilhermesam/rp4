@@ -1,6 +1,7 @@
 import createAuctionsController from './CreateAuctions/CreateAuctionsController'
-import SearchAuctionsController from './SearchAuction/SearchAuctionsController'
+import finishAuctionsController from './FinishAuctions/FinishAuctionsController'
+
 export {
   createAuctionsController,
-  SearchAuctionsController
+  finishAuctionsController
 }

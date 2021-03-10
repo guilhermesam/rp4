@@ -1,4 +1,4 @@
-import { HttpClient, JsonpClientBackend } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Items } from '../shared/items.model'
 
@@ -10,7 +10,7 @@ export class AuctionsService {
     public getAuctions(): Promise<Items[]>{
         return this.http.get('http://localhost:3333/items/search/all')
             .toPromise()
-            .then((resposta: Items[]) => resposta)  
+            .then((resposta: Items[]) => resposta)
             
     }
 }

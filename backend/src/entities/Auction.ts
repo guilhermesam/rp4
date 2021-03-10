@@ -12,6 +12,9 @@ export default class Auction {
     @Column({ type: 'datetime', nullable: true })
     end: string
 
+    @Column({ type: 'tinyint', nullable: false, default: 0 })
+    closed: number
+
     @OneToMany(() => AuctionItem, auctionItem => auctionItem.auction)
     auctionItems: AuctionItem[]
 }

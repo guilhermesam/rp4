@@ -1,53 +1,19 @@
 import { Request, Response } from 'express'
+import { IStrategy } from './IStrategy'
 import SearchItemsUseCase from './SearchItemsUseCase'
 
 class SearchItemsController {
-  async searchByTitleHandle (request: Request, response: Response) {
-    try {
-      const data = request.body
-      const searchItemsUseCase = new SearchItemsUseCase()
-      const item = searchItemsUseCase.searchByTitle(data.title)
+  private strategy: IStrategy
 
-      return response.status(200).json(item)
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error!'
-      })
-    }
+  setStrategy (strategy: IStrategy) {
+    this.strategy = strategy
   }
 
-  async searchAllHandle (request: Request, response: Response) {
+  async handle (request: Request, response: Response) {
     try {
-      const searchItemsUseCase = new SearchItemsUseCase()
-      const allItems = await searchItemsUseCase.searchAll()
+      const items = await this.strategy.search(new SearchItemsUseCase())
 
-      return response.status(200).json(allItems)
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error!'
-      })
-    }
-  }
-
-  async searchAvailableHandle (request: Request, response: Response) {
-    try {
-      const searchItemsUseCase = new SearchItemsUseCase()
-      const availableItems = await searchItemsUseCase.searchAvailable()
-
-      return response.status(200).json(availableItems)
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error!'
-      })
-    }
-  }
-
-  async searchAuctionsItemsHandle (request: Request, response: Response) {
-    try {
-      const searchItemsUseCase = new SearchItemsUseCase()
-      const auctionsItems = await searchItemsUseCase.searchAuctionItems()
-
-      return response.status(200).json(auctionsItems)
+      return response.status(200).json(items)
     } catch (error) {
       return response.status(400).json({
         message: error.message || 'Unexpected error!'
