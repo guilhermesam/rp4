@@ -1,5 +1,6 @@
 <div class="uk-cover-container">
     <hr class="uk-divider-icon">
+<<<<<<< Updated upstream
 <div class="uk-child-width-1-4@m" uk-grid>
     <div>
 
@@ -90,7 +91,23 @@
             </div>
         </div>
     </div>
-</div>
-<button class="uk-button uk-button-text">VER TODOS OS LEILÕES</button>
-<hr class="uk-divider-icon">
+=======
+    <div class="uk-padding"></div>
+        <div class="uk-child-width-1-4@m uk-grid-match" uk-grid>
+            <div  *ngFor="let item of items">
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img src="{{ item.imagePath }}" alt="" style="max-height: 350px;">
+                    </div>
+                    <div class="uk-card-body">
+                        <div class="uk-card-badge uk-label">Badge</div>
+                        <h3 class="uk-card-title">{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="uk-button uk-button-text"  routerLink="/buscar-leiloes" >VER TODOS OS LEILÕES</button>
+    <hr class="uk-divider-icon">
+>>>>>>> Stashed changes
 </div>
