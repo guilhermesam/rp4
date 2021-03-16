@@ -3,8 +3,8 @@
    "host": "localhost",
    "port": 3306,
    "username": "root",
-   "password": "pqlamznxbcv192a",
-   "database": "RP4",
+   "password": "macaco",
+   "database": "rp4",
    "synchronize": false,
    "logging": false,
    "entities": [
@@ -17,3 +17,5 @@
       "migrationsDir": "src/repositories/migrations"
    }
  }
+
+ 
