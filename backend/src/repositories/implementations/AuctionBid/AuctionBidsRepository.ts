@@ -13,6 +13,11 @@ export default class AuctionBidsRepository implements IAuctionBidsRepository<Auc
 
   async getHighestBid (auctionItemId: string): Promise<AuctionBid> {
     return await getRepository(AuctionBid)
-      .findOne({ where: { auctionItemId: auctionItemId }, order: { value: 'ASC' } })
+      .findOne({ where: { auctionItemId: auctionItemId }, order: { value: 'DESC' } })
+  }
+
+  async searchBidsInItem (auctionItemId: string): Promise<AuctionBid[]> {
+    return await getRepository(AuctionBid)
+      .find({ where: { auctionItemId: auctionItemId } })
   }
 }

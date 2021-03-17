@@ -53,6 +53,17 @@ export default class AuctionItemsRepository implements IAuctionItemsRepository<A
       .execute()
   }
 
+  async setSoldStatus (auctionItemId: string): Promise<void> {
+    await getRepository(AuctionItem)
+      .createQueryBuilder()
+      .update(AuctionItem)
+      .set({
+        sold: 1
+      })
+      .where('id = :id', { id: auctionItemId })
+      .execute()
+  }
+
   async setAvailableStatus (auctionItemId: string) {
     await getRepository(AuctionItem)
       .createQueryBuilder()
