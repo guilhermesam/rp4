@@ -10,11 +10,11 @@ export default class AuctionBid {
   @PrimaryColumn()
   id: string
 
+  @Column({ type: 'datetime', name: 'datetime' })
+  datetime: Date
+
   @Column({ type: 'double' })
   value: number
-
-  @Column({ type: 'datetime' })
-  date: string
 
   @ManyToOne(() => Participant, participant => participant.id)
   @JoinColumn({ name: 'participantId' })

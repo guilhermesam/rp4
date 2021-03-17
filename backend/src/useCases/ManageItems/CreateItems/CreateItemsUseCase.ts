@@ -4,11 +4,9 @@ import IAuctionItemsRepository from '../../../repositories/implementations/Aucti
 import IAuctionItemDTO from '../../../repositories/implementations/AuctionItem/IAuctiontemsDTO'
 
 class CreateItemUseCase {
-  private auctionItemsRepository: IAuctionItemsRepository
+  private auctionItemsRepository: IAuctionItemsRepository<any>
 
-  constructor (
-    auctionItemsRepository: IAuctionItemsRepository
-  ) {
+  constructor (auctionItemsRepository: IAuctionItemsRepository<any>) {
     this.auctionItemsRepository = auctionItemsRepository
   }
 

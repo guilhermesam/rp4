@@ -1,6 +1,5 @@
-import { AuctionBid } from '../../../entities'
 import IReadonlyBaseRepository from '../IReadonlyBaseRepository'
 
-export default interface IAuctionBidsRepository extends IReadonlyBaseRepository<AuctionBid> {
-    getHighestBid(auctionItemId: string): Promise<AuctionBid>
+export default interface IAuctionBidsRepository<T> extends IReadonlyBaseRepository<T> {
+    getHighestBid(auctionItemId: string): Promise<T>
 }

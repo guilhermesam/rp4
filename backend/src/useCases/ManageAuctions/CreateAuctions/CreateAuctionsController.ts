@@ -4,7 +4,7 @@ import createAuctionsUseCase from './CreateAuctionsUseCase'
 class CreateAuctionsController {
   handle (request: Request, response: Response): Response {
     try {
-      const start: string = request.body.date
+      const start: Date = request.body.datetime
       const id: string = request.body.id
       const items: string[] = request.body.items
 

@@ -5,8 +5,8 @@ import {
   searchItemsController,
   updateItemsController
 } from './useCases/ManageItems/'
-
 import { finishAuctionsController, createAuctionsController } from './useCases/ManageAuctions/'
+import makeBidController from './useCases/MakeAuctionBids/MakeAuctionBidsController'
 
 import { SearchAllItems, SearchAvailableItems } from './useCases/ManageItems/SearchItems/SearchStrategies'
 
@@ -48,8 +48,8 @@ router.post('/auctions/finish', (req, res) => {
   return finishAuctionsController.handle(req, res)
 })
 
-router.post('/auctions/makeBid', (req, res) => {
-  return 1
+router.post('/bids/create', (req, res) => {
+  return makeBidController.handle(req, res)
 })
 
 export { router }

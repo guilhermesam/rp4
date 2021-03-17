@@ -11,7 +11,7 @@ export default class AuctionSales {
     id: string
 
     @Column({ type: 'datetime', nullable: false })
-    date: string
+    date: Date
 
     @Column({ type: 'double', nullable: false })
     value: number

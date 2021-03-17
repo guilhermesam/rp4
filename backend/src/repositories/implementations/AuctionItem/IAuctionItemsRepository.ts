@@ -1,7 +1,7 @@
 import { AuctionItem } from '../../../entities'
 import IChangeableBaseRepository from '../IChangeableBaseRepository'
 
-export default interface IAuctionItemsRepository extends IChangeableBaseRepository<AuctionItem> {
+export default interface IAuctionItemsRepository<T> extends IChangeableBaseRepository<T> {
 
     searchAll(): Promise<AuctionItem[]>
     searchAvailableItems(): Promise<AuctionItem[]>
