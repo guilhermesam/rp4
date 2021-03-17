@@ -1,4 +1,4 @@
 export default interface IFinishAuctionsDTO {
     id: string
-    date: string
+    date: Date
 }

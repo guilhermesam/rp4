@@ -5,7 +5,7 @@ class FinishAuctionsController {
   handle (request: Request, response: Response) {
     try {
       const id = request.body.id
-      const date = request.body.date
+      const date = request.body.datetime
 
       finishAuctionsUseCase.execute({
         id: id,

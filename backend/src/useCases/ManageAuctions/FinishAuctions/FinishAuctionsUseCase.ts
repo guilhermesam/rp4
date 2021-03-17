@@ -8,19 +8,19 @@ import IAuctionsRepository from '../../../repositories/implementations/Auction/I
 import IAuctionBidsRepository from '../../../repositories/implementations/AuctionBid/IAuctionBidsRepository'
 import IAuctionSalesRepository from '../../../repositories/implementations/AuctionSale/IAuctionSalesRepository'
 import AuctionSalesMapper from '../../../repositories/implementations/AuctionSale/AuctionSalesMapper'
-import IFinishAuctionsDTO from './IFinishAuctionDTO'
+import IFinishAuctionsDTO from './IFinishAuctionsDTO'
 
 class FinishAuctionsUseCase {
-  private auctionItemsRepository: IAuctionItemsRepository
-  private auctionsRepository: IAuctionsRepository
-  private auctionBidsRepository: IAuctionBidsRepository
-  private auctionSalesRepository: IAuctionSalesRepository
+  private auctionItemsRepository: IAuctionItemsRepository<any>
+  private auctionsRepository: IAuctionsRepository<any>
+  private auctionBidsRepository: IAuctionBidsRepository<any>
+  private auctionSalesRepository: IAuctionSalesRepository<any>
 
   constructor (
-    auctionItemsRepository: IAuctionItemsRepository,
-    auctionsRepository: IAuctionsRepository,
-    auctionBidsRepository: IAuctionBidsRepository,
-    auctionSalesRepository: IAuctionSalesRepository
+    auctionItemsRepository: IAuctionItemsRepository<any>,
+    auctionsRepository: IAuctionsRepository<any>,
+    auctionBidsRepository: IAuctionBidsRepository<any>,
+    auctionSalesRepository: IAuctionSalesRepository<any>
   ) {
     this.auctionItemsRepository = auctionItemsRepository
     this.auctionsRepository = auctionsRepository
@@ -31,27 +31,23 @@ class FinishAuctionsUseCase {
   async execute (data: IFinishAuctionsDTO): Promise<void> {
     const items = await this.auctionItemsRepository.searchItemsInAuction(data.id)
 
-    items.forEach(async element => {
-      const bid = await this.auctionBidsRepository.getHighestBid(element.id)
-
-      const itemData = AuctionSalesMapper.toPersistence({
-        id: data.id,
-        date: data.date,
-        value: bid.value,
-        auctionItemId: bid.auctionItemId,
-        participantId: bid.participantId
-      })
-
-      this.auctionSalesRepository.create(itemData)
-    })
-
     ;(items).forEach(async element => {
-      if (element.sold !== 1) {
-        await this.auctionItemsRepository.setAvailableStatus(element.id)
+      const highestBid = await this.auctionBidsRepository.getHighestBid(element.id)
+
+      if (!highestBid) {
+        this.auctionItemsRepository.setAvailableStatus(element.id)
+      } else {
+        const saleData = AuctionSalesMapper.toPersistence({
+          id: element.id,
+          date: data.date,
+          value: highestBid.value,
+          participantId: highestBid.participantId,
+          auctionItemId: element.id
+        })
+        this.auctionSalesRepository.create(saleData)
+        this.auctionItemsRepository.setSoldStatus(element.id)
       }
     })
-
-    this.auctionsRepository.close(data.id)
   }
 }
 
