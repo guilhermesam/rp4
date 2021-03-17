@@ -6,13 +6,13 @@ export default class Auction {
     @PrimaryColumn()
     id: string
 
-    @Column({ type: 'datetime' })
-    start: string
+    @Column({ type: 'datetime', default: new Date() })
+    start: Date
 
     @Column({ type: 'datetime', nullable: true })
-    end: string
+    end: Date
 
-    @Column({ type: 'tinyint', nullable: false, default: 0 })
+    @Column({ type: 'tinyint', default: 0 })
     closed: number
 
     @OneToMany(() => AuctionItem, auctionItem => auctionItem.auction)

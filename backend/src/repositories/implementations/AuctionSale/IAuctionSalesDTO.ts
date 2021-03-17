@@ -1,6 +1,6 @@
 export default interface IAuctionSalesDTO {
     id: string
-    date: string
+    date: Date
     value?: number
     auctionItemId?: string
     participantId?: string

@@ -2,8 +2,8 @@ import { getRepository } from 'typeorm'
 import { Auction } from '../../../entities'
 import IAuctionsRepository from './IAuctionsRepository'
 
-export default class AuctionsRepository implements IAuctionsRepository {
-  async setAuctionEndDate (id: string, endDate: string): Promise<void> {
+export default class AuctionsRepository implements IAuctionsRepository<Auction> {
+  async setAuctionEndDate (id: string, endDate: Date): Promise<void> {
     await getRepository(Auction)
       .createQueryBuilder()
       .update(Auction)

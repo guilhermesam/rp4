@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm'
 import { AuctionBid } from '../../../entities'
 import IAuctionBidsRepository from './IAuctionBidsRepository'
 
-export default class AuctionBidsRepository implements IAuctionBidsRepository {
+export default class AuctionBidsRepository implements IAuctionBidsRepository<AuctionBid> {
   async create (data: AuctionBid): Promise<void> {
     await getRepository(AuctionBid).save(data)
   }

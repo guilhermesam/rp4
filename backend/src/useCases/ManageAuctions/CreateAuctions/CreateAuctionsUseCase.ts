@@ -8,12 +8,12 @@ import IAuctionItemsRepository from '../../../repositories/implementations/Aucti
 import AuctionsMapper from '../../../repositories/implementations/Auction/AuctionsMapper'
 
 class CreateAuctionsUseCase {
-  private auctionItemsRepository: IAuctionItemsRepository
-  private auctionsRepository: IAuctionsRepository
+  private auctionItemsRepository: IAuctionItemsRepository<any>
+  private auctionsRepository: IAuctionsRepository<any>
 
   constructor (
-    auctionItemsRepository: IAuctionItemsRepository,
-    auctionsRepository: IAuctionsRepository
+    auctionItemsRepository: IAuctionItemsRepository<any>,
+    auctionsRepository: IAuctionsRepository<any>
   ) {
     this.auctionItemsRepository = auctionItemsRepository
     this.auctionsRepository = auctionsRepository
@@ -24,7 +24,7 @@ class CreateAuctionsUseCase {
     this.auctionsRepository.create(auctionsData)
 
     data.items.forEach(async (itemId) => {
-      if ((await this.auctionItemsRepository.searchById(itemId)).finishedOff === 1) {
+      if ((await this.auctionItemsRepository.searchById(itemId)).finishedOff === -1) {
         throw new Error('Item already alocated to auction')
       }
       await this.auctionItemsRepository.setUnavailableStatus(itemId)
