@@ -10,6 +10,9 @@ import makeBidController from './useCases/MakeAuctionBids/MakeAuctionBidsControl
 
 import { SearchAllItems, SearchAvailableItems } from './useCases/ManageItems/SearchItems/SearchStrategies'
 
+import { SearchAllCategories } from './useCases/ManageCategories/SearchCategory/SearchStrategies'
+import SearchCategoryController from './useCases/ManageCategories/SearchCategory/SearchCategoryController'
+
 const router = Router()
 
 // Rotas de "manter item do leilão"
@@ -50,6 +53,12 @@ router.post('/auctions/finish', (req, res) => {
 
 router.post('/bids/create', (req, res) => {
   return makeBidController.handle(req, res)
+})
+
+// Rotas de "manter leilão"
+router.get('/items/search/allCategories', (req, res) => {
+  SearchCategoryController.setStrategy(new SearchAllCategories())
+  return SearchCategoryController.handle(req, res)
 })
 
 export { router }
