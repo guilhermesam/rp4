@@ -1,45 +1,76 @@
-.uk-container-small{
-   margin-left: 30px;
-   max-width: 300px;
-   padding-top: 50px;
+.uk-container-small {
+  margin-left: 30px;
+  max-width: 300px;
+  padding-top: 50px;
 }
 
-.uk-container-large{
-    margin-left: 30px;
-    padding-top: 100px;
+.uk-container-large {
+  margin-left: 30px;
+  padding-top: 100px;
 }
 
-.text-title{
-    font-size: 30px;
+.text-title {
+  font-size: 30px;
 }
 
-.uk-container-large{
-   max-width: 1000px;
-   width: 1000px;
-
+.uk-container-large {
+  max-width: 1000px;
+  width: 1000px;
 }
 
-.uk-parent{
-    font-size: 20px;
+.uk-parent {
+  font-size: 20px;
 }
 
-.uk-search{
-    width: 300px;
+.uk-search {
+  width: 300px;
 }
 
-.uk-divider-vertical{
-    margin-top: 50px;
-    width: 1px;
-    height: 800px;
-    margin-left: 20px;
-    margin-right: 0px;
-    border-left: 1px solid #e5e5e5;
+.uk-divider-vertical {
+  margin-top: 50px;
+  width: 1px;
+  height: 800px;
+  margin-left: 20px;
+  margin-right: 0px;
+  border-left: 1px solid #e5e5e5;
 }
 
 .uk-search-default .uk-search-input {
-    height: 40px;
-    padding-left: 6px;
-    padding-right: 6px;
-    background: transparent;
-    border: 1px solid #e5e5e5;
+  height: 40px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background: transparent;
+  border: 1px solid #e5e5e5;
+}
+
+.uk-card {
+  border: 1px solid #d3d3d3;
+}
+.uk-card-body {
+  padding: 0px;
+  border: 1px;
+  padding-bottom: 10px;
+}
+
+.uk-card-media-top {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.uk-card-title {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  padding: 20px 0 0 20px;
+  margin: 0;
+}
+
+.itm-description {
+  margin: 0;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+
+.uk-button {
+  border-color: #333;
 }

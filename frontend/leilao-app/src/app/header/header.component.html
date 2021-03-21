@@ -3,19 +3,16 @@
         <a class="uk-navbar-item uk-logo" href="#">BEST BIDS</a>
         <ul class="uk-navbar-nav">
             <li><a routerLink="/buscar-leiloes">LEILÕES</a></li>
-            <li><a href="#">ITENS</a></li>
-            <li><a href="" uk-icon="icon: heart"></a></li>
+            <li><a>ITENS</a></li>
+
         </ul>
     </div>
     <div class="uk-navbar-right">
-        <div>
-            <a href="" uk-icon="icon: heart"></a>
-            <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
-            <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                <form class="uk-search uk-search-navbar uk-width-1-1">
-                    <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
-                </form>
-            </div>
-        </div>
+        <ul class="uk-navbar-nav">
+            <script src="C:/Users/henri/uikit/dist/js/uikit-icons.min.js"></script>
+            <span uk-icon="icon: check"></span>
+            <a src="../assets/icons/heart.svg" href="" uk-icon="icon: heart"></a>
+            <li><a routerLink="/login">LOGIN</a></li>
+        </ul>
     </div>
 </nav>
