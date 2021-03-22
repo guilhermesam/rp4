@@ -8,7 +8,7 @@ import {
 import { finishAuctionsController, createAuctionsController } from './useCases/ManageAuctions/'
 import makeBidController from './useCases/MakeAuctionBids/MakeAuctionBidsController'
 
-import { SearchAllItems, SearchAvailableItems } from './useCases/ManageItems/SearchItems/SearchStrategies'
+import { SearchAllItems, SearchAvailableItems, SearchByIdItems } from './useCases/ManageItems/SearchItems/SearchStrategies'
 
 import { SearchAllCategories } from './useCases/ManageCategories/SearchCategory/SearchStrategies'
 import SearchCategoryController from './useCases/ManageCategories/SearchCategory/SearchCategoryController'
@@ -38,6 +38,11 @@ router.get('/items/search/available', (req, res) => {
   return searchItemsController.handle(req, res)
 })
 
+router.get('/items/search/:id', (req, res) => {
+  searchItemsController.setStrategy(new SearchByIdItems())
+  return searchItemsController.handle(req, res)
+})
+
 router.put('/items/update', (req, res) => {
   return updateItemsController.handle(req, res)
 })
@@ -55,7 +60,7 @@ router.post('/bids/create', (req, res) => {
   return makeBidController.handle(req, res)
 })
 
-// Rotas de "manter leilão"
+// Rotas de "manter categorias de itens"
 router.get('/items/search/allCategories', (req, res) => {
   SearchCategoryController.setStrategy(new SearchAllCategories())
   return SearchCategoryController.handle(req, res)
