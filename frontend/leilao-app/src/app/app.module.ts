@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 
 
 import { LoginComponent } from './login/login.component';
-import { CardComponent } from './card/card.component';
 
 
 
@@ -27,6 +26,7 @@ import { AuctionsHomePageComponent } from './homePage/auctions-home-page/auction
 
 //import { AuctionCardMostViwedComponent } from './homePage/auction-card-most-viwed/auction-card-most-viwed.component';
 import { SearchAuctionsComponent } from './auctions/searchAuctions/search-auctions.component';
+import { AuctionComponent } from './auctions/auction/auction/auction.component';
 
 
 
@@ -37,13 +37,13 @@ import { SearchAuctionsComponent } from './auctions/searchAuctions/search-auctio
     HomeComponent,
     FooterComponent,
     LoginComponent,
-    CardComponent,
     SliderComponent,
     MostViewedComponent,
     AuctionsHomePageComponent,
     AuctionsHomePageComponent,
    // AuctionCardMostViwedComponent,
     SearchAuctionsComponent,
+   AuctionComponent,
   ],
   imports: [
     BrowserModule,

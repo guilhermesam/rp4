@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuctionsService } from 'src/app/auction.services';
+import { Category } from 'src/shared/categories.model';
 import { Items } from 'src/shared/items.model';
 
 @Component({
@@ -11,7 +12,7 @@ import { Items } from 'src/shared/items.model';
 export class SearchAuctionsComponent implements OnInit {
 
   public items : Items[]
-
+  public categories : Category[]
   constructor(private aucticonsServices: AuctionsService) { }
 
   ngOnInit(): void {
@@ -22,8 +23,16 @@ export class SearchAuctionsComponent implements OnInit {
       .catch((param : any) =>{
         console.log(param)
       })
-
+    this.aucticonsServices.getCategories()
+      .then((categories : Category[])=>{
+        this.categories = categories
+      })
+      .catch((param : any) =>{
+        console.log(param)
+      })
       
   }
+
+  
 
 }
