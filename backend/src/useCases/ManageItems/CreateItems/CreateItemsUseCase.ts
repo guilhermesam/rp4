@@ -10,9 +10,9 @@ class CreateItemUseCase {
     this.auctionItemsRepository = auctionItemsRepository
   }
 
-  execute (data: IAuctionItemDTO) {
+  async execute (data: IAuctionItemDTO) {
     const itemData = AuctionItemsMapper.toPersistence(data)
-    this.auctionItemsRepository.create(itemData)
+    await this.auctionItemsRepository.create(itemData)
   }
 }
 

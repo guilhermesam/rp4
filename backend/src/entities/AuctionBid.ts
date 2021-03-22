@@ -16,14 +16,14 @@ export default class AuctionBid {
   @Column({ type: 'double' })
   value: number
 
-  @ManyToOne(() => Participant, participant => participant.id)
+  @ManyToOne(() => Participant, participant => participant.id, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'participantId' })
   participant: Participant
 
   @Column({ nullable: false })
   participantId: string
 
-  @ManyToOne(() => AuctionItem, auctionItem => auctionItem.id)
+  @ManyToOne(() => AuctionItem, auctionItem => auctionItem.id, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'auctionItemId' })
   auctionItem: AuctionItem
 

@@ -1,14 +1,24 @@
 import { AuctionItem } from '../../../entities'
 import AuctionItemsRepository from '../../../repositories/implementations/AuctionItem/AuctionItemsRepository'
+import IAuctionItemsRepository from '../../../repositories/implementations/AuctionItem/IAuctionItemsRepository'
 
-export default class SearchItemsUseCase {
-  searchAll (): Promise<AuctionItem[]> {
-    const auctionItemsRepository = new AuctionItemsRepository()
-    return auctionItemsRepository.searchAll()
+class SearchItemsUseCase {
+  private auctionItemsRepository: IAuctionItemsRepository<any>
+
+  constructor (auctionItemsRepository?: IAuctionItemsRepository<any>) {
+    this.auctionItemsRepository = auctionItemsRepository
   }
 
-  searchAvailable (): Promise<AuctionItem[]> {
+  async searchAll (): Promise<AuctionItem[]> {
+    return await this.auctionItemsRepository.searchAll()
+  }
+
+  async searchAvailable (): Promise<AuctionItem[]> {
     const auctionItemsRepository = new AuctionItemsRepository()
-    return auctionItemsRepository.searchAvailableItems()
+    return await auctionItemsRepository.searchAvailableItems()
   }
 }
+
+export default new SearchItemsUseCase(
+  new AuctionItemsRepository()
+)

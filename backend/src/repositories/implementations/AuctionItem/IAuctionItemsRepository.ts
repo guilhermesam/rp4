@@ -7,9 +7,10 @@ export default interface IAuctionItemsRepository<T> extends IChangeableBaseRepos
     searchAvailableItems(): Promise<AuctionItem[]>
     searchById(id: string): Promise<AuctionItem>
     searchItemsInAuction(auctionId: string): Promise<AuctionItem[]>
+    getMinimumBidValue(id: string): Promise<number>
 
     assignToAuction(auctionId: string, auctionItemId: string): Promise<void>
     setAvailableStatus(id: string): Promise<void>
     setUnavailableStatus(id: string): Promise<void>
-    setSoldStatus(auctionItemId: string): Promise<void>
+    setSoldStatus(id: string): Promise<void>
 }

@@ -4,7 +4,7 @@ export default interface IAuctionItemDTO {
     description: string,
     minimumBid: number,
     imagePath: string,
-    finishedOff: number,
+    finishedOff?: number,
     sold?: number,
     categoryId?: number,
     auctionId?: number
