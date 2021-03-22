@@ -3,21 +3,21 @@ import finishAuctionsUseCase from './FinishAuctionsUseCase'
 
 class FinishAuctionsController {
   handle (request: Request, response: Response) {
-    try {
-      const id = request.body.id
-      const date = request.body.datetime
+    const id = request.body.id
+    const date = request.body.datetime
 
-      finishAuctionsUseCase.execute({
-        id: id,
-        date: date
+    finishAuctionsUseCase.execute({
+      id: id,
+      date: date
+    })
+      .then(() => {
+        return response.status(200).send()
       })
-
-      return response.status(200).send()
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error'
+      .catch((error) => {
+        return response.status(400).json({
+          message: error.message || 'Unexpected error'
+        })
       })
-    }
   }
 }
 

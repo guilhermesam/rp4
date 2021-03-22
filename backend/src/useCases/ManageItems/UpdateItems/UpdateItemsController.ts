@@ -1,26 +1,26 @@
 import { Request, Response } from 'express'
-import UpdateItemsUseCase from './UpdateItemsUseCase'
+import updateItemsUseCase from './UpdateItemsUseCase'
 
 class UpdateItemsController {
   handle (request: Request, response: Response) {
-    try {
-      const updateItemsUseCase = new UpdateItemsUseCase()
-      const { id, title, description, minimumBid, imagePath, finishedOff } = request.body
+    const { id, title, description, minimumBid, imagePath, finishedOff } = request.body
 
-      updateItemsUseCase.execute({
-        id,
-        title,
-        description,
-        minimumBid,
-        imagePath,
-        finishedOff
+    updateItemsUseCase.execute({
+      id,
+      title,
+      description,
+      minimumBid,
+      imagePath,
+      finishedOff
+    })
+      .then(() => {
+        return response.status(200).send()
       })
-      return response.status(200).send()
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error'
+      .catch((error) => {
+        return response.status(400).json({
+          message: error.message || 'Unexpected error'
+        })
       })
-    }
   }
 }
 

@@ -10,15 +10,15 @@ class SearchCategoryController {
   }
 
   async handle (request: Request, response: Response) {
-    try {
-      const items = await this.strategy.search(new SearchCategoryUseCase())
-
-      return response.status(200).json(items)
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error!'
+    await this.strategy.search(new SearchCategoryUseCase())
+      .then((items) => {
+        return response.status(200).json(items)
       })
-    }
+      .catch((error) => {
+        return response.status(400).json({
+          message: error.message || 'Unexpected error!'
+        })
+      })
   }
 }
 

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { IStrategy } from './IStrategy'
-import SearchItemsUseCase from './SearchItemsUseCase'
+import searchItemsUseCase from './SearchItemsUseCase'
 
 class SearchItemsController {
   private strategy: IStrategy
@@ -10,15 +10,15 @@ class SearchItemsController {
   }
 
   async handle (request: Request, response: Response) {
-    try {
-      const items = await this.strategy.search(new SearchItemsUseCase())
-
-      return response.status(200).json(items)
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error!'
+    await this.strategy.search(searchItemsUseCase)
+      .then((items) => {
+        return response.status(200).json(items)
       })
-    }
+      .catch((error) => {
+        return response.status(400).json({
+          message: error.message || 'Unexpected error!'
+        })
+      })
   }
 }
 

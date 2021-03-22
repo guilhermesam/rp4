@@ -6,21 +6,22 @@ class CreateItemsController {
     const { title, description, minimumBid, imagePath, finishedOff } = request.body
     const id = request.body.id
 
-    try {
-      createItemUseCase.execute({
-        id,
-        title,
-        description,
-        minimumBid,
-        imagePath,
-        finishedOff
+    createItemUseCase.execute({
+      id,
+      title,
+      description,
+      minimumBid,
+      imagePath,
+      finishedOff
+    })
+      .then(() => {
+        return response.status(201).send()
       })
-      return response.status(201).send()
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error occured!'
+      .catch((error) => {
+        return response.status(400).json({
+          message: error.message || 'Unexpected error occured!'
+        })
       })
-    }
   }
 }
 
