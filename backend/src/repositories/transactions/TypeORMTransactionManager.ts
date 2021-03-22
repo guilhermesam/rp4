@@ -1,8 +1,8 @@
 import { getConnection } from 'typeorm'
 
-import ITransactionsManager from './ITransactionsManager'
+import ITransactionsManager from './ITransactionManager'
 
-export default class TransactionManager implements ITransactionsManager {
+export default class TypeORMTransactionManager implements ITransactionsManager {
   private actions: Function[]
   private parameters: any[]
 

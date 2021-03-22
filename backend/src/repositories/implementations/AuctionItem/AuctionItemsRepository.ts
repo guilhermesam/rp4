@@ -26,6 +26,10 @@ export default class AuctionItemsRepository implements IAuctionItemsRepository<A
     return await getRepository(AuctionItem).find({ where: { auctionId: auctionId } })
   }
 
+  async getMinimumBidValue (id: string): Promise<number> {
+    return (await getRepository(AuctionItem).findOne({ where: { id: id } })).minimumBid
+  }
+
   // Update Operations
   async update (data: AuctionItem): Promise<void> {
     await getRepository(AuctionItem)

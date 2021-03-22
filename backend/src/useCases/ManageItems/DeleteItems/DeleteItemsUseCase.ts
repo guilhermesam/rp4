@@ -1,9 +1,18 @@
 import AuctionItemsRepository from '../../../repositories/implementations/AuctionItem/AuctionItemsRepository'
+import IAuctionItemsRepository from '../../../repositories/implementations/AuctionItem/IAuctionItemsRepository'
 
-export default class DeleteItemsUseCase {
+class DeleteItemsUseCase {
+  private auctionItemsRepository: IAuctionItemsRepository<any>
+
+  constructor (auctionItemsRepository: IAuctionItemsRepository<any>) {
+    this.auctionItemsRepository = auctionItemsRepository
+  }
+
   async execute (id: string) {
-    const auctionItemsRepository = new AuctionItemsRepository()
-
-    auctionItemsRepository.delete(id)
+    await this.auctionItemsRepository.delete(id)
   }
 }
+
+export default new DeleteItemsUseCase(
+  new AuctionItemsRepository()
+)

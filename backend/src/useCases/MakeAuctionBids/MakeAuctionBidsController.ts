@@ -9,20 +9,19 @@ class MakeAuctionBidsController {
     const participantId: string = request.body.participantId
     const auctionItemId: string = request.body.itemId
 
-    try {
-      makeAuctionBidsUseCase.execute({
-        id,
-        datetime,
-        value,
-        auctionItemId,
-        participantId
-      })
+    makeAuctionBidsUseCase.execute({
+      id,
+      datetime,
+      value,
+      auctionItemId,
+      participantId
+    }).then(() => {
       return response.status(201).send()
-    } catch (error) {
+    }).catch((error) => {
       return response.status(400).json({
-        message: error.message || 'Unexpected error!'
+        message: error.message || 'Um erro inesperado ocorreu'
       })
-    }
+    })
   }
 }
 
