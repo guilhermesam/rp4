@@ -22,10 +22,6 @@
   font-size: 20px;
 }
 
-.uk-search {
-  width: 300px;
-}
-
 .uk-divider-vertical {
   margin-top: 50px;
   width: 1px;
@@ -43,9 +39,14 @@
   border: 1px solid #e5e5e5;
 }
 
+.uk-search {
+  width: 300px;
+}
+
 .uk-card {
   border: 1px solid #d3d3d3;
 }
+
 .uk-card-body {
   padding: 0px;
   border: 1px;

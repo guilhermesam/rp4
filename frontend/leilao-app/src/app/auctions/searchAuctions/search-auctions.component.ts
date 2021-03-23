@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuctionsService } from 'src/app/auction.services';
+import { AuctionsService } from 'src/app/services/auction.services';
 import { Category } from 'src/shared/categories.model';
 import { Items } from 'src/shared/items.model';
 

@@ -1,0 +1,23 @@
+.uk-card {
+  margin-top: 60px;
+  box-shadow: none;
+  border: 1px;
+}
+
+.au-bid {
+  position: relative;
+  bottom: 0;
+}
+
+.uk-divider-icon {
+  margin-top: 20px;
+}
+
+/*  TEXTOS   */
+.uk-card-title {
+  font-size: 40px;
+}
+
+.au-description {
+  font-size: 20px;
+}

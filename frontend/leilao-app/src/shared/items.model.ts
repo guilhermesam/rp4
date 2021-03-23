@@ -5,7 +5,7 @@ export class Items{
    public minimumBid: number
    public imagePath: string
    public finishedOff: number
-   auctionId: string
-   categoryId: string
-   itemProviderId: string
+   public auctionId: string
+   public categoryId: string
+   public itemProviderId: string
 }
