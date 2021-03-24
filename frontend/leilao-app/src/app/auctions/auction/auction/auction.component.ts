@@ -17,10 +17,10 @@ export class AuctionComponent implements OnInit {
   public item: Items
 
   /* Lance  */
-  public bid: Bids = new Bids(" "," "," ")
+  public bid: Bids = new Bids(null," "," ")
 
   /* Dados para realizar um lance */
-  public valueBid: string 
+  public valueBid: number 
   public participantId: string = "1a"
 
   constructor(
@@ -36,15 +36,16 @@ export class AuctionComponent implements OnInit {
       } )
   }
 
-  public updateValue(valueBid: string): void{
+  public updateValue(valueBid: number): void{
     this.valueBid = valueBid
   }
 
   public makeABid(): void{
-    this.bid.auctionItemId = this.item.id
+    this.bid.itemId = this.item.id
     this.bid.participantId = this.participantId
     this.bid.value = this.valueBid
-   this.bidsService.makeBid(this.bid)
+    this.bidsService.makeBid(this.bid)
+    .subscribe()
   }
 
 }

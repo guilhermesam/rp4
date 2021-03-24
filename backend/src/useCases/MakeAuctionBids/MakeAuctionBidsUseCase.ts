@@ -19,11 +19,6 @@ class MakeAuctionBidsUseCase {
 
   async execute (data: IAuctionBidsDTO) {
     const bidData = AuctionsBidsMapper.toPersistence(data)
-    const minimumBidValue = await this.auctionItemsRepository.getMinimumBidValue(bidData.auctionItemId)
-
-    if (bidData.value < minimumBidValue) {
-      throw new Error('O valor do lance é menor do que o lance mínimo do item!')
-    }
 
     this.auctionBidsRepository.create(bidData)
   }
