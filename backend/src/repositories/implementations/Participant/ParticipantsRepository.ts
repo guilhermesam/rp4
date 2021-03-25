@@ -19,7 +19,7 @@ export default class ParticipantsRepository implements IParticipantsRepository {
         return await getRepository(Participant).find()
     }
 
-    async updateParticipant(participant: Participant): Promise<void> {
+    async update(participant: Participant): Promise<void> {
         await getRepository(Participant)
             .createQueryBuilder()
             .update(Participant)

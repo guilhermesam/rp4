@@ -1,18 +1,28 @@
 import { Participant } from '../../../entities'
 import ParticipantsRepository from '../../../repositories/implementations/Participant/ParticipantsRepository'
+import IParticipantsRepository from '../../../repositories/implementations/Participant/IParticipantsRespository'
 
-export default class SearchParticipantsUseCase {
-  searchAll (): Promise<Participant[]> {
-    const participantsRepository = new ParticipantsRepository()
-    return participantsRepository.searchAll()
+class SearchParticipantsUseCase {
+
+  private participantsRepository: IParticipantsRepository<any>
+
+  constructor(participantsRepository?: IParticipantsRepository<any>){
+    this.participantsRepository = participantsRepository
   }
 
-  searchId (id:string): Promise<Participant> {
-    const participantsRepository = new ParticipantsRepository()
-    return participantsRepository.searchById(id)
+  async searchAll (): Promise<Participant[]> {
+    return await this.participantsRepository.searchAll()
   }
-  searchName (name:string): Promise<Participant> {
-    const participantsRepository = new ParticipantsRepository()
-    return participantsRepository.searchByName(name)
+
+
+  async searchId (id:string): Promise<Participant> {
+    return await this.participantsRepository.searchById(id)
+  }
+  async searchName (name:string): Promise<Participant> {
+    return await this.participantsRepository.searchByName(name)
   }
 }
+
+export default new SearchParticipantsUseCase(
+
+)

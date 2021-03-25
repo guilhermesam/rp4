@@ -3,7 +3,7 @@ import ParticipantsRepository from '../../../repositories/implementations/Partic
 import IParticipantsRepository from '../../../repositories/implementations/Participant/IParticipantsRespository'
 import IParticipantsDTO from '../../../repositories/implementations/Participant/IParticipantsDTO'
 
-class CreateParticipantUseCase {
+class CreateParticipantsUseCase {
   private participantsRepository: IParticipantsRepository
 
   constructor (
@@ -18,6 +18,6 @@ class CreateParticipantUseCase {
   }
 }
 
-export default new CreateParticipantUseCase(
+export default new CreateParticipantsUseCase(
   new ParticipantsRepository()
 )

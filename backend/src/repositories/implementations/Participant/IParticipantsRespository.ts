@@ -1,12 +1,14 @@
 import { Participant } from '../../../entities'
-import IReadonlyBaseRepository from '../IReadonlyBaseRepository'
+import IChangeableBaseRepository from '../IChangeableBaseRepository'
 
-export default interface IParticipantsRepository extends IReadonlyBaseRepository<Participant> {
-    searchAll():Promise <Participant[]> //ok
-    create(participant: Participant):Promise <void> //ok
+export default interface IParticipantsRepository<T> extends IChangeableBaseRepository<T> {
+    
+    searchAll(): Promise <Participant[]> //ok
     searchById(id: string): Promise<Participant> //ok
     searchByName(name: string): Promise<Participant> //ok
-    updateParticipant(participant: Participant): Promise <void> //ok
-    deleteParticipant(id: string): Promise <void> //ok
+    
+    // createParticipant(participant: Participant):Promise <Participant> //ok
+    // update(participant: Participant): Promise<Participant> //ok
+    // deleteParticipant(id: string): Promise<Participant> //ok
     // Adicionar metodos posteriores
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Category } from 'src/shared/categories.model'
+import { Category } from '../../shared/categories.model'
 import { Items } from '../../shared/items.model'
 
 @Injectable()
