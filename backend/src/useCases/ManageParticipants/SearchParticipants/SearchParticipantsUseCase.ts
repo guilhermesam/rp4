@@ -3,10 +3,9 @@ import ParticipantsRepository from '../../../repositories/implementations/Partic
 import IParticipantsRepository from '../../../repositories/implementations/Participant/IParticipantsRespository'
 
 class SearchParticipantsUseCase {
-
   private participantsRepository: IParticipantsRepository<any>
 
-  constructor(participantsRepository?: IParticipantsRepository<any>){
+  constructor (participantsRepository?: IParticipantsRepository<any>) {
     this.participantsRepository = participantsRepository
   }
 
@@ -14,15 +13,15 @@ class SearchParticipantsUseCase {
     return await this.participantsRepository.searchAll()
   }
 
-
   async searchId (id:string): Promise<Participant> {
     return await this.participantsRepository.searchById(id)
   }
+
   async searchName (name:string): Promise<Participant> {
     return await this.participantsRepository.searchByName(name)
   }
 }
 
 export default new SearchParticipantsUseCase(
-
+  new ParticipantsRepository()
 )

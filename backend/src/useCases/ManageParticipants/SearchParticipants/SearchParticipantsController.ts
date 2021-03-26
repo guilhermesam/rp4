@@ -11,9 +11,9 @@ class SearchParticipantsController {
 
   async handle (request: Request, response: Response) {
     await this.strategy.search(searchParticipantsUseCase, request.params)
-    .then((participants)=> {
-      return response.status(200).json(participants)
-    })
+      .then((participants) => {
+        return response.status(200).json(participants)
+      })
       .catch((error) => {
         return response.status(400).json({
           message: error.message || 'Unexpected error!'

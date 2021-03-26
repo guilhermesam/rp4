@@ -22,7 +22,7 @@ const router = Router()
 
 // Rotas de "manter item do leilão"
 router.get('/', (req, res) => {
-  return res.send('Hello World')
+  return res.status(200).send('Hello World')
 })
 
 router.post('/items/create', (req, res) => {
@@ -72,8 +72,6 @@ router.get('/items/search/allCategories', (req, res) => {
 })
 
 // Rotas de participantes
-
-
 router.post('/participants/create', (req, res) => {
   return CreateParticipantsController.handle(req, res)
 })

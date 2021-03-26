@@ -1,4 +1,4 @@
-import { AuctionItem, Participant } from '../../../entities'
+import { Participant } from '../../../entities'
 import SearchParticipantsUseCase from './SearchParticipantsUseCase'
 
 export interface IStrategy {
