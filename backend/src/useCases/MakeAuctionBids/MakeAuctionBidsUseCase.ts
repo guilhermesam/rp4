@@ -20,7 +20,7 @@ class MakeAuctionBidsUseCase {
   async execute (data: IAuctionBidsDTO) {
     const bidData = AuctionsBidsMapper.toPersistence(data)
 
-    this.auctionBidsRepository.create(bidData)
+    await this.auctionBidsRepository.create(bidData)
   }
 }
 

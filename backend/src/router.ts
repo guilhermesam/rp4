@@ -5,10 +5,19 @@ import {
   searchItemsController,
   updateItemsController
 } from './useCases/ManageItems/'
-import { finishAuctionsController, createAuctionsController } from './useCases/ManageAuctions/'
+
+import {
+  finishAuctionsController,
+  createAuctionsController
+} from './useCases/ManageAuctions/'
+
 import makeBidController from './useCases/MakeAuctionBids/MakeAuctionBidsController'
 
-import { SearchAllItems, SearchAvailableItems, SearchByIdItems } from './useCases/ManageItems/SearchItems/SearchStrategies'
+import {
+  SearchAllItems,
+  SearchAvailableItems,
+  SearchByIdItems
+} from './useCases/ManageItems/SearchItems/SearchStrategies'
 
 import { SearchAllCategories } from './useCases/ManageCategories/SearchCategory/SearchStrategies'
 import SearchCategoryController from './useCases/ManageCategories/SearchCategory/SearchCategoryController'
@@ -16,13 +25,19 @@ import SearchCategoryController from './useCases/ManageCategories/SearchCategory
 import CreateParticipantsController from './useCases/ManageParticipants/CreateParticipants/CreateParticipantsController'
 import SearchParticipantsController from './useCases/ManageParticipants/SearchParticipants/SearchParticipantsController'
 
-import { SearchAllParticipants, SearchParticipantsId } from './useCases/ManageParticipants/SearchParticipants/SearchStrategies'
+import {
+  SearchAllParticipants,
+  SearchParticipantsId
+} from './useCases/ManageParticipants/SearchParticipants/SearchStrategies'
+
+import loginController from './useCases/Login/LoginController'
+import { authMiddleware } from './middlewares/SecurityLayer'
 
 const router = Router()
 
 // Rotas de "manter item do leilão"
-router.get('/', (req, res) => {
-  return res.status(200).send('Hello World')
+router.post('/login', (req, res) => {
+  return loginController.handle(req, res)
 })
 
 router.post('/items/create', (req, res) => {
@@ -33,7 +48,7 @@ router.delete('/items/delete', (req, res) => {
   return deleteItemsController.handle(req, res)
 })
 
-router.get('/items/search/all', (req, res) => {
+router.get('/items/search/all', authMiddleware, (req, res) => {
   searchItemsController.setStrategy(new SearchAllItems())
   return searchItemsController.handle(req, res)
 })
@@ -86,17 +101,4 @@ router.get('/participants/search/:id', (req, res) => {
   return SearchParticipantsController.handle(req, res)
 })
 
-// router.put('/items/update', (req, res) => {
-//   return updateItemsController.handle(req, res)
-// })
-
-// router.delete('/participants/delete', (req, res) => {
-//   return .handle(req, res)
-// })
-
-// router.get('/items/search/available', (req, res) => {
-//   searchItemsController.setStrategy(new SearchAvailableItems())
-//   return searchItemsController.handle(req, res)
-// })
-
-export { router }
+export default router

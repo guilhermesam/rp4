@@ -6,6 +6,7 @@ export default interface IParticipantsRepository<T> extends IChangeableBaseRepos
     searchAll(): Promise <Participant[]> // ok
     searchById(id: string): Promise<Participant> // ok
     searchByName(name: string): Promise<Participant> // ok
+    searchByEmail (email: string): Promise<Participant>
 
     // createParticipant(participant: Participant):Promise <Participant> //ok
     // update(participant: Participant): Promise<Participant> //ok

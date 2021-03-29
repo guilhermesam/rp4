@@ -7,8 +7,10 @@ import IAuctionItemsRepository from '../../../repositories/implementations/Aucti
 import IAuctionsRepository from '../../../repositories/implementations/Auction/IAuctionsRepository'
 import IAuctionBidsRepository from '../../../repositories/implementations/AuctionBid/IAuctionBidsRepository'
 import IAuctionSalesRepository from '../../../repositories/implementations/AuctionSale/IAuctionSalesRepository'
+
 import AuctionSalesMapper from '../../../repositories/implementations/AuctionSale/AuctionSalesMapper'
 import IFinishAuctionsDTO from './IFinishAuctionsDTO'
+
 import ITransactionManager from '../../../repositories/transactions/ITransactionManager'
 import TypeORMTransactionManager from '../../../repositories/transactions/TypeORMTransactionManager'
 

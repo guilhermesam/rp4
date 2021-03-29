@@ -11,6 +11,10 @@ export default class ParticipantsRepository implements IParticipantsRepository<P
     return await getRepository(Participant).findOne({ id: id })
   }
 
+  async searchByEmail (email: string): Promise<Participant> {
+    return await getRepository(Participant).findOne({ email })
+  }
+
   async searchByName (name: string): Promise<Participant> {
     return await getRepository(Participant).findOne({ name: name })
   }

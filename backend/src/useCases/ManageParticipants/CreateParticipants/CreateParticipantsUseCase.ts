@@ -4,10 +4,10 @@ import IParticipantsRepository from '../../../repositories/implementations/Parti
 import IParticipantsDTO from '../../../repositories/implementations/Participant/IParticipantsDTO'
 
 class CreateParticipantsUseCase {
-  private participantsRepository: IParticipantsRepository
+  private participantsRepository: IParticipantsRepository<any>
 
   constructor (
-    participantsRepository: IParticipantsRepository
+    participantsRepository: IParticipantsRepository<any>
   ) {
     this.participantsRepository = participantsRepository
   }
