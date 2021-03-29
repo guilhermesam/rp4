@@ -1,15 +1,14 @@
 <hr class="uk-divider-icon">
-<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid *ngIf="item !== undefined">
-    <div class="uk-card-media-left uk-cover-container">
-        <img src="{{ item.imagePath }}" alt="" uk-cover>
-        <canvas width="500" height="500"></canvas>
-    </div>
-    <div>
-        <div class="uk-card-body">
-            <h3 class="uk-card-title">{{item.title}}</h3>
-            <p class="au-description">{{ item.description }}</p>
-            <div class="uk-position-bottom-right">
-                <div class="uk-margin">
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid *ngIf="item !== undefined">
+        <div class="uk-card-media-left uk-cover-container">
+            <img src="{{ item.imagePath }}" alt="" uk-cover>
+            <canvas width="500" height="500"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">{{item.title}}</h3>
+                <p class="au-description">{{ item.description }}</p>
+            <div class="uk-flex uk-bid">
                     <div class="uk-margin">
                         <input 
                         class="uk-input uk-form-width-medium" 
@@ -20,12 +19,13 @@
                         #inputValue
                         (input)="updateValue(inputValue.value)">
                     </div>
-                </div>
+                <div>
                 <button 
-                class="uk-button uk-button-secondary" 
-                type="button" 
-                (click)="makeABid()"
+                    class="uk-button uk-button-secondary" 
+                    type="button" 
+                    (click)="makeABid()"
                 >Lance</button>
+            </div>
             </div>
         </div>
     </div>

@@ -1,7 +1,8 @@
 .uk-card {
-  margin-top: 60px;
+  margin: 20px 20px 20px 20px;
   box-shadow: none;
   border: 1px;
+  margin-left: 30px;
 }
 
 .au-bid {
@@ -20,4 +21,11 @@
 
 .au-description {
   font-size: 20px;
+}
+
+.uk-bid {
+  margin-top: 70px;
+}
+.uk-input {
+  margin-right: 10px;
 }

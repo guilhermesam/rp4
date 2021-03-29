@@ -3,8 +3,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Bids } from 'src/shared/bids.model'
 
-
-
 @Injectable()
 export class BidsService{
     
