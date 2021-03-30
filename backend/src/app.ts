@@ -11,8 +11,8 @@ import {
 const app = express()
 
 app.use(express.json())
-app.use(router)
 app.use(getDatetimeMiddleware)
 app.use(generateIDMiddleware)
+app.use(router)
 
 export default app

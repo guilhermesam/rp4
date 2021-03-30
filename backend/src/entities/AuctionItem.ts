@@ -44,7 +44,7 @@ export default class AuctionItem {
     @JoinColumn({ name: 'categoryId' })
     category: Category
 
-    @Column({ nullable: true })
+    @Column()
     categoryId: string
 
     @ManyToOne(() => ItemProvider, itemProvider => itemProvider.id)

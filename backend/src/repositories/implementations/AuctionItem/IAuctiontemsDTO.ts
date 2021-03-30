@@ -6,6 +6,7 @@ export default interface IAuctionItemDTO {
     imagePath: string,
     finishedOff?: number,
     sold?: number,
-    categoryId?: number,
-    auctionId?: number
+    categoryId: string,
+    auctionId?: string,
+    itemProviderId: string
 }

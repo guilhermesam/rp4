@@ -40,15 +40,15 @@ router.post('/login', (req, res) => {
   return loginController.handle(req, res)
 })
 
-router.post('/items/create', (req, res) => {
+router.post('/items/create', authMiddleware, (req, res) => {
   return createItemsController.handle(req, res)
 })
 
-router.delete('/items/delete', (req, res) => {
+router.delete('/items/delete', authMiddleware, (req, res) => {
   return deleteItemsController.handle(req, res)
 })
 
-router.get('/items/search/all', authMiddleware, (req, res) => {
+router.get('/items/search/all', (req, res) => {
   searchItemsController.setStrategy(new SearchAllItems())
   return searchItemsController.handle(req, res)
 })
@@ -63,20 +63,20 @@ router.get('/items/search/:id', (req, res) => {
   return searchItemsController.handle(req, res)
 })
 
-router.put('/items/update', (req, res) => {
+router.put('/items/update', authMiddleware, (req, res) => {
   return updateItemsController.handle(req, res)
 })
 
 // Rotas de "manter leilão"
-router.post('/auctions/create', (req, res) => {
+router.post('/auctions/create', authMiddleware, (req, res) => {
   return createAuctionsController.handle(req, res)
 })
 
-router.post('/auctions/finish', (req, res) => {
+router.post('/auctions/finish', authMiddleware, (req, res) => {
   return finishAuctionsController.handle(req, res)
 })
 
-router.post('/bids/create', (req, res) => {
+router.post('/bids/create', authMiddleware, (req, res) => {
   return makeBidController.handle(req, res)
 })
 

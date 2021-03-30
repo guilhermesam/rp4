@@ -3,7 +3,9 @@ import createItemUseCase from './CreateItemsUseCase'
 
 class CreateItemsController {
   handle (request: Request, response: Response) {
-    const { title, description, minimumBid, imagePath, finishedOff } = request.body
+    const {
+      title, description, minimumBid, imagePath, finishedOff, categoryId, itemProviderId
+    } = request.body
     const id = request.body.id
 
     createItemUseCase.execute({
@@ -12,7 +14,9 @@ class CreateItemsController {
       description,
       minimumBid,
       imagePath,
-      finishedOff
+      finishedOff,
+      categoryId,
+      itemProviderId
     })
       .then(() => {
         return response.status(201).send()

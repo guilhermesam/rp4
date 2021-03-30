@@ -11,8 +11,9 @@ export default class AuctionItemsMapper {
       description: auctionItemDTO.description,
       minimumBid: auctionItemDTO.minimumBid,
       imagePath: auctionItemDTO.imagePath,
-      finishedOff: auctionItemDTO.finishedOff
+      finishedOff: auctionItemDTO.finishedOff,
+      categoryId: auctionItemDTO.categoryId,
+      itemProviderId: auctionItemDTO.itemProviderId
     })
   }
 }
- 

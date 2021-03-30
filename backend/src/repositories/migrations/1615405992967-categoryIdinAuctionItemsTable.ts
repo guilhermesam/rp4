@@ -9,7 +9,7 @@ export class categoryIdinAuctionItemsTable1615405992967 implements MigrationInte
     await queryRunner.createForeignKey('AuctionItems', new TableForeignKey({
       columnNames: ['categoryId'],
       referencedColumnNames: ['id'],
-      referencedTableName: 'categories',
+      referencedTableName: 'Categories',
       onDelete: 'CASCADE'
     }))
     await queryRunner.addColumn('AuctionItems', new TableColumn({
@@ -19,7 +19,7 @@ export class categoryIdinAuctionItemsTable1615405992967 implements MigrationInte
     await queryRunner.createForeignKey('AuctionItems', new TableForeignKey({
       columnNames: ['itemProviderId'],
       referencedColumnNames: ['id'],
-      referencedTableName: 'itemProviders',
+      referencedTableName: 'ItemProviders',
       onDelete: 'CASCADE'
     }))
   }
