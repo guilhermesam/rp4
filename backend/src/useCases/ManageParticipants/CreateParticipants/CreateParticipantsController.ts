@@ -3,25 +3,27 @@ import createParticipantUseCase from './CreateParticipantsUseCase'
 
 class CreateParticipantController {
   handle (request: Request, response: Response) {
-    const { name, userName, password, email, address, phone } = request.body
-    const id = request.body.id
+    const {
+      id, name, userName, password, email, address, phone
+    } = request.body
 
-    try {
-      createParticipantUseCase.execute({
-        id,
-        name,
-        userName,
-        password,
-        email,
-        address,
-        phone
+    createParticipantUseCase.execute({
+      id,
+      name,
+      userName,
+      password,
+      email,
+      address,
+      phone
+    })
+      .then(() => {
+        return response.status(201).send()
       })
-      return response.status(201).send()
-    } catch (error) {
-      return response.status(400).json({
-        message: error.message || 'Unexpected error occured!'
+      .catch((error) => {
+        return response.status(400).json({
+          message: error.message || 'Unexpected error occured!'
+        })
       })
-    }
   }
 }
 
