@@ -32,6 +32,7 @@ import {
 
 import loginController from './useCases/Login/LoginController'
 import { authMiddleware } from './middlewares/SecurityLayer'
+import CreateItemProvidersController from './useCases/ManageItemProviders/CreateItemProviders/CreateItemProvidersController'
 
 const router = Router()
 
@@ -40,7 +41,7 @@ router.post('/login', (req, res) => {
   return loginController.handle(req, res)
 })
 
-router.post('/items/create', authMiddleware, (req, res) => {
+router.post('/items/create', (req, res) => {
   return createItemsController.handle(req, res)
 })
 
@@ -99,6 +100,10 @@ router.get('/participants/search/all', (req, res) => {
 router.get('/participants/search/:id', (req, res) => {
   SearchParticipantsController.setStrategy(new SearchParticipantsId())
   return SearchParticipantsController.handle(req, res)
+})
+
+router.post('/itemProviders/create', (req, res) => {
+  return CreateItemProvidersController.handle(req, res)
 })
 
 export default router
