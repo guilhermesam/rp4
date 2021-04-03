@@ -5,6 +5,7 @@ import Auction from './Auction'
 import Category from './Category'
 import ItemProvider from './ItemProvider'
 import AuctionSale from './AuctionSale'
+import Auctioneer from './Auctioneer'
 
 export {
   Participant,
@@ -13,5 +14,6 @@ export {
   AuctionSale,
   Auction,
   Category,
-  ItemProvider
+  ItemProvider,
+  Auctioneer
 }

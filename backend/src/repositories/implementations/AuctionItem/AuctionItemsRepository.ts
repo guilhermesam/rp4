@@ -4,12 +4,10 @@ import { AuctionItem } from '../../../entities'
 import IAuctionItemsRepository from './IAuctionItemsRepository'
 
 export default class AuctionItemsRepository implements IAuctionItemsRepository<AuctionItem> {
-  // Create Operations
   async create (data: AuctionItem): Promise<void> {
     await getRepository(AuctionItem).save(data)
   }
 
-  // Search Operations
   async searchAll (): Promise<AuctionItem[]> {
     return await getRepository(AuctionItem).find()
   }
@@ -30,7 +28,6 @@ export default class AuctionItemsRepository implements IAuctionItemsRepository<A
     return (await getRepository(AuctionItem).findOne({ where: { id: id } })).minimumBid
   }
 
-  // Update Operations
   async update (data: AuctionItem): Promise<void> {
     await getRepository(AuctionItem)
       .createQueryBuilder()
@@ -91,7 +88,6 @@ export default class AuctionItemsRepository implements IAuctionItemsRepository<A
       .execute()
   }
 
-  // Delete Operations
   async delete (id: string) {
     await getRepository(AuctionItem).delete({ id: id })
   }
