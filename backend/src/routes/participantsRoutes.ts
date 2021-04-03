@@ -4,9 +4,11 @@ import {
   searchParticipantsController
 } from '../useCases/ManageParticipants'
 
+
 import {
   SearchAllParticipants,
-  SearchParticipantsId
+  SearchParticipantsId,
+  SearchParticipantsUserName
 } from '../useCases/ManageParticipants/SearchParticipants/SearchStrategies'
 
 const router = Router()
@@ -23,6 +25,11 @@ router.get('/participants/search/all', (req, res) => {
 router.get('/participants/search/:id', (req, res) => {
   searchParticipantsController.setStrategy(new SearchParticipantsId())
   return searchParticipantsController.handle(req, res)
+})
+
+router.get('/participants/search/username/:username',(req,res)=> {
+  searchParticipantsController.setStrategy(new SearchParticipantsUserName())
+  return searchParticipantsController.handle(req,res)
 })
 
 export default router

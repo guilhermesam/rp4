@@ -19,8 +19,17 @@ class SearchParticipantsId implements IStrategy {
   }
 }
 
+
+class SearchParticipantsUserName implements IStrategy {
+  async search (searchParticipantsUseCase: typeof SearchParticipantsUseCase, param: any): Promise<any> {
+    return await searchParticipantsUseCase.searchUserName(param.username)
+  }
+}
+
+
 export {
   SearchAllParticipants,
   SearchParticipantsId,
-  SearchParticipantsName
+  SearchParticipantsName,
+  SearchParticipantsUserName
 }
