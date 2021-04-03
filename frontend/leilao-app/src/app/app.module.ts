@@ -15,6 +15,11 @@ import { AuctionsHomePageComponent } from './homePage/auctions-home-page/auction
 
 import { SearchAuctionsComponent } from './auctions/searchAuctions/search-auctions.component';
 import { AuctionComponent } from './auctions/auction/auction/auction.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { AdmFooterComponent } from './administration/adm-footer/adm-footer.component';
+import { AdmHeaderComponent } from './administration/adm-header/adm-header.component';
+import { AdmMainComponent } from './administration/adm-main/adm-main.component';
+import { AdmParticipantsComponent } from './administration/adm-participants/adm-participants.component';
 
 
 
@@ -31,6 +36,12 @@ import { AuctionComponent } from './auctions/auction/auction/auction.component';
     AuctionsHomePageComponent,
     SearchAuctionsComponent,
     AuctionComponent,
+   AuctionComponent,
+   AdministrationComponent,
+   AdmFooterComponent,
+   AdmHeaderComponent,
+   AdmMainComponent,
+   AdmParticipantsComponent,
   ],
   imports: [
     BrowserModule,

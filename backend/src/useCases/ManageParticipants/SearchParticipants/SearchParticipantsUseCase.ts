@@ -20,6 +20,13 @@ class SearchParticipantsUseCase {
   async searchName (name:string): Promise<Participant> {
     return await this.participantsRepository.searchByName(name)
   }
+  
+  async searchUserName (name:string): Promise<Participant> {
+    return await this.participantsRepository.searchByUserName(name)
+  }
+
+
+
 }
 
 export default new SearchParticipantsUseCase(
