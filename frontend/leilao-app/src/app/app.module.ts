@@ -29,9 +29,8 @@ import { AuctionComponent } from './auctions/auction/auction/auction.component';
     MostViewedComponent,
     AuctionsHomePageComponent,
     AuctionsHomePageComponent,
-   // AuctionCardMostViwedComponent,
     SearchAuctionsComponent,
-   AuctionComponent,
+    AuctionComponent,
   ],
   imports: [
     BrowserModule,
