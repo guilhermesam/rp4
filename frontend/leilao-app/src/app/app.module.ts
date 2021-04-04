@@ -15,12 +15,12 @@ import { AuctionsHomePageComponent } from './homePage/auctions-home-page/auction
 
 import { SearchAuctionsComponent } from './auctions/searchAuctions/search-auctions.component';
 import { AuctionComponent } from './auctions/auction/auction/auction.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdministrationComponent } from './administration/administration.component';
 import { AdmFooterComponent } from './administration/adm-footer/adm-footer.component';
 import { AdmHeaderComponent } from './administration/adm-header/adm-header.component';
 import { AdmMainComponent } from './administration/adm-main/adm-main.component';
 import { AdmParticipantsComponent } from './administration/adm-participants/adm-participants.component';
-
 
 
 @NgModule({
@@ -47,6 +47,8 @@ import { AdmParticipantsComponent } from './administration/adm-participants/adm-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],
