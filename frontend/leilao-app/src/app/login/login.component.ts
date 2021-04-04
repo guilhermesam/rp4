@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
-    
+    this.loginService.clearStoredParticipant
   }
 
   public logar(): void {

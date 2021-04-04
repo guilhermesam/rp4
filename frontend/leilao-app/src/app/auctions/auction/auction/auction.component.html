@@ -1,3 +1,4 @@
+<app-header></app-header>
 <hr class="uk-divider-icon">
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid *ngIf="item !== undefined">
         <div class="uk-card-media-left uk-cover-container">
@@ -5,27 +6,26 @@
             <canvas width="500" height="500"></canvas>
         </div>
         <div>
-            <div class="uk-card-body">
+            <div class="uk-card-body"*ngIf="bids !== undefined">
                 <h3 class="uk-card-title">{{item.title}}</h3>
                 <p class="au-description">{{ item.description }}</p>
-            <div class="uk-flex uk-bid">
-                    <div class="uk-margin">
-                        <input 
-                        class="uk-input uk-form-width-medium" 
-                        type="text" 
-                        placeholder="valor" 
-                        required
-                        [value]="valueBid"
-                        #inputValue
-                        (input)="updateValue(inputValue.value)">
-                    </div>
+                <p class="au-description">MAIOR LANCE: {{ bids.value }}</p>
+            <div class="uk-flex uk-bid" [formGroup]="formBid" >
+                
+                <div class="uk-margin">
+                    <input 
+                    class="uk-input uk-form-width-medium" 
+                    type="text" 
+                    placeholder="valor" 
+                    formControlName="valueBid">
+                </div>
                 <div>
-                <button 
+                    <button 
                     class="uk-button uk-button-secondary" 
                     type="button" 
                     (click)="makeABid()"
-                >Lance</button>
-            </div>
+                    >Lance</button>
+                </div>
             </div>
         </div>
     </div>

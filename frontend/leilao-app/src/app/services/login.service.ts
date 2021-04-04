@@ -83,7 +83,7 @@ export class LoginService {
           //Adcionar a chamada para receber o token do Guilherme
           //Armazenar o tokenqqqq
 
-          this.router.navigate(['/administration'])
+          this.router.navigate(['homePage'])
           resolve(response)
         } else {
           //Rejeitar e manter na pagina

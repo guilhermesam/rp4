@@ -1,77 +1,91 @@
-.uk-container-small {
-  margin-left: 30px;
-  max-width: 300px;
-  padding-top: 50px;
+@media screen and (min-width: 320px) {
 }
 
-.uk-container-large {
-  margin-left: 30px;
-  padding-top: 100px;
+@media screen and (min-width: 576px) {
 }
 
-.text-title {
-  font-size: 30px;
+@media screen and (min-width: 768px) {
 }
 
-.uk-container-large {
-  max-width: 1000px;
-  width: 1000px;
-}
+@media screen and (min-width: 992px) {
+  .uk-container-large {
+    margin-left: 10px;
+    padding-top: 100px;
+    max-width: 1000px;
+    width: 1000px;
+  }
 
-.uk-parent {
-  font-size: 20px;
-}
+  .uk-card {
+    border: 1px solid #d3d3d3;
+  }
 
-.uk-divider-vertical {
-  margin-top: 50px;
-  width: 1px;
-  height: 800px;
-  margin-left: 20px;
-  margin-right: 0px;
-  border-left: 1px solid #e5e5e5;
-}
+  .uk-card-body {
+    padding: 0px;
+    border: 1px;
+    padding-bottom: 10px;
+  }
 
-.uk-search-default .uk-search-input {
-  height: 40px;
-  padding-left: 6px;
-  padding-right: 6px;
-  background: transparent;
-  border: 1px solid #e5e5e5;
-}
+  .uk-card-media-top {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
 
-.uk-search {
-  width: 300px;
-}
+  .uk-card-title {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    padding: 20px 0 0 20px;
+    margin: 0;
+  }
 
-.uk-card {
-  border: 1px solid #d3d3d3;
-}
+  .itm-description {
+    margin: 0;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+  }
 
-.uk-card-body {
-  padding: 0px;
-  border: 1px;
-  padding-bottom: 10px;
-}
+  .uk-button {
+    border-color: #333;
+  }
 
-.uk-card-media-top {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-}
+  /* BARRA DE PESQUISA */
 
-.uk-card-title {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  padding: 20px 0 0 20px;
-  margin: 0;
-}
+  .uk-container-small {
+    margin-left: 80px;
+    max-width: 250px;
+    padding-top: 50px;
+  }
 
-.itm-description {
-  margin: 0;
-  padding-left: 15px;
-  padding-top: 10px;
-  padding-bottom: 0px;
-}
+  .uk-search {
+    width: 300px;
+  }
 
-.uk-button {
-  border-color: #333;
+  .uk-divider-vertical {
+    margin-top: 50px;
+    width: 1px;
+    height: 800px;
+    margin-left: 10px;
+    margin-right: 0px;
+    border-left: 1px solid #e5e5e5;
+  }
+
+  .text-title {
+    font-size: 25px;
+  }
+
+  .uk-search-default .uk-search-input {
+    height: 40px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background: transparent;
+    border: 1px solid #e5e5e5;
+  }
+
+  .uk-parent {
+    font-size: 18px;
+  }
+
+  .text-checkBox {
+    color: #272727;
+  }
 }

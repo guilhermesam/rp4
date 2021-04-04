@@ -31,4 +31,6 @@ export class AuctionsService {
             return response
         })
     }  
+
+    
 }

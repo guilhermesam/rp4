@@ -19,4 +19,12 @@ export class BidsService{
              JSON.stringify(bid), 
              this.options)
     }
+
+    public getHighestBid(id: string): Promise<Bids>{
+        return this.http.get(`http://localhost:3333/bids/HighestBid/${id}`)
+        .toPromise()
+        .then((response: Bids) => {
+            return response
+        })
+    }  
 }
