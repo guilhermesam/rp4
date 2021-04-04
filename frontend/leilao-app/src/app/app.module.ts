@@ -21,7 +21,7 @@ import { AdmHeaderComponent } from './administration/adm-header/adm-header.compo
 import { AdmMainComponent } from './administration/adm-main/adm-main.component';
 import { AdmParticipantsComponent } from './administration/adm-participants/adm-participants.component';
 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,8 @@ import { AdmParticipantsComponent } from './administration/adm-participants/adm-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],
