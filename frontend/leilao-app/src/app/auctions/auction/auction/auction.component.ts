@@ -6,12 +6,18 @@ import { Bids } from 'src/shared/bids.model';
 import { BidsService } from 'src/app/services/bids.service'
 import { FormGroup, FormControl } from '@angular/forms';
 import { Participants } from 'src/shared/participants.models';
+import {LOCALE_ID} from '@angular/core';
 
 @Component({
   selector: 'app-auction',
   templateUrl: './auction.component.html',
   styleUrls: ['./auction.component.css'],
-  providers: [ AuctionsService, BidsService ]
+  providers: [ AuctionsService, BidsService, 
+    {
+      provide: LOCALE_ID,
+      useValue: "en-US"
+    } 
+  ]
 })
 export class AuctionComponent implements OnInit {
   
@@ -20,7 +26,7 @@ export class AuctionComponent implements OnInit {
   public bids: Bids
 
   /* Lance  */
-  public bid: Bids = new Bids(" "," "," ")
+  public bid: Bids = new Bids(null," "," ")
 
   constructor(
     private route: ActivatedRoute,
@@ -48,6 +54,9 @@ export class AuctionComponent implements OnInit {
     else if(this.formBid.value.valueBid == undefined){
       window.alert("\nNenhum valor encontrado!")
     }
+    else if(isNaN(this.formBid.value.valueBid)){
+      window.alert("\nInsira um valor numérico!")
+    }
     else{
     this.bid.itemId = this.item.id
     this.bid.participantId = localStorage.getItem('idParticipant')
@@ -56,6 +65,7 @@ export class AuctionComponent implements OnInit {
     .subscribe()
     window.alert("\nLance realizado!")
     }
+    this.formBid.reset()
   }
 
   public highestBid(): void{
