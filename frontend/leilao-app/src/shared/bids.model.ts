@@ -1,6 +1,6 @@
 export class Bids {
   constructor(
-    public value: string,
+    public value: number,
     public itemId: string,
     public participantId: string,
     ) { }

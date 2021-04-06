@@ -9,15 +9,15 @@
             <div class="uk-card-body"*ngIf="bids !== undefined">
                 <h3 class="uk-card-title">{{item.title}}</h3>
                 <p class="au-description">{{ item.description }}</p>
-                <p class="au-description">MAIOR LANCE: {{ bids.value }}</p>
+                <p class="au-description">MAIOR LANCE: {{ bids.value | currency:'$':true }}</p>
             <div class="uk-flex uk-bid" [formGroup]="formBid" >
-                
                 <div class="uk-margin">
                     <input 
                     class="uk-input uk-form-width-medium" 
                     type="text" 
                     placeholder="valor" 
-                    formControlName="valueBid">
+                    formControlName="valueBid"
+                    onkeypress="$(this).mask('R$ #.##0,00', {reverse: true})">
                 </div>
                 <div>
                     <button 
