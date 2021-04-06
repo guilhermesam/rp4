@@ -23,8 +23,13 @@ export class CreateAuctioneersTable1617407630246 implements MigrationInterface {
           type: 'varchar'
         },
         {
-          name: 'phone',
+          name: 'password',
           type: 'varchar'
+        },
+        {
+          name: 'phone',
+          type: 'varchar',
+          length: '11'
         },
         {
           name: 'joinedAt',

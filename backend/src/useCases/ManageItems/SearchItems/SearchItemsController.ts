@@ -9,8 +9,8 @@ class SearchItemsController {
     this.strategy = strategy
   }
 
-  async handle (request: Request, response: Response) {
-    await this.strategy.search(searchItemsUseCase, request.params)
+  handle (request: Request, response: Response) {
+    this.strategy.search(searchItemsUseCase, request.params)
       .then((items) => {
         return response.status(200).json(items)
       })

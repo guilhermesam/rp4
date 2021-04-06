@@ -9,6 +9,7 @@ export default class AuctioneersMapper {
       name: auctioneerDTO.name,
       address: auctioneerDTO.address,
       email: auctioneerDTO.email,
+      password: auctioneerDTO.password,
       phone: auctioneerDTO.phone,
       joinedAt: auctioneerDTO.joinedAt
     })

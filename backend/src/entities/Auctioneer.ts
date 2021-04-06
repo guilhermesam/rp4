@@ -12,6 +12,9 @@ export default class Auctioneer {
     email: string
 
     @Column({ type: 'varchar' })
+    password: string
+
+    @Column({ type: 'varchar' })
     address: string
 
     @Column({ type: 'varchar' })

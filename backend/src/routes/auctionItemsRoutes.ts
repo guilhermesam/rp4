@@ -14,6 +14,7 @@ import {
   searchItemsController,
   updateItemsController
 } from '../useCases/ManageItems/'
+import adminMiddleware from '../middlewares/SecurityLayer/adminMiddleware'
 
 const router = Router()
 
@@ -21,11 +22,11 @@ router.post('/items/create', (req, res) => {
   return createItemsController.handle(req, res)
 })
 
-router.delete('/items/delete', authMiddleware, (req, res) => {
+router.delete('/items/delete', (req, res) => {
   return deleteItemsController.handle(req, res)
 })
 
-router.get('/items/search/all', (req, res) => {
+router.get('/items/search/all', authMiddleware, adminMiddleware, (req, res) => {
   searchItemsController.setStrategy(new SearchAllItems())
   return searchItemsController.handle(req, res)
 })
@@ -40,7 +41,7 @@ router.get('/items/search/:id', (req, res) => {
   return searchItemsController.handle(req, res)
 })
 
-router.put('/items/update', authMiddleware, (req, res) => {
+router.put('/items/update', (req, res) => {
   return updateItemsController.handle(req, res)
 })
 

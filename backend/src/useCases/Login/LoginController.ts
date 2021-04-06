@@ -1,13 +1,22 @@
 import { Request, Response } from 'express'
-import loginUseCase from './LoginUseCase'
+import ILoginDTO from './ILoginDTO'
+
+interface ILoginUseCase {
+  execute(data: ILoginDTO): Promise<string>
+}
 
 class LoginController {
-  async handle (request: Request, response: Response) {
+  private loginUseCase: ILoginUseCase
+
+  setRole (roleUseCase: ILoginUseCase) {
+    this.loginUseCase = roleUseCase
+  }
+
+  handle (request: Request, response: Response) {
     const { email, password } = request.body
 
-    await loginUseCase.execute({ email, password })
-      .then(loginData => {
-        const token: string = loginData
+    this.loginUseCase.execute({ email, password })
+      .then(token => {
         return response.status(200).json({
           token
         })

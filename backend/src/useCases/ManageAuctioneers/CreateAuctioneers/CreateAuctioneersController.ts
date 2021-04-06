@@ -3,13 +3,14 @@ import createAuctioneersUseCase from './CreateAuctioneersUseCase'
 
 class CreateAuctioneersController {
   handle (request: Request, response: Response) {
-    const { id, name, address, email, phone, datetime } = request.body
+    const { id, name, address, email, password, phone, datetime } = request.body
 
     createAuctioneersUseCase.execute({
       id,
       name,
       address,
       email,
+      password,
       phone,
       joinedAt: datetime
     })

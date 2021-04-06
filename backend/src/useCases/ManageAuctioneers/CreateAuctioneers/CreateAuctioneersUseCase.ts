@@ -3,6 +3,8 @@ import AuctioneersRepository from '../../../repositories/implementations/Auction
 import IAuctioneersDTO from '../../../repositories/implementations/Auctioneer/IAuctioneersDTO'
 import IAuctioneersRepository from '../../../repositories/implementations/Auctioneer/IAuctioneersRepository'
 
+import bcrypt from 'bcryptjs'
+
 class CreateAuctioneersUseCase {
   private auctioneersRepository: IAuctioneersRepository<any>
 
@@ -11,7 +13,9 @@ class CreateAuctioneersUseCase {
   }
 
   async execute (data: IAuctioneersDTO) {
+    data.password = bcrypt.hashSync(data.password, 8)
     const auctioneerData = AuctioneersMapper.toPersistence(data)
+
     await this.auctioneersRepository.create(auctioneerData)
   }
 }
