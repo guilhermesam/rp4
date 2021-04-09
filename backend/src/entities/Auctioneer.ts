@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm'
+import { AuctionSale } from '.'
 
 @Entity('Auctioneers')
 export default class Auctioneer {
@@ -22,4 +23,7 @@ export default class Auctioneer {
 
     @Column({ type: 'datetime' })
     joinedAt: Date
+
+    @OneToMany(() => AuctionSale, auctionSale => auctionSale.auctioneer)
+    auctionSales: AuctionSale[]
 }
