@@ -21,6 +21,7 @@ import { AdmFooterComponent } from './administration/adm-footer/adm-footer.compo
 import { AdmHeaderComponent } from './administration/adm-header/adm-header.component';
 import { AdmMainComponent } from './administration/adm-main/adm-main.component';
 import { AdmParticipantsComponent } from './administration/adm-participants/adm-participants.component';
+import { AdmAuctionComponent } from './administration/AdmAuctions/adm-auction/adm-auction.component';
 
 
 @NgModule({
@@ -42,6 +43,8 @@ import { AdmParticipantsComponent } from './administration/adm-participants/adm-
    AdmHeaderComponent,
    AdmMainComponent,
    AdmParticipantsComponent,
+
+   AdmAuctionComponent,
   ],
   imports: [
     BrowserModule,

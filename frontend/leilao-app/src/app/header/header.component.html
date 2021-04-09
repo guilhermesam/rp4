@@ -9,7 +9,6 @@
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <span uk-icon="icon: check"></span>
             <li><a routerLink="">sign out</a></li>
             <li><a *ngIf="user" routerLink="/administration">{{user.username}}</a></li>
         </ul>
