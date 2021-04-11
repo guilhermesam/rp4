@@ -3,14 +3,14 @@
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid *ngIf="item !== undefined">
         <div class="uk-card-media-left uk-cover-container">
             <img src="{{ item.imagePath }}" alt="" uk-cover>
-            <canvas width="500" height="500"></canvas>
+            <canvas width="200" height="400"></canvas>
         </div>
         <div>
             <div class="uk-card-body"*ngIf="bids !== undefined">
                 <h3 class="uk-card-title">{{item.title}}</h3>
                 <p class="au-description">{{ item.description }}</p>
-                <p class="au-description">MAIOR LANCE: {{ bids.value | currency:'$':true }}</p>
-            <div class="uk-flex uk-bid" [formGroup]="formBid" >
+                <p class="au-valueBid">MAIOR LANCE: {{ bids.value | currency:'$':true }}</p>
+            <div class="uk-flex au-bid uk-position-relative" [formGroup]="formBid" >
                 <div class="uk-margin">
                     <input 
                     class="uk-input uk-form-width-medium" 
@@ -31,3 +31,4 @@
     </div>
 </div>
 <hr class="uk-divider-icon">
+<app-footer></app-footer>

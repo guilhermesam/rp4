@@ -49,7 +49,7 @@ export class AuctionComponent implements OnInit {
   
   public makeABid(): void{
     if(this.formBid.value.valueBid <= this.bids.value ){
-      window.alert("\nLance menor do que o maior lance vigente!")
+      window.alert("\nLance menor do que o maior lance atual!")
     } 
     else if(this.formBid.value.valueBid == undefined){
       window.alert("\nNenhum valor encontrado!")

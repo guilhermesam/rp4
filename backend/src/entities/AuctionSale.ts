@@ -2,7 +2,8 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn } from '
 
 import {
   Participant,
-  AuctionItem
+  AuctionItem,
+  Auctioneer
 } from '../entities'
 
 @Entity('AuctionSales')
@@ -29,4 +30,11 @@ export default class AuctionSales {
 
     @Column({ nullable: false })
     auctionItemId: string
+
+    @ManyToOne(() => Auctioneer, auctioneer => auctioneer.id)
+    @JoinColumn({ name: 'auctioneerId' })
+    auctioneer: Auctioneer
+
+    @Column({ nullable: false })
+    auctioneerId: string
 }
