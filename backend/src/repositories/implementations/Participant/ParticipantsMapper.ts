@@ -8,7 +8,7 @@ export default class ParticipantsMapper {
     return repository.create({
         id: participantsDTO.id,
         name: participantsDTO.name,
-        username: participantsDTO.username,
+        userName: participantsDTO.userName,
         password: participantsDTO.password,
         email: participantsDTO.email,
         address: participantsDTO.address,

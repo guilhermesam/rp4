@@ -8,13 +8,13 @@ import bcrypt from 'bcryptjs'
 class CreateParticipantsUseCase {
   private participantsRepository: IParticipantsRepository<any>
 
-  constructor (
+  constructor(
     participantsRepository: IParticipantsRepository<any>
   ) {
     this.participantsRepository = participantsRepository
   }
 
-  async execute (data: IParticipantsDTO) {
+  async execute(data: IParticipantsDTO) {
     const userExists = await this.participantsRepository.searchByEmail(data.email)
 
     if (userExists) {

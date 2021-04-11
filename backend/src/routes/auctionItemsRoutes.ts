@@ -26,7 +26,7 @@ router.delete('/items/delete', (req, res) => {
   return deleteItemsController.handle(req, res)
 })
 
-router.get('/items/search/all', authMiddleware, adminMiddleware, (req, res) => {
+router.get('/items/search/all', (req, res) => {
   searchItemsController.setStrategy(new SearchAllItems())
   return searchItemsController.handle(req, res)
 })

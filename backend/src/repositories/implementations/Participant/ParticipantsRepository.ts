@@ -3,6 +3,7 @@ import { Participant } from '../../../entities'
 import IParticipantsRepository from './IParticipantsRespository'
 
 export default class ParticipantsRepository implements IParticipantsRepository<Participant> {
+
   async create (participant: Participant): Promise<void> {
     await getRepository(Participant).save(participant)
   }
@@ -12,11 +13,11 @@ export default class ParticipantsRepository implements IParticipantsRepository<P
   }
 
   async searchByEmail (email: string): Promise<Participant> {
-    return await getRepository(Participant).findOne({ email })
+    return await getRepository(Participant).findOne({ email : email })
   }
 
-  async searchByUserName(username: string): Promise<Participant> {
-    return await getRepository(Participant).findOne({ username: username })
+  async searchByUserName(userName: string): Promise<Participant> {
+    return await getRepository(Participant).findOne({ userName: userName })
 }
 
   async searchByName (name: string): Promise<Participant> {
@@ -34,7 +35,7 @@ export default class ParticipantsRepository implements IParticipantsRepository<P
       .set({
         id: participant.id,
         name: participant.name,
-        username: participant.username,
+        userName: participant.userName,
         password: participant.password,
         email: participant.email,
         address: participant.address,

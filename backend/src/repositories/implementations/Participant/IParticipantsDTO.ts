@@ -1,7 +1,7 @@
 export default interface IParticipantsDTO {
     id: string,
     name: string,
-    username: string,
+    userName: string,
     password: string,
     email: string,
     address: string,
