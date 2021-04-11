@@ -1,27 +1,41 @@
-import { getRepository } from 'typeorm'
+import { getRepository, Repository } from 'typeorm'
+
 import { AuctionBid } from '../../../entities'
 import IAuctionBidsRepository from './IAuctionBidsRepository'
 
-export default class AuctionBidsRepository implements IAuctionBidsRepository<AuctionBid> {
-  async create (data: AuctionBid): Promise<void> {
-    await getRepository(AuctionBid).save(data)
+export default class AuctionBidsRepository implements IAuctionBidsRepository {
+  private repository: Repository<AuctionBid>
+
+  private getRepositoryInstance (): Repository<AuctionBid> {
+    if (!this.repository) {
+      this.repository = getRepository(AuctionBid)
+      return this.repository
+    }
+
+    return this.repository
   }
 
-  async searchAll (): Promise<AuctionBid[]> {
-    return await getRepository(AuctionBid).find()
+  async create (data: AuctionBid): Promise<AuctionBid> {
+    const actionBid = await this.getRepositoryInstance().save(data)
+    return actionBid
   }
 
-  async getHighestBid (auctionItemId: string): Promise<AuctionBid> {
-    return await getRepository(AuctionBid)
-      .findOne({ where: { auctionItemId: auctionItemId }, order: { value: 'DESC' } })
+  searchAll (): Promise<AuctionBid[]> {
+    return this.getRepositoryInstance().find()
   }
 
-  async searchBidsInItem (auctionItemId: string): Promise<AuctionBid[]> {
-    return await getRepository(AuctionBid)
-      .find({ where: { auctionItemId: auctionItemId } })
+  getHighestBid (auctionItemId: string): Promise<AuctionBid> {
+    return this.getRepositoryInstance()
+      .findOne({ where: { auctionItemId }, order: { value: 'DESC' } })
   }
-  async criptoBids (auctionItemId: String): Promise<AuctionBid[]> {
-    return await getRepository(AuctionBid)
-    .findOne({ where: { auctionItemId: auctionItemId }, order: { value: 'DESC' } })
+
+  searchBidsInItem (auctionItemId: string): Promise<AuctionBid[]> {
+    return this.getRepositoryInstance()
+      .find({ where: { auctionItemId } })
+  }
+
+  criptoBids (auctionItemId: string): Promise<AuctionBid[]> {
+    return this.getRepositoryInstance()
+      .find({ where: { auctionItemId }, order: { value: 'DESC' } })
   }
 }

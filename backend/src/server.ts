@@ -1,7 +1,10 @@
-import app from './app'
+import App from './app'
 
 import './repositories/connect'
 
-const PORT = 3333
+const PORT = process.env.PORT && !Number.isNaN(Number(process.env.PORT)) ? Number(process.env.PORT) : undefined;
 
-app.listen(PORT, () => console.log(`Server Running at http://localhost:${PORT}!`))
+(async () => {
+  const app = new App(PORT)
+  await app.initServer()
+})()

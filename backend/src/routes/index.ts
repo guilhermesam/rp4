@@ -1,19 +1,8 @@
-import auctionBidsRoutes from './auctionBidsRoutes'
-import auctioneersRoutes from './auctioneersRoutes'
-import auctionItemsRoutes from './auctionItemsRoutes'
-import auctionRoutes from './auctionsRoutes'
-import categoriesRoutes from './categoriesRoutes'
-import itemProvidersRoutes from './itemProvidersRoutes'
-import loginRoutes from './loginRoutes'
-import participantsRoutes from './participantsRoutes'
-
-export {
-  auctionBidsRoutes,
-  auctioneersRoutes,
-  auctionItemsRoutes,
-  auctionRoutes,
-  categoriesRoutes,
-  itemProvidersRoutes,
-  loginRoutes,
-  participantsRoutes
-}
+export { default as auctionBidsRoutes } from './auctionBidsRoutes'
+export { default as auctioneersRoutes } from './auctioneersRoutes'
+export { default as auctionItemsRoutes } from './auctionItemsRoutes'
+export { default as auctionRoutes } from './auctionsRoutes'
+export { default as categoriesRoutes } from './categoriesRoutes'
+export { default as itemProvidersRoutes } from './itemProvidersRoutes'
+export { default as loginRoutes } from './loginRoutes'
+export { default as participantsRoutes } from './participantsRoutes'

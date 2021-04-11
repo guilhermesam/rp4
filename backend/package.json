@@ -8,8 +8,8 @@
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only --files --ignore-watch node_modules --no-notify src/server.ts",
-    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
+    "dev": "dotenv -e .env -- ts-node-dev --respawn --transpile-only --files --ignore-watch node_modules --no-notify src/server.ts",
+    "typeorm": "dotenv -e .env -- npx ts-node ./node_modules/typeorm/cli.js",
     "test": "jest --no-cache"
   },
   "devDependencies": {
@@ -28,6 +28,7 @@
     "@typescript-eslint/parser": "^4.14.2",
     "babel-cli": "^6.26.0",
     "babel-plugin-module-resolver": "^4.1.0",
+    "dotenv-cli": "^4.0.0",
     "eslint": "^7.12.1",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",

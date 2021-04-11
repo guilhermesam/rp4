@@ -4,23 +4,20 @@ import AuctionsBidsMapper from '../../../repositories/implementations/AuctionBid
 import IAuctionBidsDTO from '../../../repositories/implementations/AuctionBid/IAuctionBidsDTO'
 import IAuctionItemsRepository from '../../../repositories/implementations/AuctionItem/IAuctionItemsRepository'
 import AuctionItemsRepository from '../../../repositories/implementations/AuctionItem/AuctionItemsRepository'
+import { AuctionBid } from '../../../entities'
 
 class MakeAuctionBidsUseCase {
-  private auctionBidsRepository: IAuctionBidsRepository<any>
-  private auctionItemsRepository: IAuctionItemsRepository<any>
-
   constructor (
-    auctionBidsRepository: IAuctionBidsRepository<any>,
-    auctionItemsRepository: IAuctionItemsRepository<any>
+    private auctionBidsRepository: IAuctionBidsRepository,
+    private auctionItemsRepository: IAuctionItemsRepository<any>
   ) {
-    this.auctionBidsRepository = auctionBidsRepository
-    this.auctionItemsRepository = auctionItemsRepository
   }
 
-  async execute (data: IAuctionBidsDTO) {
+  async execute (data: IAuctionBidsDTO): Promise<AuctionBid> {
     const bidData = AuctionsBidsMapper.toPersistence(data)
 
-    await this.auctionBidsRepository.create(bidData)
+    const auctionBid = await this.auctionBidsRepository.create(bidData)
+    return auctionBid
   }
 }
 
