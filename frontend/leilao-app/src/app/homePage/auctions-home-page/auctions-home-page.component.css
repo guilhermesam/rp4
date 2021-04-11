@@ -1,0 +1,61 @@
+.uk-cover-container {
+  background-color: white;
+  padding-bottom: 10px;
+  padding-top: 55px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.uk-button-text {
+  /* 1 */
+  padding-top: 30px;
+  line-height: 2;
+  background: none;
+  font-size: large;
+  /* 2 */
+  color: #333;
+  position: relative;
+  left: 44.3%;
+}
+
+.uk-card {
+  border: 1px solid #d3d3d3;
+}
+
+.uk-padding {
+  padding-left: 40px;
+  padding-right: 22px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.uk-card-body {
+  padding: 0px;
+  border: 1px;
+  padding-bottom: 10px;
+}
+
+.uk-card-media-top {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.uk-card-title {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  padding: 20px 0 0 20px;
+  margin: 0;
+}
+
+.itm-description {
+  margin: 0;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+
+.uk-button {
+  border-color: #333;
+}

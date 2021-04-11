@@ -1,0 +1,34 @@
+<app-header></app-header>
+<hr class="uk-divider-icon">
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid *ngIf="item !== undefined">
+        <div class="uk-card-media-left uk-cover-container">
+            <img src="{{ item.imagePath }}" alt="" uk-cover>
+            <canvas width="200" height="400"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body"*ngIf="bids !== undefined">
+                <h3 class="uk-card-title">{{item.title}}</h3>
+                <p class="au-description">{{ item.description }}</p>
+                <p class="au-valueBid">MAIOR LANCE: {{ bids.value | currency:'$':true }}</p>
+            <div class="uk-flex au-bid uk-position-relative" [formGroup]="formBid" >
+                <div class="uk-margin">
+                    <input 
+                    class="uk-input uk-form-width-medium" 
+                    type="text" 
+                    placeholder="valor" 
+                    formControlName="valueBid"
+                    onkeypress="$(this).mask('R$ #.##0,00', {reverse: true})">
+                </div>
+                <div>
+                    <button 
+                    class="uk-button uk-button-secondary" 
+                    type="button" 
+                    (click)="makeABid()"
+                    >Lance</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="uk-divider-icon">
+<app-footer></app-footer>

@@ -1,0 +1,48 @@
+.uk-card {
+  position: static;
+  margin: 20px 20px 20px 20px;
+  box-shadow: none;
+  border: 1px;
+  margin-left: 90px;
+  margin-right: 180px;
+  margin-bottom: 0px;
+}
+
+.uk-card-media-left {
+  width: 600px;
+  max-height: 400px;
+}
+
+.au-bid {
+  position: absolute;
+  padding-top: 165px;
+  padding-bottom: 0px;
+  margin: 0px;
+}
+
+.uk-divider-icon {
+  margin-top: 20px;
+}
+
+/*  TEXTOS   */
+.uk-card-title {
+  font-size: 40px;
+}
+
+.au-description {
+  font-size: 20px;
+}
+.au-valueBid {
+  position: absolute;
+  margin: 0px;
+  padding-top: 130px;
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+.uk-bid {
+  margin-top: 70px;
+}
+.uk-input {
+  margin-right: 10px;
+}

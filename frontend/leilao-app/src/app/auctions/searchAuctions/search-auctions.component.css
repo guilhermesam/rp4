@@ -1,0 +1,81 @@
+.uk-container-large {
+  margin-left: 10px;
+  padding-top: 100px;
+  max-width: 1000px;
+  width: 1000px;
+}
+
+.uk-card {
+  border: 1px solid #d3d3d3;
+}
+
+.uk-card-body {
+  margin: 0px;
+  padding: 0px;
+  border: 1px;
+  padding-bottom: 10px;
+}
+
+.uk-card-media-top {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.uk-card-title {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  padding: 20px 0 0 20px;
+  margin: 0;
+}
+
+.itm-description {
+  margin: 0;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+
+.uk-button {
+  border-color: #333;
+}
+
+/* BARRA DE PESQUISA */
+
+.uk-container-small {
+  margin-left: 80px;
+  max-width: 250px;
+  padding-top: 50px;
+}
+
+.uk-search {
+  width: 300px;
+}
+
+.uk-divider-vertical {
+  margin-top: 50px;
+  width: 1px;
+  height: 800px;
+  margin-left: 10px;
+  margin-right: 0px;
+  border-left: 1px solid #e5e5e5;
+}
+
+.text-title {
+  font-size: 25px;
+}
+
+.uk-search-default .uk-search-input {
+  height: 40px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background: transparent;
+  border: 1px solid #e5e5e5;
+}
+
+.uk-parent {
+  font-size: 18px;
+}
+
+.text-checkBox {
+  color: #272727;
+}
