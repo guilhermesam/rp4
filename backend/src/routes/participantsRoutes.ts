@@ -4,7 +4,6 @@ import {
   searchParticipantsController
 } from '../useCases/ManageParticipants'
 
-
 import {
   SearchAllParticipants,
   SearchParticipantsId,
@@ -27,9 +26,9 @@ router.get('/participants/search/:id', (req, res) => {
   return searchParticipantsController.handle(req, res)
 })
 
-router.get('/participants/search/username/:username',(req,res)=> {
+router.get('/participants/search/username/:username', (req, res) => {
   searchParticipantsController.setStrategy(new SearchParticipantsUserName())
-  return searchParticipantsController.handle(req,res)
+  return searchParticipantsController.handle(req, res)
 })
 
 export default router

@@ -1,16 +1,15 @@
 import { Request, Response } from 'express'
 import { IStrategy } from './IStrategy'
-import searchCategoryUseCase from './SearchCategoryUseCase'
-
-class SearchCategoryController {
+import searchItemProvidersUseCase from './SearchItemProvidersUseCase'
+class SearchItemProvidersController {
   private strategy: IStrategy
 
   setStrategy (strategy: IStrategy) {
     this.strategy = strategy
   }
 
-  async handle (request: Request, response: Response) {
-    await this.strategy.search(searchCategoryUseCase, request.params)
+  handle (request: Request, response: Response) {
+    this.strategy.search(searchItemProvidersUseCase, request.params)
       .then((items) => {
         return response.status(200).json(items)
       })
@@ -22,4 +21,4 @@ class SearchCategoryController {
   }
 }
 
-export default new SearchCategoryController()
+export default new SearchItemProvidersController()
