@@ -11,17 +11,16 @@ import { Participants } from 'src/shared/participants.models';
 export class AdmParticipantsComponent implements OnInit {
 
   public participants: Participants[]
-  public participant: Participants
+  public participant = new Participants()
 
-  
+
   public formulario: FormGroup = new FormGroup({
-    'id': new FormControl(null),
     'name': new FormControl(null),
     'username': new FormControl(null),
+    'password': new FormControl(null),
     'email': new FormControl(null),
     'phone': new FormControl(null),
-    'password': new FormControl(null)
-    // 'password': new FormControl(null)
+    'address': new FormControl(null),
   })
 
 
@@ -39,17 +38,20 @@ export class AdmParticipantsComponent implements OnInit {
 
 
 
-  public cadastrarCliente(): void {
-    console.log("Cadastrando");
-    // this.participantsService.
-    console.log(this.participant)
+  public createParticipant(): void {
+    this.participant = this.valuesFromFrom()
+    console.log(this.participant);
+    
+    this.participantsService.createParticipant(this.participant).subscribe((response)=>{
+      console.log(response);
+      
+    })
+    
   }
 
   public atualizarCliente(): void {
     console.log("Atualizando");
     console.log(this.participant)
-    
-
   }
 
   public excluirCliente(): void {
@@ -60,31 +62,30 @@ export class AdmParticipantsComponent implements OnInit {
   public updateClient() {
     console.log("Atualizando");
     console.log(this.participant)
-    
-   
+
+
   }
 
 
-  public valuesFromFrom():Participants{
+  public valuesFromFrom(): Participants {
     let participantFromForm = new Participants()
-    participantFromForm.id = this.formulario.value.id
     participantFromForm.name = this.formulario.value.name
     participantFromForm.userName = this.formulario.value.username
+    participantFromForm.password = this.formulario.value.password
     participantFromForm.email = this.formulario.value.email
     participantFromForm.phone = this.formulario.value.phone
+    participantFromForm.phone = this.formulario.value.address
     return participantFromForm
   }
 
-  public edit(participant){
-    this.participantsService.getParticipantsByID(participant.id).then((result)=>{
-      this.participant = result
-      this.formulario.controls['id'].setValue(this.participant.id)
-      this.formulario.controls['name'].setValue(this.participant.name)
-      this.formulario.controls['username'].setValue(this.participant.userName)
-      this.formulario.controls['email'].setValue(this.participant.email)
-      this.formulario.controls['phone'].setValue(this.participant.phone)
-      this.formulario.controls['password'].setValue(this.participant.password)
-    })
-    
+  public edit(participant) {
+    this.participant = participant
+    this.formulario.controls['name'].setValue(this.participant.name)
+    this.formulario.controls['username'].setValue(this.participant.userName)
+    this.formulario.controls['email'].setValue(this.participant.email)
+    this.formulario.controls['phone'].setValue(this.participant.phone)
+    this.formulario.controls['address'].setValue(this.participant.address)
+
+
   }
 }

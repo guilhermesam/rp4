@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import env from '../../utils/config'
 
 export default abstract class LoginTemplate {
+  
   async findUser (email: string, repository: any): Promise<any> {
     const user = await repository.searchByEmail(email)
     if (!user) {

@@ -21,20 +21,21 @@ export class LoginService {
 
 
   private getParticipantEmail(email: string): Promise<Participants> {
-    return this.http.get(`api/participants/search/email/${email}`)
+    return this.http.get(`/api/participants/search/email/${email}`)
     .toPromise()
     .then((response: Participants) => response)
   }
 
 
+
   public generateToken(token: TokenMod): Observable<any> {
-    return this.http.post('api/participants/login', JSON.stringify(token), this.options)
+    return this.http.post('/api/participants/login', JSON.stringify(token), this.options)
   }
 
 
   public getStatusLogin(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      if (this.getStoredToken() != null) {
+      if (this.evaluateToken() != false) {
         resolve(true)
       } else {
         reject(false)
@@ -59,6 +60,14 @@ export class LoginService {
     if (localStorage.getItem('token').length > 0 && localStorage.getItem('token') != null) {
       localStorage.removeItem('token')
       return true
+    } else {
+      return false
+    }
+  }
+
+  private evaluateToken():boolean {
+    if (localStorage.getItem('token').length  > 0 && localStorage.getItem('token') != null) {
+        return true
     } else {
       return false
     }
@@ -108,15 +117,12 @@ export class LoginService {
     return new Promise((resolve, reject) => {
       this.matchParticipant(email).then((response: Participants) => {
         if (response != null) {
-
-          this.router.navigate(['homePage'])
+          this.storeParticipant(response);
+          this.storeToken(tok)
+          this.router.navigate(['/administration'])
           resolve(response)
         } else {
-          this.storeParticipant(response)
-          console.log(tok);
           
-          this.storeToken(tok)
-          console.log(this.getStoredToken());
           
           this.router.navigate(['/login'])
           resolve(null)
@@ -129,7 +135,7 @@ export class LoginService {
 
   public logout(): void {
     this.clearStoredParticipant()
-    // this.clearStoredToken()
+    this.clearStoredToken()
     this.router.navigate(['/login'])
   }
 

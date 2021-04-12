@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { Participants } from 'src/shared/participants.models';
 import { TokenMod } from 'src/shared/token.model';
 import { LoginService } from '../services/login.service';
@@ -16,7 +15,7 @@ export class LoginComponent implements OnInit {
   
 
   public formulario: FormGroup = new FormGroup({
-    'username': new FormControl(null),
+    'email': new FormControl(null),
     'password': new FormControl(null)
   })
 
@@ -33,13 +32,15 @@ export class LoginComponent implements OnInit {
   public logar(): void {
     tk: TokenMod
     var tk = new TokenMod()
-    tk.email = this.formulario.value.username
+    tk.email = this.formulario.value.email
     tk.password = this.formulario.value.password
-    console.log(tk);
+    console.log("TK: "+tk);
+    this.loginService.matchParticipant(tk.email)
     
-    this.loginService.generateToken(tk).toPromise().then((response: any)=>{
-        this.loginService.login(tk.email, response)
+    
+    this.loginService.generateToken(tk).subscribe((res)=>{
+      this.loginService.login(tk.email, res)
     })
-  
+
   }
 }
