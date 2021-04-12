@@ -105,3 +105,6 @@ dist
 
 # TypeORM Files
 ormconfig.json
+
+# Heroku
+Procfile
