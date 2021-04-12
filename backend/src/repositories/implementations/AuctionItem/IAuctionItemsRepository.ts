@@ -14,3 +14,4 @@ export default interface IAuctionItemsRepository<T> extends IChangeableBaseRepos
     setUnavailableStatus(id: string): Promise<void>
     setSoldStatus(id: string): Promise<void>
 }
+ 

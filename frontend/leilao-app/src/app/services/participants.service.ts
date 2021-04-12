@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Participants } from 'src/shared/participants.models';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ParticipantsService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   public participants: Participants[]
 

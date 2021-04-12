@@ -6,6 +6,7 @@ import {
 
 import {
   SearchAllParticipants,
+  SearchParticipantsName,
   SearchParticipantsId,
   SearchParticipantsUserName
 } from '../useCases/ManageParticipants/SearchParticipants/SearchStrategies'
@@ -13,6 +14,12 @@ import {
 const router = Router()
 
 router.post('/participants/create', (req, res) => {
+  return createParticipantsController.handle(req, res)
+})
+router.put('/participants/update/:id', (req, res) => {
+  return createParticipantsController.handle(req, res)
+})
+router.delete('/participants/delete/:id', (req, res) => {
   return createParticipantsController.handle(req, res)
 })
 
@@ -26,8 +33,13 @@ router.get('/participants/search/:id', (req, res) => {
   return searchParticipantsController.handle(req, res)
 })
 
-router.get('/participants/search/username/:username', (req, res) => {
+router.get('/participants/search/userName/:userName', (req, res) => {
   searchParticipantsController.setStrategy(new SearchParticipantsUserName())
+  return searchParticipantsController.handle(req, res)
+})
+
+router.get('/participants/search/email/:email', (req, res) => {
+  searchParticipantsController.setStrategy(new SearchParticipantsEmail())
   return searchParticipantsController.handle(req, res)
 })
 

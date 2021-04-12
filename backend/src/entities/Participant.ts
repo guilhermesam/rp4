@@ -10,7 +10,7 @@ export default class Participant {
     name: string
 
     @Column()
-    username: string
+    userName: string
 
     @Column()
     password: string

@@ -1,8 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router'
 import { rejects } from 'node:assert';
 import { element, promise } from 'protractor';
+import { Observable } from 'rxjs';
+import { TokenMod } from 'src/shared/token.model';
 import { Participants } from '../../shared/participants.models';
 
 @Injectable({
@@ -11,50 +13,64 @@ import { Participants } from '../../shared/participants.models';
 export class LoginService {
   constructor(private http: HttpClient, private router: Router) { }
 
-  private participant: Participants
 
-  public getParticipants(): Promise<Participants[]> {
-    return this.http.get('http://localhost:3333/participants/search/all')
-      .toPromise()
-      .then((response: Participants[]) => response)
-  }
-
-  public getParticipantUsername(username: string): Promise<Participants> {
-    return this.http.get(`http://localhost:3333/participants/search/username/${username}`)
-      .toPromise()
-      .then((response: Participants) => response)
-  }
-
-  public getParticipantId(id: string): Promise<Participants> {
-    return this.http.get(`http://localhost:3333/participants/search/${id}`)
-      .toPromise()
-      .then((response: Participants) => response)
+  options = {
+    headers: new HttpHeaders().append('Content-type', 'application/json')
   }
 
 
-  private matchParticipant(username: string, password: string): Promise<Participants> {
+
+  private getParticipantEmail(email: string): Promise<Participants> {
+    return this.http.get(`http://localhost:3333/participants/search/email/${email}`)
+    .toPromise()
+    .then((response: Participants) => response)
+  }
+
+
+  public generateToken(token: TokenMod): Observable<any> {
+    return this.http.post('http://localhost:3333/participants/login', JSON.stringify(token), this.options)
+  }
+
+
+  public getStatusLogin(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.getParticipantUsername(username).then((participant: Participants) => {
-        if (participant.username != username || participant.password != password) {
-          window.alert("\nLogin ou senha incorretors !")
-          resolve(null)
-
-        } else if (participant.name == undefined || participant.password == undefined) {
-          window.alert("\nLogin ou senha invalidos !")
-          resolve(null)
-        } else if (participant.username == username && participant.password == password) {
-          resolve(participant)
-        }
-      })
+      if (this.getStoredToken() != null) {
+        resolve(true)
+      } else {
+        reject(false)
+      }
     })
   }
 
+  private storeToken(token: string): boolean {
+    if (token != null) {
+      localStorage.setItem("token", token)
+      return true
+    } else {
+      return false
+    }
+  }
+
+  public getStoredToken(): string {
+    return localStorage.getItem('token')
+  }
+
+  private clearStoredToken(): boolean {
+    if (localStorage.getItem('token').length > 0 && localStorage.getItem('token') != null) {
+      localStorage.removeItem('token')
+      return true
+    } else {
+      return false
+    }
+  }
+
+ 
   public getStoredParticipant(): Participants {
     var storedParticipant: Participants
     storedParticipant = new Participants
     storedParticipant.id = localStorage.getItem('idParticipant')
     storedParticipant.name = localStorage.getItem('nameParticipant')
-    storedParticipant.username = localStorage.getItem('userParticipant')
+    storedParticipant.userName = localStorage.getItem('userParticipant')
     storedParticipant.email = localStorage.getItem('emailParticipant')
     storedParticipant.phone = localStorage.getItem('phoneParticipant')
     return storedParticipant
@@ -63,7 +79,7 @@ export class LoginService {
   public storeParticipant(response: Participants): void {
     localStorage.setItem('idParticipant', response.id)
     localStorage.setItem('nameParticipant', response.name)
-    localStorage.setItem('userParticipant', response.username)
+    localStorage.setItem('userParticipant', response.userName)
     localStorage.setItem('emailParticipant', response.email)
     localStorage.setItem('phoneParticipant', response.phone)
   }
@@ -76,17 +92,34 @@ export class LoginService {
     localStorage.removeItem('phoneParticipant')
   }
 
-  public login(username: string, password: string): Promise<Participants> {
+  public matchParticipant(email):Promise<Participants>{
+    return new Promise((resolve, reject)=>{
+      this.getParticipantEmail(email).then((response: Participants)=>{
+        if(response != null || response != undefined){
+          resolve(response)
+        } else {
+          resolve(null)
+        }
+      })
+    })
+  }
+
+  public login(email: string, tok: string): Promise<Participants> {
+    
+    
     return new Promise((resolve, reject) => {
-      this.matchParticipant(username, password).then((response: Participants) => {
+      this.matchParticipant(email).then((response: Participants) => {
         if (response != null) {
-          //Adcionar a chamada para receber o token do Guilherme
-          //Armazenar o tokenqqqq
 
           this.router.navigate(['homePage'])
           resolve(response)
         } else {
-          //Rejeitar e manter na pagina
+          this.storeParticipant(response)
+          console.log(tok);
+          
+          this.storeToken(tok)
+          console.log(this.getStoredToken());
+          
           this.router.navigate(['/login'])
           resolve(null)
         }
@@ -94,5 +127,12 @@ export class LoginService {
     })
   }
 
+
+
+  public logout(): void {
+    this.clearStoredParticipant()
+    // this.clearStoredToken()
+    this.router.navigate(['/login'])
+  }
 
 }

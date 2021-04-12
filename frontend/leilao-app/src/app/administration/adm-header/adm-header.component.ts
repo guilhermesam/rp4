@@ -17,4 +17,8 @@ export class AdmHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.loginService.getStoredParticipant()
   }
+
+  logout(){
+    this.loginService.logout()
+  }
 }

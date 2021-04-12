@@ -1,7 +1,6 @@
 import app from './app'
+import env from '../src/utils/config'
 
 import './repositories/connect'
 
-const PORT = 3333
-
-app.listen(PORT, () => console.log(`Server Running at http://localhost:${PORT}!`))
+app.listen(env.PORT)
