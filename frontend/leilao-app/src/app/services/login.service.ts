@@ -21,14 +21,14 @@ export class LoginService {
 
 
   private getParticipantEmail(email: string): Promise<Participants> {
-    return this.http.get(`http://localhost:3333/participants/search/email/${email}`)
+    return this.http.get(`api/participants/search/email/${email}`)
     .toPromise()
     .then((response: Participants) => response)
   }
 
 
   public generateToken(token: TokenMod): Observable<any> {
-    return this.http.post('http://localhost:3333/participants/login', JSON.stringify(token), this.options)
+    return this.http.post('api/participants/login', JSON.stringify(token), this.options)
   }
 
 
@@ -105,8 +105,6 @@ export class LoginService {
   }
 
   public login(email: string, tok: string): Promise<Participants> {
-    
-    
     return new Promise((resolve, reject) => {
       this.matchParticipant(email).then((response: Participants) => {
         if (response != null) {

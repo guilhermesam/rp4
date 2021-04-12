@@ -6,7 +6,7 @@ import {
 
 import {
   SearchAllParticipants,
-  SearchParticipantsName,
+  SearchParticipantsEmail,
   SearchParticipantsId,
   SearchParticipantsUserName
 } from '../useCases/ManageParticipants/SearchParticipants/SearchStrategies'
