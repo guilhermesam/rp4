@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Participants } from 'src/shared/participants.models';
 
 @Injectable({
@@ -8,6 +9,11 @@ import { Participants } from 'src/shared/participants.models';
 })
 export class ParticipantsService {
   constructor(private http: HttpClient, private router: Router) { }
+
+  options = {
+    headers: new HttpHeaders().append('Content-type', 'application/json')
+  }
+
 
   public participants: Participants[]
 
@@ -26,5 +32,13 @@ export class ParticipantsService {
         return response
       })
   }
+
+  public createParticipant(participant: Participants): Observable<any>{
+    return this.http.post('/api/participants/create', JSON.stringify(participant), this.options)
+  }
+  
+
+
+
 
 }

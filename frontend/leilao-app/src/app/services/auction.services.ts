@@ -18,7 +18,7 @@ export class AuctionsService {
     }
 
     public getCategories(): Promise<Category[]>{
-        return this.http.get('http://localhost:3333/items/search/allCategories')
+        return this.http.get('http://localhost:3333/categories/search/allCategories')
             .toPromise()
             .then((response: Category[]) => response)
             

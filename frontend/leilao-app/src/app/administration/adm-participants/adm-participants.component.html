@@ -4,11 +4,7 @@
             <h3 class="uk-card-title">Formulario</h3>
             <div class="uk-grid">
                 <form class="uk-align-center" [formGroup]="formulario">
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <input class="uk-input" type="text" placeholder="Id" formControlName="id">
-                        </div>
-                    </div>
+                
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <input class="uk-input" type="text" placeholder="Nome" formControlName="name">
@@ -17,6 +13,11 @@
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <input class="uk-input" type="text" placeholder="Usuario" formControlName="username">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <input class="uk-input" type="text" placeholder="Senha" formControlName="password">
                         </div>
                     </div>
                     <div class="uk-margin">
@@ -31,7 +32,7 @@
                     </div>
                     <div class="uk-margin">
                         <div class="uk-inline">
-                            <input class="uk-input" type="text" placeholder="Senha" formControlName="password">
+                            <input class="uk-input" type="text" placeholder="Endereço" formControlName="address">
                         </div>
                     </div>
         
@@ -39,7 +40,7 @@
                     <div class="uk-margin">
                         <button type="submit" class="uk-button uk-button-secondary uk-width-1-1"
                             style="background-color: rgb(56, 233, 56, 0.692); color: #fff;"
-                            (click)="cadastrarCliente()">Cadastrar</button>
+                            (click)="createParticipant()">Cadastrar</button>
                     </div>
                     <div class="uk-margin">
                         <button type="submit" class="uk-button uk-button-primary uk-width-1-1"
@@ -93,6 +94,13 @@
                         <h4>Phone</h4>
                         <ul class="uk-list uk-list">
                             <li>{{participant.phone}}</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4>Endereço</h4>
+                        <ul class="uk-list uk-list">
+                            <li>{{participant.address}}</li>
                         </ul>
                     </div>
                     <div>
