@@ -3,11 +3,14 @@ import createAuctionsUseCase from './CreateAuctionsUseCase'
 
 class CreateAuctionsController {
   handle (request: Request, response: Response) {
+    const {
+      id,
+      items,
+      auctioneerId
+    } = request.body
     const start: Date = request.body.datetime
-    const id: string = request.body.id
-    const items: string[] = request.body.items
 
-    createAuctionsUseCase.execute({ start, id, items })
+    createAuctionsUseCase.execute({ start, id, items, auctioneerId })
       .then(() => {
         return response.status(201).send()
       })

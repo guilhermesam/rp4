@@ -1,16 +1,21 @@
 {
   "name": "rp4",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "engines": { "node": "15.13.0" },
   "repository": "https://github.com/guilhermesam/rp4",
   "author": "Guilherme Samuel <guilhermesamuel79@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
+    "postinstall": "tsc",
     "start": "node dist/server.js",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "dev": "ts-node-dev --respawn --transpile-only --files --ignore-watch node_modules --no-notify src/server.ts",
     "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
-    "test": "jest --no-cache"
+    "watch-node": "nodemon dist/server.js",
+    "watch-ts": "tsc -w",
+    "test": "jest --no-cache",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.13",
@@ -28,6 +33,7 @@
     "@typescript-eslint/parser": "^4.14.2",
     "babel-cli": "^6.26.0",
     "babel-plugin-module-resolver": "^4.1.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.12.1",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",

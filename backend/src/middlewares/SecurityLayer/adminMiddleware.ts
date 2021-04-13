@@ -3,7 +3,7 @@ import AuctioneersRepository from '../../repositories/implementations/Auctioneer
 
 const adminMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const repository = new AuctioneersRepository()
-  const id = req.userId
+  const id = req.body.userId
   const admin = await repository.searchById(id)
 
   if (admin) {

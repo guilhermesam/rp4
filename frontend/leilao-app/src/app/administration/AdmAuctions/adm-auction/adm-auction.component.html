@@ -42,7 +42,7 @@
             </div>
         </div>
         <div>
-            <div class="uk-card uk-card-default uk-card-body box">
+            <div class="uk-card uk-card-default uk-card-body box" [formGroup]="formItem">
                 <h3 class="uk-card-title">Atribuir item</h3>
                 <hr class="uk-divider-small">
                 <div class="uk-flex uk-margin">
@@ -50,21 +50,18 @@
                         <p>Nome do item</p>
                         <div class="uk-inline">
                             <a class="uk-form-icon"uk-icon="icon: pencil"></a>
-                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome...">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome" formControlName="title">
                         </div>
                     </div>
-                    <div class="uk-margin-left">
+                    <div class="uk-margin-left ">
                         <p>Categoria</p>
-                        <div uk-form-custom="target: > * > span:first-child">
-                            <select>
-                                <option value="">Selecionar categoria</option>
-                                <option value="1">Option 01</option>
+                        <div class="uk-form-controls">
+                            <select class="uk-select" id="form-stacked-select">
+                                <option *ngFor="let category of categories">  {{ category.name }}</option>
                             </select>
-                            <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                                <span></span>
-                                <span uk-icon="icon: chevron-down"></span>
-                            </button>
                         </div>
+                    </div>
+                    <div class="uk-margin">
                         <a href="" class="uk-icon-button uk-margin-left " uk-icon="plus"></a>
                     </div>
                 </div>
@@ -72,7 +69,7 @@
                     <p>Valor inicial</p>
                     <div class="uk-inline">
                         <a class="uk-form-icon"uk-icon="icon:  tag"></a>
-                        <input class="uk-input uk-form-width-medium" type="text" placeholder="valor">
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="valor" formControlName="minimumBid">
                     </div>
                 </div>
                 <div class="uk-flex uk-margin">
@@ -80,43 +77,27 @@
                         <p>Provedor</p>
                         <div class="uk-inline">
                             <a class="uk-form-icon"uk-icon="icon: user"></a>
-                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome do provedor">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome do provedor" formControlName="itemProviderId">
                         </div>
-                        <a href="" class="uk-icon-button uk-margin-left" uk-icon="search"></a>
+                        <a class="uk-icon-button uk-margin-left" uk-icon="search" (click)="getProvider()"></a>
                     </div>
                 </div>
                 <div class="uk-flex uk-margin">
                     <div class="uk-margin">
-                        <p>Email</p>
+                        <p>Imagem</p>
                         <div class="uk-inline">
-                            <a class="uk-form-icon"uk-icon="icon:  mail"></a>
-                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome do provedor">
+                            <a class="uk-form-icon"uk-icon="icon: image"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="imagem" formControlName="imagePath">
                         </div>
+                        <a class="uk-icon-button uk-margin-left" uk-icon="search" (click)="getProvider()"></a>
                     </div>
-                    <div class="uk-margin-left">
-                        <p>Endereço</p>
-                        <div class="uk-inline">
-                            <a class="uk-form-icon"uk-icon="icon: location"></a>
-                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome do provedor">
-                        </div>
-                    </div>
-                    <div class="uk-margin-left">
-                        <p>Telefone</p>
-                        <div class="uk-inline">
-                            <a class="uk-form-icon"uk-icon="icon: receiver"></a>
-                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome do provedor">
-                        </div>
-                    </div>
-                </div>
-                <div class="uk-flex uk-margin">
-                    <a href="" class="uk-icon-button " uk-icon="plus"></a>
                 </div>
                 <div class="uk-margin">
                     <p>Descrição</p>
-                    <textarea class="uk-textarea" rows="5" placeholder="Textarea"></textarea>
-                </div> 
+                    <textarea class="uk-textarea" rows="5" placeholder="Textarea" formControlName="description" ></textarea>
+                </div>
                 <div class="uk-flex uk-margin">
-                    <button class="uk-button uk-button-primary">Criar leilão</button>
+                    <button class="uk-button uk-button-primary" (click)="addItem()">Criar leilão</button>
                 </div>
             </div>
         </div>

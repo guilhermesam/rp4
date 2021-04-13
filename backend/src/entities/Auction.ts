@@ -1,5 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm'
-import { AuctionItem } from '../entities'
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
+import { Auctioneer, AuctionItem } from '../entities'
 
 @Entity('Auctions')
 export default class Auction {
@@ -17,4 +17,11 @@ export default class Auction {
 
     @OneToMany(() => AuctionItem, auctionItem => auctionItem.auction)
     auctionItems: AuctionItem[]
+
+    @ManyToOne(() => Auctioneer, auctioneer => auctioneer.id)
+    @JoinColumn({ name: 'auctioneerId' })
+    auctioneer: Auctioneer
+
+    @Column()
+    auctioneerId: string
 }

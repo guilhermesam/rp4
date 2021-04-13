@@ -6,22 +6,22 @@ import { Items } from '../../shared/items.model'
 @Injectable()
 export class AuctionsService {
     constructor(private http : HttpClient) { }
-    
+
     public items : Items[]
     public category: Category[]
-    
+
     public getAuctions(): Promise<Items[]>{
         return this.http.get('http://localhost:3333/items/search/all')
             .toPromise()
             .then((response: Items[]) => response)
-            
+
     }
 
     public getCategories(): Promise<Category[]>{
-        return this.http.get('http://localhost:3333/items/search/allCategories')
+        return this.http.get('http://localhost:3333/categories/search/allCategories')
             .toPromise()
             .then((response: Category[]) => response)
-            
+
     }
 
     public getAuctionsByID(id: string): Promise<Items>{
@@ -30,7 +30,7 @@ export class AuctionsService {
         .then((response: Items) => {
             return response
         })
-    }  
+    }
 
-    
+
 }

@@ -20,8 +20,9 @@ export default class AuctionBidsRepository implements IAuctionBidsRepository<Auc
     return await getRepository(AuctionBid)
       .find({ where: { auctionItemId: auctionItemId } })
   }
-  async criptoBids (auctionItemId: String): Promise<AuctionBid[]> {
+
+  async criptoBids (auctionItemId: String): Promise<AuctionBid> {
     return await getRepository(AuctionBid)
-    .findOne({ where: { auctionItemId: auctionItemId }, order: { value: 'DESC' } })
+      .findOne({ where: { auctionItemId: auctionItemId }, order: { value: 'DESC' } })
   }
 }
