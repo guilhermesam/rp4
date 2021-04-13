@@ -17,6 +17,7 @@ import ITransactionManager from '../../../repositories/transactions/ITransaction
 import TypeORMTransactionManager from '../../../repositories/transactions/TypeORMTransactionManager'
 import { AuctionBid } from '../../../entities'
 import { BlockchainService } from '../../../services'
+import { IChain } from '../../../services/IBlockchainService'
 
 class FinishAuctionsUseCase {
   constructor (
@@ -49,7 +50,7 @@ class FinishAuctionsUseCase {
   async execute (data: IFinishAuctionsDTO): Promise<AuctionBid[]> {
     const items = await this.auctionItemsRepository.searchItemsInAuction(data.id)
 
-    const highestBids: AuctionBid[] = []
+    const highestBidsChains: IChain[] = []
 
     items.forEach(async element => {
       const highestBid = await this.auctionBidsRepository.getHighestBid(element.id)
@@ -57,7 +58,6 @@ class FinishAuctionsUseCase {
       if (!highestBid) {
         this.transactionManager.addAction(this.auctionItemsRepository.setAvailableStatus, [element.id])
       } else {
-        highestBids.push(highestBid)
         const saleData = AuctionSalesMapper.toPersistence({
           id: element.id,
           date: data.date,
@@ -70,13 +70,14 @@ class FinishAuctionsUseCase {
         this.transactionManager.addAction(this.auctionItemsRepository.setSoldStatus, [element.id])
       }
 
-      await this.createHighestAuctionBidOnBlockchain(highestBid)
+      const blockchainResult = await this.createHighestAuctionBidOnBlockchain(highestBid)
+      highestBidsChains.push(blockchainResult)
     })
 
     this.transactionManager.addAction(this.auctionsRepository.close, [data.id])
     this.transactionManager.addAction(this.auctionsRepository.setAuctionEndDate, [data.id, data.date])
     await this.transactionManager.run()
-    return highestBids
+    return highestBidsChains
   }
 }
 
