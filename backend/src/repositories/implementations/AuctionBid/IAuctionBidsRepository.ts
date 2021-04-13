@@ -6,5 +6,4 @@ export default interface IAuctionBidsRepository extends IReadonlyBaseRepository<
     searchBidsInItem(auctionItemId: string): Promise<AuctionBid[]>
     create(data: AuctionBid): Promise<AuctionBid>
     searchAll(): Promise<AuctionBid[]>
-    criptoBids(auctionItemId: string): Promise<AuctionBid[]>
 }

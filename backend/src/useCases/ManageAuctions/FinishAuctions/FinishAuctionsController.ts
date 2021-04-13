@@ -10,8 +10,8 @@ class FinishAuctionsController {
       id: id,
       date: date
     })
-      .then(() => {
-        return response.status(200).send()
+      .then((data) => {
+        return response.status(200).send(data)
       })
       .catch((error) => {
         return response.status(400).json({

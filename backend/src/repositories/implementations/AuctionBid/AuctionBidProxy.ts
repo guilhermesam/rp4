@@ -3,11 +3,12 @@ import AuctionBidsRepository from './AuctionBidsRepository'
 import IAuctionBidsRepository from './IAuctionBidsRepository'
 
 export default class AuctionBidProxy implements IAuctionBidsRepository {
-  constructor (private auctionBidsRepository: AuctionBidsRepository = new AuctionBidsRepository()) {
+  constructor (private auctionBidsRepository: AuctionBidsRepository = new AuctionBidsRepository()
+  ) {
   }
 
-  create (data: AuctionBid): Promise<AuctionBid> {
-    throw new Error('Method not implemented.')
+  public create (data: AuctionBid): Promise<AuctionBid> {
+    return this.auctionBidsRepository.create(data)
   }
 
   getHighestBid (auctionItemId: string): Promise<AuctionBid> {
@@ -15,14 +16,10 @@ export default class AuctionBidProxy implements IAuctionBidsRepository {
   }
 
   searchBidsInItem (auctionItemId: string): Promise<AuctionBid[]> {
-    throw new Error('Method not implemented.')
+    return this.searchBidsInItem(auctionItemId)
   }
 
   searchAll (): Promise<AuctionBid[]> {
-    throw new Error('Method not implemented.')
-  }
-
-  criptoBids (auctionItemId: string): Promise<AuctionBid[]> {
-    throw new Error('Method not implemented.')
+    return this.auctionBidsRepository.searchAll()
   }
 }
