@@ -9,19 +9,13 @@
   "scripts": {
     "postinstall": "tsc",
     "start": "node dist/server.js",
-<<<<<<< HEAD
     "dev": "dotenv -e .env -- ts-node-dev --respawn --transpile-only --files --ignore-watch node_modules --no-notify src/server.ts",
     "typeorm": "dotenv -e .env -- npx ts-node ./node_modules/typeorm/cli.js",
-    "test": "jest --no-cache"
-=======
+    "test": "jest --no-cache",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
-    "dev": "ts-node-dev --respawn --transpile-only --files --ignore-watch node_modules --no-notify src/server.ts",
-    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
     "watch-node": "nodemon dist/server.js",
     "watch-ts": "tsc -w",
-    "test": "jest --no-cache",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
->>>>>>> main
   },
   "devDependencies": {
     "@babel/cli": "^7.12.13",

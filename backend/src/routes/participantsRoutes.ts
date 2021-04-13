@@ -13,10 +13,7 @@ import {
 
 const router = Router()
 
-
-
 router.post('/participants/create', (req, res) => {
-  
   return createParticipantsController.handle(req, res)
 })
 router.put('/participants/update/:id', (req, res) => {
