@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import { authMiddleware } from '../middlewares/SecurityLayer'
+import { authMiddleware, adminMiddleware } from '../middlewares/SecurityLayer'
 import { createAuctionsController, finishAuctionsController } from '../useCases/ManageAuctions'
 
 const router = Router()
 
-router.post('/auctions/create', authMiddleware, (req, res) => {
+router.post('/auctions/create', authMiddleware, adminMiddleware, (req, res) => {
   return createAuctionsController.handle(req, res)
 })
 

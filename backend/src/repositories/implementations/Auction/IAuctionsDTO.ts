@@ -3,5 +3,6 @@ export default interface IAuctionsDTO {
     start: Date,
     end?: Date,
     closed?: number,
-    items: string[]
+    items: string[],
+    auctioneerId: string
 }

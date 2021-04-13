@@ -22,7 +22,13 @@ class SearchParticipantsId implements IStrategy {
 
 class SearchParticipantsUserName implements IStrategy {
   async search (searchParticipantsUseCase: typeof SearchParticipantsUseCase, param: any): Promise<any> {
-    return await searchParticipantsUseCase.searchUserName(param.username)
+    return await searchParticipantsUseCase.searchUserName(param.userName)
+  }
+}
+
+class SearchParticipantsEmail implements IStrategy {
+  async search (searchParticipantsUseCase: typeof SearchParticipantsUseCase, param: any): Promise<any> {
+    return await searchParticipantsUseCase.searchEmail(param.email)
   }
 }
 
@@ -31,5 +37,6 @@ export {
   SearchAllParticipants,
   SearchParticipantsId,
   SearchParticipantsName,
-  SearchParticipantsUserName
+  SearchParticipantsUserName,
+  SearchParticipantsEmail
 }

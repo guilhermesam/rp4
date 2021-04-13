@@ -63,7 +63,8 @@ class FinishAuctionsUseCase {
           date: data.date,
           value: highestBid.value,
           participantId: highestBid.participantId,
-          auctionItemId: element.id
+          auctionItemId: element.id,
+          auctioneerId: element.auction.auctioneerId
         })
         this.transactionManager.addAction(this.auctionSalesRepository.create, [saleData])
         this.transactionManager.addAction(this.auctionItemsRepository.setSoldStatus, [element.id])

@@ -7,7 +7,8 @@ export default class AuctionsMapper {
     const repository = getRepository(Auction)
     return repository.create({
       id: auctionDTO.id,
-      start: auctionDTO.start
+      start: auctionDTO.start,
+      auctioneerId: auctionDTO.auctioneerId
     })
   }
 }

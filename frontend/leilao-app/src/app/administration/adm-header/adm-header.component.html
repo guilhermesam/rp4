@@ -3,16 +3,15 @@
         <a class="uk-navbar-item uk-logo" href="#">BEST BIDS ADM</a>
         <ul class="uk-navbar-nav">
             <li><a routerLink="/buscar-leiloes">LEILÕES</a></li>
-            <li><a>ITENS</a></li>
+            <li><a routerLink="/participants-manager">PARTICIPANTES</a></li>
 
         </ul>
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
+            <li><a (click)="logout()">Sair</a></li>
             <li><a *ngIf="user">{{user.name}}</a></li>
-            <li><a *ngIf="user">{{user.email}}</a></li>
-            <li><a *ngIf="user">{{user.username}}</a></li>
-            <li><a *ngIf="user">{{user.password}}</a></li>
+
         </ul>
     </div>
 </nav>

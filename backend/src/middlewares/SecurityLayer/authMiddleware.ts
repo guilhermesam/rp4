@@ -16,10 +16,10 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     }
 
     const token = authorization.replace('Bearer', '').trim()
-    const data = jwt.verify(token, 'secret')
+    const data = jwt.verify(token, process.env.TOKEN_KEY)
     const { id } = data as ITokenPayload
 
-    req.userId = id
+    req.body.userId = id
 
     next()
   } catch {
