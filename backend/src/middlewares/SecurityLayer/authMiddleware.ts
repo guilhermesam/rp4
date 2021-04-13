@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
-import env from '../../utils/config'
 
 interface ITokenPayload {
   id: string
@@ -17,10 +16,10 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     }
 
     const token = authorization.replace('Bearer', '').trim()
-    const data = jwt.verify(token, env.TOKEN_KEY)
+    const data = jwt.verify(token, process.env.TOKEN_KEY)
     const { id } = data as ITokenPayload
 
-    req.userId = id
+    req.body.userId = id
 
     next()
   } catch {

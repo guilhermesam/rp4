@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import env from '../../utils/config'
 
 export default abstract class LoginTemplate {
   async findUser (email: string, repository: any): Promise<any> {
@@ -19,6 +18,6 @@ export default abstract class LoginTemplate {
   }
 
   generateNewToken (userId: string) {
-    return jwt.sign({ id: userId }, env.TOKEN_KEY, { expiresIn: 3000 })
+    return jwt.sign({ id: userId }, process.env.TOKEN_KEY, { expiresIn: 3000 })
   }
 }

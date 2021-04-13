@@ -26,10 +26,12 @@ class CreateAuctionsUseCase {
 
   async execute (data: IAuctionsDTO): Promise<void> {
     const auctionsData = AuctionsMapper.toPersistence(data)
+    const ALLOCATED_ITEM_CODE = 1
+
     this.transactionManager.addAction(this.auctionsRepository.create, [auctionsData])
 
     data.items.forEach(async (itemId) => {
-      if ((await this.auctionItemsRepository.searchById(itemId)).finishedOff === -1) {
+      if ((await this.auctionItemsRepository.searchById(itemId)).finishedOff === ALLOCATED_ITEM_CODE) {
         throw new Error('Item already alocated to auction')
       }
       this.transactionManager.addAction(this.auctionItemsRepository.setUnavailableStatus, [itemId])

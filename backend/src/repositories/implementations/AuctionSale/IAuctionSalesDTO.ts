@@ -4,4 +4,5 @@ export default interface IAuctionSalesDTO {
     value?: number
     auctionItemId?: string
     participantId?: string
+    auctioneerId?: string
 }

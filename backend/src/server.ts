@@ -1,6 +1,5 @@
 import app from './app'
-import env from '../src/utils/config'
 
 import './repositories/connect'
 
-app.listen(env.PORT)
+app.listen(process.env.PORT || 3333)

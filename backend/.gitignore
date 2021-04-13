@@ -103,8 +103,7 @@ dist
 # TernJS port file
 .tern-port
 
-# TypeORM Files
-ormconfig.json
-
 # Heroku
-Procfile
+backend/.git
+
+ormconfig.json
