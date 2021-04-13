@@ -19,5 +19,5 @@ export const ROUTES:  Routes = [
     {path : 'login', component: LoginComponent},
     {path : 'adicionar-leilao', component: AdmAuctionComponent }
 
- 
-] 
+
+]

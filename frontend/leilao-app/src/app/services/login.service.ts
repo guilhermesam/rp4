@@ -73,7 +73,7 @@ export class LoginService {
     }
   }
 
- 
+
   public getStoredParticipant(): Participants {
     var storedParticipant: Participants
     storedParticipant = new Participants
@@ -122,8 +122,8 @@ export class LoginService {
           this.router.navigate(['/administration'])
           resolve(response)
         } else {
-          
-          
+
+
           this.router.navigate(['/login'])
           resolve(null)
         }

@@ -10,15 +10,14 @@ class SearchAuctionsController {
     }
 
     async handle (request: Request, response: Response) {
-      await this.strategy.search(searchAuctionsBidsUseCase, request.params)
-        .then((bids) => {
-          return response.status(200).json(bids)
+      try {
+        const bids = await this.strategy.search(searchAuctionsBidsUseCase, request.params)
+        return response.status(200).json(bids)
+      } catch (error) {
+        return response.status(400).json({
+          message: error.message || 'Unexpected error!'
         })
-        .catch((error) => {
-          return response.status(400).json({
-            message: error.message || 'Unexpected error!'
-          })
-        })
+      }
     }
 }
 

@@ -28,7 +28,7 @@ export class AdmAuctionComponent implements OnInit {
     private itemProviderService: ItemProviderService,
     private aucticonsServices: AuctionsService,
     private itemService: ItemsService
-    
+
   ) { }
 
   public formItem: FormGroup = new FormGroup({

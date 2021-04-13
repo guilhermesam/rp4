@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="uk-child-width-1-2" uk-grid>
-    <div class="uk-container-small"> 
+    <div class="uk-container-small">
         <div>
             <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
             <li class="uk-active"><a class="text-title">Buscar Leilões</a></li>
@@ -26,7 +26,7 @@
                     <div *ngFor="let category of categories">
                         <li>
                             <label>
-                                <input class="uk-checkbox text-checkBox" 
+                                <input class="uk-checkbox text-checkBox"
                                 type="checkbox"> {{ category.name }}
                             </label>
                         </li>
@@ -47,8 +47,8 @@
                     <div class="uk-card-body">
                         <h3 class="uk-card-title uk-align-center">{{ item.title }}</h3>
                         <p class="itm-description uk-align-center">{{ item.description }}</p>
-                        <button 
-                        [routerLink]="['/leilao', item.id]" 
+                        <button
+                        [routerLink]="['/leilao', item.id]"
                         class="uk-button uk-button-secondary uk-align-center">
                         VER LEILÃO</button>
                     </div>

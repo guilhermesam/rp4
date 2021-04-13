@@ -14,8 +14,8 @@ export default class AuctionsRepository implements IAuctionsRepository<Auction> 
       .execute()
   }
 
-  async create (data: Auction): Promise<void> {
-    await getRepository(Auction).save(data)
+  async create (data: Auction): Promise<Auction> {
+    return getRepository(Auction).save(data)
   }
 
   async close (id: string): Promise<void> {

@@ -4,11 +4,10 @@ import IParticipantsDTO from './IParticipantsDTO'
 
 export default class ParticipantsMapper {
   static toPersistence (participantsDTO: IParticipantsDTO): Participant {
-    const repository = getRepository(Participant)
-    return repository.create({
+    return getRepository(Participant).create({
       id: participantsDTO.id,
       name: participantsDTO.name,
-      username: participantsDTO.userName,
+      userName: participantsDTO.userName,
       password: participantsDTO.password,
       email: participantsDTO.email,
       address: participantsDTO.address,

@@ -8,5 +8,5 @@ export class Items{
    public auctionId: string
    public categoryId: string
    public itemProviderId: string
-   
+
 }

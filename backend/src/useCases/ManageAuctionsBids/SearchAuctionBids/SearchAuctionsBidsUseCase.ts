@@ -3,17 +3,12 @@ import AuctionIBidsRepository from '../../../repositories/implementations/Auctio
 import IAuctionIBidsRepository from '../../../repositories/implementations/AuctionBid/IAuctionBidsRepository'
 
 class SearchAuctionsBidsUseCase {
-    private auctionsBidsRepository: IAuctionIBidsRepository<any>
+  constructor (private auctionsBidsRepository: IAuctionIBidsRepository = new AuctionIBidsRepository()) {
+  }
 
-    constructor (auctionsBidsRepository?: IAuctionIBidsRepository<any>) {
-      this.auctionsBidsRepository = auctionsBidsRepository
-    }
-
-    async getHighestBid (id: string): Promise<AuctionBid> {
-      return await this.auctionsBidsRepository.getHighestBid(id)
-    }
+  async getHighestBid (id: string): Promise<AuctionBid> {
+    return await this.auctionsBidsRepository.getHighestBid(id)
+  }
 }
 
-export default new SearchAuctionsBidsUseCase(
-  new AuctionIBidsRepository()
-)
+export default new SearchAuctionsBidsUseCase()

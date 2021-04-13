@@ -1,26 +1,25 @@
+import { AuctionBid } from '../../../entities'
 import AuctionBidsRepository from './AuctionBidsRepository'
 import IAuctionBidsRepository from './IAuctionBidsRepository'
 
-export default class AuctionBidProxy<T> implements IAuctionBidsRepository<T> {
-    private auctionBidsRepository: AuctionBidsRepository
+export default class AuctionBidProxy implements IAuctionBidsRepository {
+  constructor (private auctionBidsRepository: AuctionBidsRepository = new AuctionBidsRepository()
+  ) {
+  }
 
-    constructor () {
-      this.auctionBidsRepository = new AuctionBidsRepository()
-    }
+  public create (data: AuctionBid): Promise<AuctionBid> {
+    return this.auctionBidsRepository.create(data)
+  }
 
-    getHighestBid (auctionItemId: string): Promise<any> {
-      return this.auctionBidsRepository.getHighestBid(auctionItemId)
-    }
+  getHighestBid (auctionItemId: string): Promise<AuctionBid> {
+    return this.auctionBidsRepository.getHighestBid(auctionItemId)
+  }
 
-    searchBidsInItem (auctionItemId: string): Promise<any[]> {
-      return this.auctionBidsRepository.searchBidsInItem(auctionItemId)
-    }
+  searchBidsInItem (auctionItemId: string): Promise<AuctionBid[]> {
+    return this.searchBidsInItem(auctionItemId)
+  }
 
-    create (t: any): Promise<any> {
-      return this.create(t)
-    }
-
-    searchAll (): Promise<any> {
-      return this.searchAll()
-    }
+  searchAll (): Promise<AuctionBid[]> {
+    return this.auctionBidsRepository.searchAll()
+  }
 }

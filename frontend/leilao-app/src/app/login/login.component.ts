@@ -12,7 +12,7 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  
+
 
   public formulario: FormGroup = new FormGroup({
     'email': new FormControl(null),
@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
     tk.password = this.formulario.value.password
     console.log("TK: "+tk);
     this.loginService.matchParticipant(tk.email)
-    
-    
+
+
     this.loginService.generateToken(tk).subscribe((res)=>{
       this.loginService.login(tk.email, res)
     })

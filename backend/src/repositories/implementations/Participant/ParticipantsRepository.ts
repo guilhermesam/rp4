@@ -16,7 +16,7 @@ export default class ParticipantsRepository implements IParticipantsRepository<P
   }
 
   async searchByUserName (username: string): Promise<Participant> {
-    return await getRepository(Participant).findOne({ username: username })
+    return await getRepository(Participant).findOne({ where: { userName: username } })
   }
 
   async searchByName (name: string): Promise<Participant> {
@@ -34,7 +34,7 @@ export default class ParticipantsRepository implements IParticipantsRepository<P
       .set({
         id: participant.id,
         name: participant.name,
-        username: participant.username,
+        userName: participant.userName,
         password: participant.password,
         email: participant.email,
         address: participant.address,

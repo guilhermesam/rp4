@@ -41,12 +41,12 @@ export class AdmParticipantsComponent implements OnInit {
   public createParticipant(): void {
     this.participant = this.valuesFromFrom()
     console.log(this.participant);
-    
+
     this.participantsService.createParticipant(this.participant).subscribe((response)=>{
       console.log(response);
-      
+
     })
-    
+
   }
 
   public atualizarCliente(): void {
