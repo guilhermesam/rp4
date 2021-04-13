@@ -2,7 +2,6 @@
   "name": "rp4",
   "version": "1.0.0",
   "main": "server.js",
-  "engines": { "node": "15.13.0" },
   "repository": "https://github.com/guilhermesam/rp4",
   "author": "Guilherme Samuel <guilhermesamuel79@gmail.com>",
   "license": "MIT",

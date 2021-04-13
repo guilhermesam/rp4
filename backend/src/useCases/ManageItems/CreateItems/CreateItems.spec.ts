@@ -3,8 +3,10 @@ import { getRepository } from 'typeorm'
 
 import '../../../repositories/connect'
 
-import { app } from '../../../app'
+import App from '../../../app'
 import { AuctionItem } from '../../../entities'
+
+const app = new App()
 
 describe('Creating an Auction Item Test', () => {
   test('testing with right parameters', async done => {
@@ -18,7 +20,7 @@ describe('Creating an Auction Item Test', () => {
     const auctionItem = getRepository(AuctionItem)
 
     await auctionItem.count().then(async count => {
-      await request(app)
+      await request(app.getServerInstance())
         .post('/items/create')
         .send(data)
         .then(async () => {
@@ -38,7 +40,7 @@ describe('Creating an Auction Item Test', () => {
 /**
  * await Service.count().then(async function (count) {
 
-    await request(app)
+    await request(app.getServerInstance)
         .post('/api/services')
         .send(service)
         .then(async () => {
