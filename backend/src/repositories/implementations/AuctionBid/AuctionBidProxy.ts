@@ -2,7 +2,7 @@ import { AuctionBid } from '../../../entities'
 import AuctionBidsRepository from './AuctionBidsRepository'
 import IAuctionBidsRepository from './IAuctionBidsRepository'
 
-export default class AuctionBidProxy implements IAuctionBidsRepository {
+export default class AuctionBidProxy implements IAuctionBidsRepository<any> {
   constructor (private auctionBidsRepository: AuctionBidsRepository = new AuctionBidsRepository()
   ) {
   }

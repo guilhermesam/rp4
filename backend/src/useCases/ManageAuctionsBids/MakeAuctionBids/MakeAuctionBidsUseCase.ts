@@ -6,7 +6,7 @@ import { AuctionBid } from '../../../entities'
 
 class MakeAuctionBidsUseCase {
   constructor (
-    private auctionBidsRepository: IAuctionBidsRepository
+    private auctionBidsRepository: IAuctionBidsRepository<any>
   ) {
   }
 

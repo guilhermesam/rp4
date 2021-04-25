@@ -5,6 +5,9 @@
   "repository": "https://github.com/guilhermesam/rp4",
   "author": "Guilherme Samuel <guilhermesamuel79@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "15.13.0"
+  },
   "scripts": {
     "postinstall": "tsc",
     "start": "node dist/server.js",
