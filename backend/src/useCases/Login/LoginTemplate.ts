@@ -18,6 +18,6 @@ export default abstract class LoginTemplate {
   }
 
   generateNewToken (userId: string) {
-    return jwt.sign({ id: userId }, process.env.TOKEN_KEY, { expiresIn: 3000 })
+    return jwt.sign({ id: userId }, 'SECRET', { expiresIn: 3000 })
   }
 }

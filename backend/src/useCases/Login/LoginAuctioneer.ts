@@ -7,9 +7,9 @@ import LoginTemplate from './LoginTemplate'
 class LoginAuctioneer extends LoginTemplate {
   private auctioneersRepository: IAuctioneersRepository<any>
 
-  constructor (AuctioneersRepository: IAuctioneersRepository<any>) {
+  constructor (auctioneersRepository: IAuctioneersRepository<any>) {
     super()
-    this.auctioneersRepository = AuctioneersRepository
+    this.auctioneersRepository = auctioneersRepository
   }
 
   async execute (data: ILoginDTO): Promise<string> {

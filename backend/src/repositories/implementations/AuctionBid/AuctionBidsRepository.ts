@@ -3,7 +3,7 @@ import { getRepository, Repository } from 'typeorm'
 import { AuctionBid } from '../../../entities'
 import IAuctionBidsRepository from './IAuctionBidsRepository'
 
-export default class AuctionBidsRepository implements IAuctionBidsRepository {
+export default class AuctionBidsRepository implements IAuctionBidsRepository<AuctionBid> {
   private repository: Repository<AuctionBid>
 
   private getRepositoryInstance (): Repository<AuctionBid> {

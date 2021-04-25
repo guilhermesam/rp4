@@ -16,7 +16,7 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     }
 
     const token = authorization.replace('Bearer', '').trim()
-    const data = jwt.verify(token, process.env.TOKEN_KEY)
+    const data = jwt.verify(token, 'SECRET')
     const { id } = data as ITokenPayload
 
     req.body.userId = id

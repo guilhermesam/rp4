@@ -1,9 +1,8 @@
-import { AuctionBid } from '../../../entities'
 import IReadonlyBaseRepository from '../IReadonlyBaseRepository'
 
-export default interface IAuctionBidsRepository extends IReadonlyBaseRepository<AuctionBid> {
-    getHighestBid(auctionItemId: string): Promise<AuctionBid>
-    searchBidsInItem(auctionItemId: string): Promise<AuctionBid[]>
-    create(data: AuctionBid): Promise<AuctionBid>
-    searchAll(): Promise<AuctionBid[]>
+export default interface IAuctionBidsRepository<T> extends IReadonlyBaseRepository<T> {
+    getHighestBid(auctionItemId: string): Promise<T>
+    searchBidsInItem(auctionItemId: string): Promise<T[]>
+    create(data: T): Promise<T>
+    searchAll(): Promise<T[]>
 }

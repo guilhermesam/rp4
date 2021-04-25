@@ -6,4 +6,5 @@ export default interface IAuctioneersRepository<T> extends IChangeableBaseReposi
   searchById(id: string): Promise<Auctioneer>
   searchByName(name: string): Promise<Auctioneer>
   searchByEmail (email: string): Promise<Auctioneer>
+  searchByAuction (id: string): Promise<Auctioneer>
 }

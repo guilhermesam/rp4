@@ -27,17 +27,16 @@ export default class TypeORMTransactionManager implements ITransactionsManager {
     await queryRunner.connect()
 
     await queryRunner.startTransaction()
-      .then(() => {
-        for (let i = 0; i < this.actions.length; i++) {
-          this.actions[i](...this.parameters[i])
-        }
-        queryRunner.commitTransaction()
-      })
-      .catch(() => {
-        queryRunner.rollbackTransaction()
-      })
-      .finally(() => {
-        queryRunner.release()
-      })
+
+    try {
+      for (let i = 0; i < this.actions.length; i++) {
+        this.actions[i](...this.parameters[i])
+      }
+      queryRunner.commitTransaction()
+    } catch {
+      queryRunner.rollbackTransaction()
+    } finally {
+      queryRunner.release()
+    }
   }
 }

@@ -2,11 +2,11 @@ import { Request, Response } from 'express'
 import finishAuctionsUseCase from './FinishAuctionsUseCase'
 
 class FinishAuctionsController {
-  handle (request: Request, response: Response) {
+  async handle (request: Request, response: Response) {
     const id = request.body.id
     const date = request.body.datetime
 
-    finishAuctionsUseCase.execute({
+    await finishAuctionsUseCase.execute({
       id: id,
       date: date
     })

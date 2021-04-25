@@ -10,7 +10,8 @@ export default class AuctionSalesMapper {
       date: auctionSaleDTO.date,
       value: auctionSaleDTO.value,
       participantId: auctionSaleDTO.participantId,
-      auctionItemId: auctionSaleDTO.auctionItemId
+      auctionItemId: auctionSaleDTO.auctionItemId,
+      auctioneerId: auctionSaleDTO.auctioneerId
     })
   }
 }

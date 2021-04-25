@@ -1,8 +1,13 @@
 import { getRepository } from 'typeorm'
-import { Auctioneer } from '../../../entities'
+import { Auction, Auctioneer } from '../../../entities'
 import IAuctioneersRepository from './IAuctioneersRepository'
 
 export default class AuctioneersRepository implements IAuctioneersRepository<Auctioneer> {
+  async searchByAuction (auctionId: string): Promise<Auctioneer> {
+    const auctioneerId: string = (await getRepository(Auction).findOne({ where: { id: auctionId } })).auctioneerId
+    return await this.searchById(auctioneerId)
+  }
+
   async searchAll (): Promise<Auctioneer[]> {
     return await getRepository(Auctioneer).find()
   }

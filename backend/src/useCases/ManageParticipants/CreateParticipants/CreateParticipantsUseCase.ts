@@ -3,7 +3,7 @@ import ParticipantsRepository from '../../../repositories/implementations/Partic
 import IParticipantsRepository from '../../../repositories/implementations/Participant/IParticipantsRespository'
 import IParticipantsDTO from '../../../repositories/implementations/Participant/IParticipantsDTO'
 
-// import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 
 class CreateParticipantsUseCase {
   private participantsRepository: IParticipantsRepository<any>
@@ -21,7 +21,7 @@ class CreateParticipantsUseCase {
       throw new Error('E-mail já cadastrado')
     }
 
-    // data.password = bcrypt.hashSync(data.password, 8)
+    data.password = bcrypt.hashSync(data.password, 8)
 
     const itemData = ParticipantsMapper.toPersistence(data)
     this.participantsRepository.create(itemData)
