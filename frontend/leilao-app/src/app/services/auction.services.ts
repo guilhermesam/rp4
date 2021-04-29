@@ -11,21 +11,21 @@ export class AuctionsService {
     public category: Category[]
 
     public getAuctions(): Promise<Items[]>{
-        return this.http.get('http://localhost:3333/items/search/all')
+        return this.http.get('/api/items/search/all')
             .toPromise()
             .then((response: Items[]) => response)
 
     }
 
     public getCategories(): Promise<Category[]>{
-        return this.http.get('http://localhost:3333/categories/search/allCategories')
+        return this.http.get('/api/categories/search/allCategories')
             .toPromise()
             .then((response: Category[]) => response)
 
     }
 
     public getAuctionsByID(id: string): Promise<Items>{
-        return this.http.get(`http://localhost:3333/items/search/${id}`)
+        return this.http.get(`/api/items/search/${id}`)
         .toPromise()
         .then((response: Items) => {
             return response

@@ -22,6 +22,8 @@ import { AdmHeaderComponent } from './administration/adm-header/adm-header.compo
 import { AdmMainComponent } from './administration/adm-main/adm-main.component';
 import { AdmParticipantsComponent } from './administration/adm-participants/adm-participants.component';
 import { AdmAuctionComponent } from './administration/AdmAuctions/adm-auction/adm-auction.component';
+import { CharityAuctionComponent } from './auctions/charity-auction/charity-auction.component';
+import { DonateItemModalComponent } from './auctions/donate-item-modal/donate-item-modal.component';
 
 
 @NgModule({
@@ -45,6 +47,10 @@ import { AdmAuctionComponent } from './administration/AdmAuctions/adm-auction/ad
     AdmParticipantsComponent,
 
     AdmAuctionComponent,
+
+    CharityAuctionComponent,
+
+    DonateItemModalComponent,
   ],
   imports: [
     BrowserModule,

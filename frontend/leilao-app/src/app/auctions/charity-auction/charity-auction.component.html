@@ -1,0 +1,107 @@
+<app-header></app-header>
+<div class="background">
+    <div class='box-desc'>
+        <div class="uk-flex">
+            <div>
+                <img class="info-img" src="assets/d.jpg">
+            </div>
+            <div class="info-text">
+                <h3>Section Default</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                     Mus mauris vitae ultricies leo. Orci nulla pellentesque dignissim enim sit amet.
+                     Aenean et tortor at risus viverra adipiscing. Mi tempus imperdiet nulla malesuada pellentesque. 
+                     Volutpat consequat mauris nunc congue nisi. Viverra justo nec ultrices dui sapien eget mi proin sed. 
+                     Habitant morbi tristique senectus et netus. Fermentum dui faucibus in ornare quam viverra orci sagittis eu. 
+                     Pretium quam vulputate dignissim suspendisse in est ante in nibh. Donec enim diam vulputate ut pharetra sit amet aliquam.
+                </p>
+            </div>
+        </div>
+        <div class="uk-section uk-section-default box-info">
+            <div class="uk-container ">    
+                <h3>Informações pertinentes</h3>
+                <div class="uk-grid-match uk-child-width-1-3@m " uk-grid>
+                    <div class="divider-info">
+                        <span uk-icon="location"></span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                    <div class="divider-info">
+                        <span uk-icon="calendar"></span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                    <div class="divider-info">
+                        <span uk-icon="check"></span>
+                        <p>Todos os itens que serão leiloados foram devidamente inspecionados.</p>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <a uk-margin>
+            <button class="uk-button uk-button-primary uk-button-large btn-donation" href="#modal-sections" uk-toggle>Doar item</button>
+        </a>
+    </div>  
+         
+<div id="modal-sections" uk-modal>
+    <div class="modal-donate uk-position-center ">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-body">
+            <div>
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Nome</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: pencil"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="" formControlName="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Telefone</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: receiver"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="" formControlName="phone">
+                        </div>
+                    </div>
+                    <div class="uk-margin-left">
+                        <p>Email</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: mail"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="" formControlName="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Cidade</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon:location"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="" formControlName="city">
+                        </div>
+                    </div>
+                    <div class="uk-margin-left">
+                        <p>Endereço</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: location"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="" formControlName="state">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Imagem</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: image"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="" formControlName="imagePath">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <p>Descrição</p>
+                    <textarea class="uk-textarea" rows="5" placeholder="" formControlName="description" ></textarea>
+                </div>
+                <button class="uk-button uk-button-primary  btn-modal" type="button">Enivar</button>
+            </div>  
+        </div>
+    </div>
+</div>

@@ -19,14 +19,14 @@ export class ParticipantsService {
 
 
   public getParticipants(): Promise<Participants[]> {
-    return this.http.get('http://localhost:3333/participants/search/all')
+    return this.http.get('/api/participants/search/all')
       .toPromise()
       .then((response: Participants[]) => response)
 
   }
 
   public getParticipantsByID(id: string): Promise<Participants> {
-    return this.http.get(`http://localhost:3333/participants/search/${id}`)
+    return this.http.get(`/api/participants/search/${id}`)
       .toPromise()
       .then((response: Participants) => {
         return response

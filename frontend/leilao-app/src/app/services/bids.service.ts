@@ -15,13 +15,13 @@ export class BidsService{
 
     public makeBid(bid: Bids): Observable<any> {
         return this.http.post(
-            "http://localhost:3333/bids/create",
+            "/api/bids/create",
              JSON.stringify(bid), 
              this.options)
     }
 
     public getHighestBid(id: string): Promise<Bids>{
-        return this.http.get(`http://localhost:3333/bids/HighestBid/${id}`)
+        return this.http.get(`/api/HighestBid/${id}`)
         .toPromise()
         .then((response: Bids) => {
             return response

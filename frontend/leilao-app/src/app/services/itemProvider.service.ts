@@ -8,7 +8,7 @@ export class ItemProviderService {
     constructor(private http : HttpClient) { }
 
     public getItemProvider(name: string): Promise<ItemProvider>{
-        return this.http.get(`http://localhost:3333/itemProvider/search/${name}`)
+        return this.http.get(`/api/itemProvider/search/${name}`)
         .toPromise()
         .then((response: ItemProvider) => {
             return response

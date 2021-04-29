@@ -1,0 +1,69 @@
+<div id="modal-sections" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div>
+            <div class="uk-card uk-card-default uk-card-body box" >
+                <h3 class="uk-card-title">Atribuir item</h3>
+                <hr class="uk-divider-small">
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Nome do item</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: pencil"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome" formControlName="title">
+                        </div>
+                    </div>
+                    <div class="uk-margin-left ">
+                        <p>Categoria</p>
+                        <div class="uk-form-controls">
+                            <select class="uk-select" id="form-stacked-select">
+                                <option >  </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <a href="" class="uk-icon-button uk-margin-left " uk-icon="plus"></a>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <p>Valor inicial</p>
+                    <div class="uk-inline">
+                        <a class="uk-form-icon"uk-icon="icon:  tag"></a>
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="valor" formControlName="minimumBid">
+                    </div>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Provedor</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: user"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome do provedor" formControlName="itemProviderId">
+                        </div>
+                        <a class="uk-icon-button uk-margin-left" uk-icon="search" ></a>
+                    </div>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Imagem</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: image"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="imagem" formControlName="imagePath">
+                        </div>
+                        <a class="uk-icon-button uk-margin-left" uk-icon="search" ></a>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <p>Descrição</p>
+                    <textarea class="uk-textarea" rows="5" placeholder="Textarea" formControlName="description" ></textarea>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <button class="uk-button uk-button-primary" >Criar leilão</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Save</button>
+        </div>
+</div>
