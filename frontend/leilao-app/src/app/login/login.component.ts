@@ -2,8 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Participants } from 'src/shared/participants.models';
 import { TokenMod } from 'src/shared/token.model';
-import { LoginService } from '../services/login.service';
-
+import { LoginServiceParticipant } from '../services/loginParticipant.service';
+import { LoginServiceAuctioneer } from '../services/loginAuctioneer.service'
 
 @Component({
   selector: 'app-login',
@@ -12,35 +12,57 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  public participants: Participants[]
+  public participant: Participants
+  public options: any[]
 
 
   public formulario: FormGroup = new FormGroup({
     'email': new FormControl(null),
-    'password': new FormControl(null)
+    'password': new FormControl(null),
+    'login': new FormControl(null)
   })
 
 
-  public participants: Participants[]
-  public participant: Participants
+ 
 
-  constructor(private loginService: LoginService) { }
+  constructor(
+    private loginServiceParticipant: LoginServiceParticipant,
+    private loginServiceAuctioneer: LoginServiceAuctioneer
+    ) { }
 
   ngOnInit(): void {
+    this.options = this.getLogins()
 
   }
 
-  public logar(): void {
-    tk: TokenMod
-    var tk = new TokenMod()
-    tk.email = this.formulario.value.email
-    tk.password = this.formulario.value.password
-    console.log("TK: "+tk);
-    this.loginService.matchParticipant(tk.email)
+  public loginParticipant(): void {
+    if(this.formulario.value.login == "participant"){
+      var tk = new TokenMod()
+      tk.email = this.formulario.value.email
+      tk.password = this.formulario.value.password
+      console.log("TK: "+tk);
+      this.loginServiceParticipant.matchParticipant(tk.email)
+      this.loginServiceParticipant.generateToken(tk).subscribe((res)=>{
+      this.loginServiceParticipant.login(tk.email, res)
+      })
+    }
+    else{
+      var tk = new TokenMod()
+      tk.email = this.formulario.value.email
+      tk.password = this.formulario.value.password
+      console.log("TK: "+tk);
+      this.loginServiceAuctioneer.matchAuctioneer(tk.email)
+      this.loginServiceAuctioneer.generateToken(tk).subscribe((res)=>{
+      this.loginServiceAuctioneer.login(tk.email, res)
+      })
+    }
+  }
 
-
-    this.loginService.generateToken(tk).subscribe((res)=>{
-      this.loginService.login(tk.email, res)
-    })
-
+  public getLogins() {
+    return[
+      {value: 'participant', desc: 'Participante'},
+      {value: 'auctioneer', desc: 'leiloeiro'}
+    ]
   }
 }

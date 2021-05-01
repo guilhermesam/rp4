@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { LoginService } from './services/login.service';
+import { LoginServiceParticipant } from './services/loginParticipant.service';
+import { LoginServiceAuctioneer } from './services/loginAuctioneer.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [LoginService]
+  providers: [LoginServiceParticipant, LoginServiceAuctioneer  ]
 })
 export class AppComponent {
   title = 'leilao-app';

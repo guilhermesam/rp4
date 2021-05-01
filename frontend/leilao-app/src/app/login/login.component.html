@@ -11,15 +11,19 @@
                                 <input class="uk-input" type="text" placeholder="Email" formControlName="email">
                             </div>
                         </div>
-
                         <div class="uk-margin">
                             <div class="uk-inline">
                                 <input class="uk-input" type="text" placeholder="Senha" formControlName="password">
                             </div>
                         </div>
+                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid" *ngFor="let login of options">
+                            <label >
+                                <input class="uk-radio" type="radio" [value]="login.value" name="login" formControlName="login"> {{ login.desc }}
+                            </label>
+                        </div>
                         <div class="uk-margin">
                             <div class="uk-inline">
-                                <button type="submit" (click)="logar()" class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom">Login</button>
+                                <button type="submit" (click)="loginParticipant()" class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom">Login</button>
                             </div>
                         </div>
                     </form>

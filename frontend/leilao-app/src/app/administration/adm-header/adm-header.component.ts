@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginServiceAuctioneer } from 'src/app/services/loginAuctioneer.service';
 
-import { Participants } from 'src/shared/participants.models';
+import { Auctioneer } from 'src/shared/auctioneer';
 
 @Component({
   selector: 'app-adm-header',
@@ -10,12 +10,12 @@ import { Participants } from 'src/shared/participants.models';
 })
 export class AdmHeaderComponent implements OnInit {
 
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService:LoginServiceAuctioneer) { }
 
-  public user: Participants
+  public user: Auctioneer
 
   ngOnInit(): void {
-    this.user = this.loginService.getStoredParticipant()
+    this.user = this.loginService.getStoredAuctioneer()
   }
 
   logout(){

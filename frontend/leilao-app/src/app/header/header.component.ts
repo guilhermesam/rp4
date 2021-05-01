@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginServiceParticipant } from 'src/app/services/loginParticipant.service';
 import { Participants } from 'src/shared/participants.models';
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import { Participants } from 'src/shared/participants.models';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginServiceParticipant) { }
 
   public user: Participants
 

@@ -5,12 +5,12 @@ import { rejects } from 'node:assert';
 import { element, promise } from 'protractor';
 import { Observable } from 'rxjs';
 import { TokenMod } from 'src/shared/token.model';
-import { Participants } from '../../shared/participants.models';
+import { Auctioneer } from '../../shared/auctioneer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginServiceAuctioneer {
   constructor(private http: HttpClient, private router: Router) { }
 
 
@@ -18,20 +18,15 @@ export class LoginService {
     headers: new HttpHeaders().append('Content-type', 'application/json')
   }
 
-
-
-  private getParticipantEmail(email: string): Promise<Participants> {
-    return this.http.get(`/api/participants/search/email/${email}`)
+  private getAuctioneerEmail(email: string): Promise<Auctioneer> {
+    return this.http.get(`/api/Auctionners/search/email/${email}`)
     .toPromise()
-    .then((response: Participants) => response)
+    .then((response: Auctioneer) => response)
   }
-
-
 
   public generateToken(token: TokenMod): Observable<any> {
-    return this.http.post('/api/participants/login', JSON.stringify(token), this.options)
+    return this.http.post('/api/auctioneers/login', JSON.stringify(token), this.options)
   }
-
 
   public getStatusLogin(): Promise<boolean> {
     return new Promise((resolve, reject) => {
@@ -73,37 +68,34 @@ export class LoginService {
     }
   }
 
-
-  public getStoredParticipant(): Participants {
-    var storedParticipant: Participants
-    storedParticipant = new Participants
-    storedParticipant.id = localStorage.getItem('idParticipant')
-    storedParticipant.name = localStorage.getItem('nameParticipant')
-    storedParticipant.userName = localStorage.getItem('userParticipant')
-    storedParticipant.email = localStorage.getItem('emailParticipant')
-    storedParticipant.phone = localStorage.getItem('phoneParticipant')
-    return storedParticipant
+  public getStoredAuctioneer(): Auctioneer {
+    var storedAuctioneer: Auctioneer
+    storedAuctioneer = new Auctioneer
+    storedAuctioneer.id = localStorage.getItem('idAuctioneer')
+    storedAuctioneer.name = localStorage.getItem('nameAuctioneer')
+    storedAuctioneer.email = localStorage.getItem('emailAuctioneer')
+    storedAuctioneer.phone = localStorage.getItem('phoneAuctioneer')
+    return storedAuctioneer
   }
 
-  public storeParticipant(response: Participants): void {
-    localStorage.setItem('idParticipant', response.id)
-    localStorage.setItem('nameParticipant', response.name)
-    localStorage.setItem('userParticipant', response.userName)
-    localStorage.setItem('emailParticipant', response.email)
-    localStorage.setItem('phoneParticipant', response.phone)
+  public storeAuctioneer(response: Auctioneer): void {
+    localStorage.setItem('idAuctioneer', response.id)
+    localStorage.setItem('nameAuctioneer', response.name)
+    localStorage.setItem('emailAuctioneer', response.email)
+    localStorage.setItem('phoneAuctioneer', response.phone)
   }
 
-  public clearStoredParticipant(): void {
-    localStorage.removeItem('idParticipant')
-    localStorage.removeItem('nameParticipant')
-    localStorage.removeItem('userParticipant')
-    localStorage.removeItem('emailParticipant')
-    localStorage.removeItem('phoneParticipant')
+  public clearStoredAuctioneer(): void {
+    localStorage.removeItem('idAuctioneer')
+    localStorage.removeItem('nameAuctioneer')
+    localStorage.removeItem('userAuctioneer')
+    localStorage.removeItem('emailAuctioneer')
+    localStorage.removeItem('phoneAuctioneer')
   }
 
-  public matchParticipant(email):Promise<Participants>{
+  public matchAuctioneer(email):Promise<Auctioneer>{
     return new Promise((resolve, reject)=>{
-      this.getParticipantEmail(email).then((response: Participants)=>{
+      this.getAuctioneerEmail(email).then((response: Auctioneer)=>{
         if(response != null || response != undefined){
           resolve(response)
         } else {
@@ -113,17 +105,15 @@ export class LoginService {
     })
   }
 
-  public login(email: string, tok: string): Promise<Participants> {
+  public login(email: string, tok: string): Promise<Auctioneer> {
     return new Promise((resolve, reject) => {
-      this.matchParticipant(email).then((response: Participants) => {
+      this.matchAuctioneer(email).then((response: Auctioneer) => {
         if (response != null) {
-          this.storeParticipant(response);
+          this.storeAuctioneer(response);
           this.storeToken(tok)
           this.router.navigate(['/administration'])
           resolve(response)
         } else {
-
-
           this.router.navigate(['/login'])
           resolve(null)
         }
@@ -131,10 +121,8 @@ export class LoginService {
     })
   }
 
-
-
   public logout(): void {
-    this.clearStoredParticipant()
+    this.clearStoredAuctioneer()
     this.clearStoredToken()
     this.router.navigate(['/login'])
   }

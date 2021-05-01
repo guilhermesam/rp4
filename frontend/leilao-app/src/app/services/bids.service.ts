@@ -21,7 +21,7 @@ export class BidsService{
     }
 
     public getHighestBid(id: string): Promise<Bids>{
-        return this.http.get(`/api/HighestBid/${id}`)
+        return this.http.get(`/api/bids/HighestBid/${id}`)
         .toPromise()
         .then((response: Bids) => {
             return response

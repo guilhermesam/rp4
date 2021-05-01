@@ -6,10 +6,11 @@
             <canvas width="200" height="400"></canvas>
         </div>
         <div>
-            <div class="uk-card-body"*ngIf="bids !== undefined">
+            <div class="uk-card-body" >
                 <h3 class="uk-card-title">{{item.title}}</h3>
                 <p class="au-description">{{ item.description }}</p>
-                <p class="au-valueBid">MAIOR LANCE: {{ bids.value | currency:'$':true }}</p>
+                <p class="au-valueBid" *ngIf="bids != undefined ">MAIOR LANCE: {{ bids.value | currency:'$':true }}</p>
+                <p class="au-valueBid" *ngIf="bids == undefined">MAIOR LANCE: {{ item.minimumBid | currency:'$':true }}</p>   
             <div class="uk-flex au-bid uk-position-relative" [formGroup]="formBid" >
                 <div class="uk-margin">
                     <input 

@@ -1,7 +1,7 @@
 const PROXY_CONFIG = [
     {
         context: ['/api'],
-        target: 'https://rp4-backend.herokuapp.com',
+        target: 'http://localhost:3333',
         secure: false,
         log: 'debug',
         pathRewrite:{ '^/api': ''}
