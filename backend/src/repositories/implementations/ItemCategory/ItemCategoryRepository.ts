@@ -4,6 +4,10 @@ import { Category } from '../../../entities'
 import IItemCategoryRepository from './IItemCategoryRepository'
 
 export default class ItemCategorysRepository implements IItemCategoryRepository<Category> {
+  async searchById (id: string): Promise<Category> {
+    return await getRepository(Category).findOne({ id: id })
+  }
+
   // Create Operation
   async create (data: Category): Promise<void> {
     await getRepository(Category).save(data)
@@ -25,7 +29,7 @@ export default class ItemCategorysRepository implements IItemCategoryRepository<
 
   // Update Operations
   async update (data: Category): Promise<any> {
-    await getRepository(Category)
+    getRepository(Category)
       .createQueryBuilder()
       .update(Category)
       .set({

@@ -5,4 +5,5 @@ export default interface IItemCategoryRepository<T> extends IChangeableBaseRepos
 
     searchAll(): Promise<Category[]>
     searchByName(name: string): Promise<Category>
+    searchById(id: string): Promise<Category>
 }

@@ -16,6 +16,10 @@ class SearchItemsUseCase {
   async searchByName (name: string): Promise<Category> {
     return await this.itemCategoryRepository.searchByName(name)
   }
+
+  async searchById (id: string): Promise<Category> {
+    return await this.itemCategoryRepository.searchById(id)
+  }
 }
 
 export default new SearchItemsUseCase(

@@ -1,4 +1,4 @@
-// import { Category } from '../../../entities'
+import { Category } from '../../../entities'
 import { IStrategy } from './IStrategy'
 import SearchCategoryUseCase from './SearchCategoryUseCase'
 
@@ -7,6 +7,13 @@ class SearchAllCategories implements IStrategy {
     return await searchCategoryUseCase.searchAll()
   }
 }
+
+class SearchById implements IStrategy {
+  async search (searchCategoryUseCase: typeof SearchCategoryUseCase, param: any): Promise<Category> {
+    return await searchCategoryUseCase.searchById(param.id)
+  }
+}
 export {
-  SearchAllCategories
+  SearchAllCategories,
+  SearchById
 }
