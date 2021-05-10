@@ -24,6 +24,7 @@ import { AdmParticipantsComponent } from './administration/adm-participants/adm-
 import { AdmAuctionComponent } from './administration/AdmAuctions/adm-auction/adm-auction.component';
 import { CharityAuctionComponent } from './auctions/charity-auction/charity-auction.component';
 import { DonateItemModalComponent } from './auctions/donate-item-modal/donate-item-modal.component';
+import { CreateAuctionComponent } from './administration/AdmAuctions/create-auction/create-auction.component';
 
 
 @NgModule({
@@ -51,6 +52,8 @@ import { DonateItemModalComponent } from './auctions/donate-item-modal/donate-it
     CharityAuctionComponent,
 
     DonateItemModalComponent,
+
+    CreateAuctionComponent,
   ],
   imports: [
     BrowserModule,

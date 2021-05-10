@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  background-color: #d8ddde;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.box {
+  margin: 30px;
+  padding: 30px;
+  width: 700px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.item-box {
+  margin: 30px;
+  width: 700px;
+  background-color: white;
+}
+
+.radius {
+  border-radius: 0px;
+}
+
+.uk-icon-button {
+  border-radius: 0px;
+  background-color: #d0d3d4;
+}

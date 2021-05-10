@@ -1,0 +1,60 @@
+<div class="background">
+    <div class="uk-flex uk-flex-column uk-width-1-3 ">
+        <div>
+            <div class="uk-card uk-card-default uk-card-body box" [formGroup]="formItem">
+                <h3 class="uk-card-title">Atribuir item</h3>
+                <hr class="uk-divider-small">
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Nome do item</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: pencil"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome" formControlName="title">
+                        </div>
+                    </div>
+                    <div class="uk-margin-left ">
+                        <p>Categoria</p>
+                        <div class="uk-form-controls">
+                            <select class="uk-select" id="form-stacked-select">
+                                <option *ngFor="let category of categories">  {{ category.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <p>Valor inicial</p>
+                    <div class="uk-inline">
+                        <a class="uk-form-icon"uk-icon="icon:  tag"></a>
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="valor" formControlName="minimumBid">
+                    </div>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Provedor</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: user"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="nome do provedor" formControlName="itemProviderId">
+                        </div>
+                        <a class="uk-icon-button uk-margin-left" uk-icon="search" (click)="getProvider()"></a>
+                    </div>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <div class="uk-margin">
+                        <p>Imagem</p>
+                        <div class="uk-inline">
+                            <a class="uk-form-icon"uk-icon="icon: image"></a>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="imagem" formControlName="imagePath">
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <p>Descrição</p>
+                    <textarea class="uk-textarea" rows="5" placeholder="Textarea" formControlName="description" ></textarea>
+                </div>
+                <div class="uk-flex uk-margin">
+                    <button class="uk-button uk-button-primary" (click)="addItem()">Criar leilão</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,7 @@ import { Router } from 'express'
 import {
   SearchAllItems,
   SearchAvailableItems,
+  SearchByAuction,
   SearchByIdItems
 } from '../useCases/ManageItems/SearchItems/SearchStrategies'
 
@@ -33,6 +34,11 @@ router.get('/items/search/all', (req, res) => {
 
 router.get('/items/search/available', (req, res) => {
   searchItemsController.setStrategy(new SearchAvailableItems())
+  return searchItemsController.handle(req, res)
+})
+
+router.get('/items/search/auction/:id', (req, res) => {
+  searchItemsController.setStrategy(new SearchByAuction())
   return searchItemsController.handle(req, res)
 })
 

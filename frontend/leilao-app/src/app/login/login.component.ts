@@ -23,9 +23,6 @@ export class LoginComponent implements OnInit {
     'login': new FormControl(null)
   })
 
-
- 
-
   constructor(
     private loginServiceParticipant: LoginServiceParticipant,
     private loginServiceAuctioneer: LoginServiceAuctioneer

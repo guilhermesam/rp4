@@ -19,7 +19,7 @@ export class LoginServiceAuctioneer {
   }
 
   private getAuctioneerEmail(email: string): Promise<Auctioneer> {
-    return this.http.get(`/api/Auctionners/search/email/${email}`)
+    return this.http.get(`/api/auctionners/search/email/${email}`)
     .toPromise()
     .then((response: Auctioneer) => response)
   }

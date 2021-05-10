@@ -15,7 +15,7 @@ export class ItemsService{
 
     public createItem(item: Items): Observable<any> {
         return this.http.post(
-            "/api/items/create'",
+            "/api/items/create",
              JSON.stringify(item), 
              this.options)
     }

@@ -20,6 +20,10 @@ class SearchItemsUseCase {
   async searchById (id: string): Promise<AuctionItem> {
     return await this.auctionItemsRepository.searchById(id)
   }
+
+  async searchByAuction (id: string): Promise<AuctionItem[]> {
+    return await this.auctionItemsRepository.searchItemsInAuction(id)
+  }
 }
 
 export default new SearchItemsUseCase(

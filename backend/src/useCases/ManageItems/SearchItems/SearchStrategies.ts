@@ -20,8 +20,15 @@ class SearchByIdItems implements IStrategy {
   }
 }
 
+class SearchByAuction implements IStrategy {
+  async search (searchItemsUseCase: typeof SearchItemsUseCase, param: any): Promise<any> {
+    return await searchItemsUseCase.searchByAuction(param.id)
+  }
+}
+
 export {
   SearchAllItems,
   SearchAvailableItems,
-  SearchByIdItems
+  SearchByIdItems,
+  SearchByAuction
 }

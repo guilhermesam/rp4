@@ -11,27 +11,66 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
-.box {
-  margin: 30px;
+.box-auctions {
+  width: 1000px;
+  height: 600px;
+  background-color: white;
+  margin: 30px 0px 30px 0px;
   padding: 30px;
-  width: 700px;
-  background-color: white;
   border-radius: 10px;
+  box-shadow: 10px;
 }
 
-.item-box {
-  margin: 30px;
-  width: 700px;
+.search-padding {
+  padding-left: 688px;
+  margin-bottom: 10px;
+}
+
+.box-auction {
+  width: 100%;
+  height: 150px;
   background-color: white;
+  margin: 10px 0px 15px 0px;
+  padding: 10px;
+  border: 1px solid;
+  border-left: none;
+  border-right: none;
+  border-color: #d8ddde;
 }
 
-.radius {
-  border-radius: 0px;
+.img {
+  border-radius: 5px;
+  width: 150px;
+  height: 130px;
 }
 
-.uk-icon-button {
-  border-radius: 0px;
-  background-color: #d0d3d4;
+.box-text {
+  margin-left: 10px;
+  width: 800px;
+  max-width: 400px;
+}
+
+.button-finalize {
+  margin-left: 230px;
+  border-radius: 5px;
+  background-color: #e19922;
+  color: #2f2f2f;
+  width: 100px;
+  height: 40px;
+}
+
+.padding {
+  padding-top: 3px;
+}
+
+.header-auctions {
+  border: 1px solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: #d8ddde;
+  margin-bottom: 10px;
 }
