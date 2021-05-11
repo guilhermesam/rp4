@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { authMiddleware, adminMiddleware } from '../middlewares/SecurityLayer'
+// import { authMiddleware, adminMiddleware } from '../middlewares/SecurityLayer'
 import { createAuctionsController, finishAuctionsController, searchAuctionsController } from '../useCases/ManageAuctions'
 import {
   SearchAllAuctions,
@@ -8,11 +8,11 @@ import {
 
 const router = Router()
 
-router.post('/auctions/create', authMiddleware, adminMiddleware, (req, res) => {
+router.post('/auctions/create', (req, res) => {
   return createAuctionsController.handle(req, res)
 })
 
-router.post('/auctions/finish', authMiddleware, (req, res) => {
+router.post('/auctions/finish', (req, res) => {
   return finishAuctionsController.handle(req, res)
 })
 

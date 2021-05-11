@@ -4,7 +4,8 @@ import {
   SearchAllItems,
   SearchAvailableItems,
   SearchByAuction,
-  SearchByIdItems
+  SearchByIdItems,
+  SearchByTitle
 } from '../useCases/ManageItems/SearchItems/SearchStrategies'
 
 // import { authMiddleware } from '../middlewares/SecurityLayer'
@@ -44,6 +45,11 @@ router.get('/items/search/auction/:id', (req, res) => {
 
 router.get('/items/search/:id', (req, res) => {
   searchItemsController.setStrategy(new SearchByIdItems())
+  return searchItemsController.handle(req, res)
+})
+
+router.get('/items/search/title/:title', (req, res) => {
+  searchItemsController.setStrategy(new SearchByTitle())
   return searchItemsController.handle(req, res)
 })
 

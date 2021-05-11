@@ -19,4 +19,12 @@ export class ItemsService{
              JSON.stringify(item), 
              this.options)
     }
+
+    public getavailableItems(): Promise<Items[]>{
+        return this.http.get("/api/items/search/available")
+        .toPromise()
+        .then((response: Items[]) => {
+            return response
+        })
+    }
 }

@@ -11,14 +11,14 @@
             </div>
         </div>
         <div>
-            <button class="uk-button uk-button-primary">Primary</button>
+            <button class="uk-button uk-button-primary button-create" [routerLink]="['/criar-leilao']" >novo leilão</button>
         </div>
-        <div class="box-auction uk-flex">
-            <div>
-                <img class="img" src="assets/d.jpg">
+        <div class="box-auction uk-flex" *ngFor="let item of items">
+            <div class="box-img">
+                <img src="{{ item.imagePath }}" class="img">
             </div>
             <div class="box-text">
-                <p class="uk-text-large uk-text-lighter">NOME DO ITEM</p>
+                <p class="uk-text-large uk-text-lighter">{{item.title}}</p>
                 <div>
                     <div>
                     <p>Inicio</p>
@@ -29,7 +29,14 @@
                     </div>
                 </div>
             </div>
-            <button class="uk-button uk-button-primary button-finalize">Finalziar</button>
+            <div  class="box-button">
+                <div *ngIf="item.auctionId == undefined">
+                    <button class="uk-button uk-button-primary button-init"(click)="initAuction()">iniciar</button>
+                </div>  
+                <div class="uk-margin" *ngIf="item.auctionId != undefined">
+                    <button class="uk-button uk-button-primary button-finalize">Finalziar</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>      

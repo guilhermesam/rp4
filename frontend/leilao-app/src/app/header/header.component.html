@@ -4,13 +4,12 @@
         <ul class="uk-navbar-nav">
             <li><a routerLink="/buscar-leiloes">LEILÕES</a></li>
             <li><a>ITENS</a></li>
-
         </ul>
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li><a routerLink="">sign out</a></li>
-            <li><a *ngIf="user" routerLink="/administration">{{user.username}}</a></li>
+            <li><a *ngIf="user" routerLink="/homePage">{{user.username}}</a></li>
         </ul>
     </div>
 </nav>

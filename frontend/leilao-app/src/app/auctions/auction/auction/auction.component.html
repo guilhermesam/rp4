@@ -1,35 +1,30 @@
 <app-header></app-header>
-<hr class="uk-divider-icon">
-    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid *ngIf="item !== undefined">
-        <div class="uk-card-media-left uk-cover-container">
-            <img src="{{ item.imagePath }}" alt="" uk-cover>
-            <canvas width="200" height="400"></canvas>
-        </div>
-        <div>
-            <div class="uk-card-body" >
-                <h3 class="uk-card-title">{{item.title}}</h3>
-                <p class="au-description">{{ item.description }}</p>
-                <p class="au-valueBid" *ngIf="bids != undefined ">MAIOR LANCE: {{ bids.value | currency:'$':true }}</p>
-                <p class="au-valueBid" *ngIf="bids == undefined">MAIOR LANCE: {{ item.minimumBid | currency:'$':true }}</p>   
-            <div class="uk-flex au-bid uk-position-relative" [formGroup]="formBid" >
-                <div class="uk-margin">
-                    <input 
-                    class="uk-input uk-form-width-medium" 
-                    type="text" 
-                    placeholder="valor" 
-                    formControlName="valueBid"
-                    onkeypress="$(this).mask('R$ #.##0,00', {reverse: true})">
+    <div class="background">
+        <div class="card-auction uk-flex" *ngIf="item !== undefined">
+            <div class="card-auction-img">
+                <img src="{{ item.imagePath }}" class="auction-img">
+            </div>
+            <div class="card-auction-description">
+                <div class="auction-description ">
+                    <h3 class="uk-card-title">{{item.title}}</h3>
+                    <p class="au-description uk-text-lighter uk-text-emphasis uk-text-left">{{ item.description }}</p>
                 </div>
-                <div>
-                    <button 
-                    class="uk-button uk-button-secondary" 
-                    type="button" 
-                    (click)="makeABid()"
-                    >Lance</button>
+                <div class="auction-bid">
+                    <div>
+                        <p class="uk-text-success" *ngIf="bids != undefined ">MAIOR LANCE: {{ bids.value | currency:'$':true }}</p>
+                        <p class="uk-text-success" *ngIf="bids == undefined">MAIOR LANCE: {{ item.minimumBid | currency:'$':true }}</p>
+                    </div>  
+                    <div class="uk-flex" [formGroup]="formBid" >
+                        <div class="uk-margin">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="valor" formControlName="valueBid">
+                        </div>
+                        <div>
+                            <button class="uk-button uk-button-secondary" type="button" (click)="makeABid()">Lance</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
-<hr class="uk-divider-icon">
+
 <app-footer></app-footer>

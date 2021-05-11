@@ -8,6 +8,7 @@ import { AuctionsService } from 'src/app/services/auction.services';
 import { Items } from 'src/shared/items.model';
 import { ItemsService } from 'src/app/services/item.service'
 
+
 @Component({
   selector: 'app-create-auction',
   templateUrl: './create-auction.component.html',
@@ -19,7 +20,9 @@ export class CreateAuctionComponent implements OnInit {
   public itemProvider: ItemProvider
   public categories : Category[]
   public items: Items
+  public availablesItems : Items[]
   public item: Items = new Items()
+
 
   constructor(
     private route: ActivatedRoute,
@@ -47,6 +50,7 @@ export class CreateAuctionComponent implements OnInit {
     })
   }
   
+
   public getProvider(): void {
     this.itemProviderService.getItemProvider(this.formItem.value.itemProviderId)
       .then(( provider: ItemProvider ) =>{
@@ -60,13 +64,15 @@ export class CreateAuctionComponent implements OnInit {
     this.item.description = this.formItem.value.description
     this.item.minimumBid = this.formItem.value.minimumBid
     this.item.imagePath = this.formItem.value.imagePath
-    this.item.finishedOff = 1
+    this.item.finishedOff = 0
     this.item.categoryId = "1Q"
     this.item.itemProviderId = this.itemProvider.id
     console.log(this.item)
     this.itemService.createItem(this.item)
     .subscribe()
-    window.alert("Item criado com sucesso")
+    let myGreeting = setTimeout(function() {
+      alert("Item criado com sucesso")
+    }, 20000)
   }
 
 

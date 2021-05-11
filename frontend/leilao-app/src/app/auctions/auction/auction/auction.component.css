@@ -1,27 +1,56 @@
-.uk-card {
-  position: static;
-  margin: 20px 20px 20px 20px;
-  box-shadow: none;
-  border: 1px;
-  margin-left: 90px;
-  margin-right: 180px;
-  margin-bottom: 0px;
+.background {
+  width: 1479.8px;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: #d8ddde;
 }
 
-.uk-card-media-left {
-  width: 600px;
-  max-height: 400px;
+.card-auction {
+  width: 1300px;
+  height: 600px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
 }
 
-.au-bid {
-  position: absolute;
-  padding-top: 165px;
-  padding-bottom: 0px;
+.card-auction-img {
+  width: 500px;
+  height: 400px;
+  padding-top: 50px;
+  padding: 50px;
   margin: 0px;
 }
 
-.uk-divider-icon {
-  margin-top: 20px;
+.auction-img {
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 5px;
+  margin: 0px;
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+.card-auction-description {
+  width: 700px;
+  height: 400px;
+}
+
+.auction-description {
+  height: 280px;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  padding-right: 200px;
+}
+
+.auction-bid {
+  margin-top: 0px;
+  padding-top: 10px;
+}
+
+.uk-button {
+  border-radius: 2px;
 }
 
 /*  TEXTOS   */

@@ -16,7 +16,7 @@
 
 .box-auctions {
   width: 1000px;
-  height: 600px;
+  height: 100%;
   background-color: white;
   margin: 30px 0px 30px 0px;
   padding: 30px;
@@ -34,17 +34,32 @@
   height: 150px;
   background-color: white;
   margin: 10px 0px 15px 0px;
-  padding: 10px;
+
   border: 1px solid;
   border-left: none;
   border-right: none;
   border-color: #d8ddde;
 }
 
+.box-img {
+  height: 150px;
+  width: 150px;
+  padding-top: 10px;
+}
+
 .img {
   border-radius: 5px;
-  width: 150px;
-  height: 130px;
+  max-width: 130px;
+  max-height: 130px;
+  border-radius: 5px;
+  margin: 0px;
+  display: block;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+  margin-bottom: none;
 }
 
 .box-text {
@@ -53,13 +68,32 @@
   max-width: 400px;
 }
 
+.box-button {
+  padding-top: 30px;
+  width: 400px;
+  padding-left: 250px;
+}
+
 .button-finalize {
-  margin-left: 230px;
-  border-radius: 5px;
-  background-color: #e19922;
+  border-radius: 2px;
+  background-color: #e14f22;
   color: #2f2f2f;
   width: 100px;
   height: 40px;
+}
+
+.button-init {
+  border-radius: 2px;
+  background-color: #8ee122;
+  color: #2f2f2f;
+  width: 100px;
+  height: 40px;
+}
+
+.button-create {
+  border-radius: 2px;
+  width: 100px;
+  margin-left: 800px;
 }
 
 .padding {

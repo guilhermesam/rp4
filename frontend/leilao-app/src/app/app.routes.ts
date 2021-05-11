@@ -8,6 +8,7 @@ import { AdministrationComponent } from './administration/administration.compone
 import { AdmParticipantsComponent } from './administration/adm-participants/adm-participants.component'
 import { AdmAuctionComponent } from './administration/AdmAuctions/adm-auction/adm-auction.component'
 import { CharityAuctionComponent } from './auctions/charity-auction/charity-auction.component'
+import { CreateAuctionComponent } from './administration/AdmAuctions/create-auction/create-auction.component'
 
 export const ROUTES:  Routes = [
     {path : '', component: LoginComponent},
@@ -18,8 +19,8 @@ export const ROUTES:  Routes = [
     {path : 'administration', component: AdministrationComponent},
     {path : 'participants-manager', component: AdmParticipantsComponent},
     {path : 'login', component: LoginComponent},
-    {path : 'adicionar-leilao', component: AdmAuctionComponent },
-    {path : 'leilao-beneficente', component: CharityAuctionComponent }
-
+    {path : 'leiloes', component: AdmAuctionComponent },
+    {path : 'leilao-beneficente', component: CharityAuctionComponent },
+    {path : 'criar-leilao', component: CreateAuctionComponent}
 
 ]

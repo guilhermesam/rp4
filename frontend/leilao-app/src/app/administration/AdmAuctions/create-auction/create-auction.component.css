@@ -35,3 +35,8 @@
   border-radius: 0px;
   background-color: #d0d3d4;
 }
+
+.uk-button {
+  border-radius: 2px;
+  width: 100px;
+}

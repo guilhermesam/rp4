@@ -16,6 +16,7 @@ export class AdmHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.loginService.getStoredAuctioneer()
+    console.log(localStorage.getItem('idAuctioneer'))
   }
 
   logout(){

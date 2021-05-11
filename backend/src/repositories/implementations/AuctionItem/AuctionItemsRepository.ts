@@ -20,6 +20,10 @@ export default class AuctionItemsRepository implements IAuctionItemsRepository<A
     return await getRepository(AuctionItem).findOne({ id: id })
   }
 
+  async searchByTitle (title: string): Promise<AuctionItem> {
+    return await getRepository(AuctionItem).findOne({ title: title })
+  }
+
   async searchItemsInAuction (auctionId: string): Promise<AuctionItem[]> {
     return await getRepository(AuctionItem).find({ where: { auctionId: auctionId } })
   }
