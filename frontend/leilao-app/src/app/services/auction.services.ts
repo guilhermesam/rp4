@@ -44,5 +44,13 @@ export class AuctionsService {
              this.options)
     }
 
+    public getCategoriesByName(name: string): Promise<Category>{
+        return this.http.get(`/api/categories/search/${name}`)
+        .toPromise()
+        .then((response: Category) => {
+            return response
+        })
+    }
+
 
 }

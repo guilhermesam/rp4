@@ -15,8 +15,8 @@
                     <div class="uk-margin-left ">
                         <p>Categoria</p>
                         <div class="uk-form-controls">
-                            <select class="uk-select" id="form-stacked-select">
-                                <option *ngFor="let category of categories">  {{ category.name }}</option>
+                            <select class="uk-select" id="form-stacked-select" formControlName="categoryId">
+                                <option *ngFor="let category of categories"  (click)="getCategoryByName()" >{{ category.name }}</option>
                             </select>
                         </div>
                     </div>

@@ -19,6 +19,7 @@ export class CreateAuctionComponent implements OnInit {
 
   public itemProvider: ItemProvider
   public categories : Category[]
+  public category : Category
   public items: Items
   public availablesItems : Items[]
   public item: Items = new Items()
@@ -59,20 +60,26 @@ export class CreateAuctionComponent implements OnInit {
     } )
   }
 
+  public getCategoryByName(): void{
+    this.aucticonsServices.getCategoriesByName(this.formItem.value.categoryId)
+    .then(( categorySearch: Category ) =>{
+      this.category = categorySearch
+      console.log(this.category)
+    } )
+  }
+
   public addItem(): void{
+    this.getCategoryByName()
     this.item.title = this.formItem.value.title
     this.item.description = this.formItem.value.description
     this.item.minimumBid = this.formItem.value.minimumBid
     this.item.imagePath = this.formItem.value.imagePath
     this.item.finishedOff = 0
-    this.item.categoryId = "1Q"
+    this.item.categoryId = this.category.id
     this.item.itemProviderId = this.itemProvider.id
     console.log(this.item)
     this.itemService.createItem(this.item)
     .subscribe()
-    let myGreeting = setTimeout(function() {
-      alert("Item criado com sucesso")
-    }, 20000)
   }
 
 

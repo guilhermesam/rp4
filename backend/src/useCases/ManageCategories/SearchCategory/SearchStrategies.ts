@@ -13,7 +13,14 @@ class SearchById implements IStrategy {
     return await searchCategoryUseCase.searchById(param.id)
   }
 }
+
+class SearchByName implements IStrategy {
+  async search (searchCategoryUseCase: typeof SearchCategoryUseCase, param: any): Promise<Category> {
+    return await searchCategoryUseCase.searchById(param.name)
+  }
+}
 export {
   SearchAllCategories,
-  SearchById
+  SearchById,
+  SearchByName
 }

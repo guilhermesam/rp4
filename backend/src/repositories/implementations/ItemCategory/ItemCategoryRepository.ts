@@ -4,8 +4,8 @@ import { Category } from '../../../entities'
 import IItemCategoryRepository from './IItemCategoryRepository'
 
 export default class ItemCategorysRepository implements IItemCategoryRepository<Category> {
-  async searchById (id: string): Promise<Category> {
-    return await getRepository(Category).findOne({ id: id })
+  async searchById (name: string): Promise<Category> {
+    return await getRepository(Category).findOne({ name: name })
   }
 
   // Create Operation
